@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+
+<!-- OSWork v5 — formato-curso v5 (página única, contrato pedagógico 40+). -->
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="oswork5-en" name="curso"/>
+<title>OSWork v5 · Organize your AI environment · INEMA.CLUB PRO</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/aula.css" rel="stylesheet"/><link href="assets/i18n.css" rel="stylesheet"/>
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (SKILL.md, Passo 0 — respondido em 21/09/2026, antes da geração):
+  - Público específico: profissionais de 40+ anos, iniciantes em IA, que já usam um chat
+    de IA de vez em quando e querem parar de improvisar.
+  - Profissões-alvo (2): gestora (coordena equipe e processos) · professor (prepara
+    material e devolutivas).
+  - Familiaridade com tecnologia: baixa — usa computador e celular no trabalho, nunca
+    programou, nunca abriu uma tela de comandos.
+  - Resultado prático esperado: sair com o próprio ambiente de IA organizado — pastas por
+    contexto, uma ficha de orientação, um molde de pedido reutilizável e uma rotina de
+    conferência.
+  - Tempo por sessão: 20 a 25 minutos.
+
+  DECISÕES REGISTRADAS:
+  - Sem .termdemo em todo o curso: o currículo não tem nenhum comando real a demonstrar
+    (CHECKLIST-V5 §5.1 — omissão registrada, não silenciosa).
+  - Aula 7 (PRÁTICA/INTEGRAÇÃO) tem cards-7 autorais de forma "aplicação": o manifesto de
+    completude exige a linha `cards` em toda aula, e essa exigência prevalece sobre o traço
+    "—" da matriz de dosagem, que trata de obrigação e não de proibição. Teto ≤5 respeitado.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+  @media(max-width:720px){#v-trilha .au{grid-template-columns:44px 1fr}#v-trilha .au .meta{grid-column:2;text-align:left}}
+  @media print{.bar,.panel,.scrim,.seltb,.prog,.grain,.lnav,button{display:none!important}
+    html,body{background:#fff!important;color:#111!important}.view{display:block!important}
+    .col p,.col li,h1,h2,h3{color:#111!important}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-inner">
+<span class="brand"><a class="mark" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a><a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a><a class="course" href="landing.html">OSWork v5</a></span><div class="langsel"><a data-lang="pt" href="../curso.html">Português</a><span class="lang-cur">English</span><a data-lang="es" href="../es/curso.html">Español</a></div>
+
+<a class="back" href="#trilha" style="display:none">← track</a>
+<button class="pill" id="pill" style="display:none">0 read</button>
+<button id="revbtn">review <span id="revn">0</span></button>
+<button id="exbtn">exercises</button>
+<button id="jorbtn">journey</button>
+<button aria-label="How it works" id="helpbtn">?</button>
+<button aria-label="Reading preferences" id="prefsbtn">Aa</button>
+<button id="themebtn">theme: dark</button>
+</div></div>
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+<header class="t-hero"><div class="wrap">
+<p class="kicker">Single track · 7 lessons</p>
+<h1>Organize your <em>environment</em> for AI</h1>
+<p class="lead">You leave here with folders ready for front-line work, a written orientation sheet, a request template you can reuse, and a checking routine. Without programming, without a command screen.</p>
+</div></header>
+<section><div class="wrap">
+<div class="statcards"></div>
+<p class="eyebrow">Lessons</p>
+<h2>From a loose request to the built environment</h2>
+<div class="aulas">
+<a class="au on" data-aula="1" href="#aula-1">
+<div class="num">1</div>
+<div><h3>Complete request, no loose question</h3><p>Leave knowing how to turn a vague question into a request that comes back ready to use.</p><div class="prog"><i></i></div></div>
+<div class="meta">21 min · open →</div>
+</a>
+<a class="au on" data-aula="2" href="#aula-2">
+<div class="num">2</div>
+<div><h3>The checking ruler</h3><p>Leave knowing how to check an answer in two minutes, with three written items before you ask for anything.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · open →</div>
+</a>
+<a class="au on" data-aula="3" href="#aula-3">
+<div class="num">3</div>
+<div><h3>One folder per context</h3><p>Leave with a real folder built for your own front-line work — and with what never belongs in there.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · open →</div>
+</a>
+<a class="au on" data-aula="4" href="#aula-4">
+<div class="num">4</div>
+<div><h3>The project orientation sheet</h3><p>Leave with your written rules once, instead of repeating them at every request.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · open →</div>
+</a>
+<a class="au on" data-aula="5" href="#aula-5">
+<div class="num">5</div>
+<div><h3>The template you reuse</h3><p>Leave with the request for your most repeated task saved and ready to swap only what changes.</p><div class="prog"><i></i></div></div>
+<div class="meta">21 min · open →</div>
+</a>
+<a class="au on" data-aula="6" href="#aula-6">
+<div class="num">6</div>
+<div><h3>Don’t lose what already worked</h3><p>Leave knowing how to change a material with a guaranteed point of return to the previous version.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · open →</div>
+</a>
+<a class="au on" data-aula="7" href="#aula-7">
+<div class="num">7</div>
+<div><h3>What you delegate and what stays yours</h3><p>Leave with the whole environment set up and your written delegation list.</p><div class="prog"><i></i></div></div>
+<div class="meta">24 min · open →</div>
+</a>
+</div>
+</div></section>
+<footer><div class="wrap">OSWork v5 · INEMA.CLUB PRO</div></footer>
+</section>
+<!-- ===== AULA 1 ===== -->
+<section class="view" data-aula="1" data-tempo="21min" id="v-aula-1">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 1</p>
+<h1>Complete request,<br/>no <em>loose question</em></h1>
+<p class="promise">At the end of this lesson, you can turn a loose question into a complete request — with material, output format, and definition of done — and get back something you use without rewriting.</p>
+<p class="why">There’s a preferred time for rework: the end of the afternoon, when you already spent the good part of your day and you get back a text that needs to be redone entirely. Almost always, the cause is what you left out when you asked — and what you left out you only discover after reading the answer. This lesson reverses that order.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<rect height="160" opacity=".35" rx="6" stroke="currentColor" stroke-width="1.5" width="112" x="28" y="30"></rect>
+<path d="M48 66h56M48 86h40" opacity=".35" stroke="currentColor" stroke-width="1.5"></path>
+<rect height="160" rx="6" stroke="var(--accent)" stroke-width="1.5" width="112" x="160" y="30"></rect>
+<path d="M180 60h72M180 78h72M180 96h52" opacity=".8" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M180 120h72M180 138h60M180 156h68" opacity=".5" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M176 44l6 6 12-12" stroke="var(--accent)" stroke-width="2"></path>
+<path d="M44 44l6 6 12-12" opacity=".25" stroke="currentColor" stroke-width="2"></path>
+<text fill="currentColor" font-family="monospace" font-size="11" opacity=".45" text-anchor="middle" x="84" y="214">message at the counter</text>
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="216" y="214">work order</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> The AI starts every conversation without knowing anything about your work</h2>
+<p>When you open a new conversation, on the other side there’s nobody who knows your school, your team, or last week’s agreement. There’s a system that reads what you wrote in that box and nothing else. Anything you don’t tell it, it fills in using the average of what it has already seen in millions of texts — and the average is always generic.</p>
+<p>This set of information you provide along with the request has a name: it’s the <span class="gterm" data-def="Context is all the material you provide along with the complete request: the original text, the data, an example of what you want, and the situation where that will be used." tabindex="0">context</span>. It’s not decoration for the request. It’s the raw material for the work.</p>
+<p data-ex="professor">A teacher asks “make a summary of yesterday’s class” and receives a text about the topic in general, usable for any class in the country. They didn’t paste their own lesson plan, they didn’t say the class is seventh grade, and they didn’t warn that the summary is for those who were absent. None of that was in the box — so none of it showed up in the answer.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Material, input, and definition of done — what the complete request needs to include</h2>
+<p>When someone leaves a car at a shop, they don’t just say “take a look.” The work order records what the owner heard, what they want resolved, and when they need the car back. That’s what lets you work without interrupting the owner every time a question comes up. A work request for an AI carries the same three pieces of information.</p>
+<p><b>The input</b> is what she needs to read: the original text, the numbers, the example of how you want it. <b>The output</b> is the form of the response: how many lines, what tone, and who will read it. <b>The definition of done</b> is what must necessarily appear for you to accept the result.</p>
+<p data-ex="gestora">A manager needed to turn a 30-page safety standard into the schedule for the team’s mandatory training. Instead of asking “build a schedule for this,” she pasted in the standard, said “a table with four columns: topic, time needed, audience, and month,” and ended with “it’s only done if it covers the five topics required by the standard.”</p>
+<div class="qbefore-after">
+<div class="qba-col qba-before">
+<p class="qba-lbl">Before</p>
+<p class="qba-txt">“Build a training schedule based on this standard.”</p>
+</div>
+<div class="qba-col qba-depois">
+<p class="qba-lbl">After</p>
+<p class="qba-txt">Standard pasted · four-column table: topic, time needed, audience, and month · it’s only done if it covers the five required topics.</p>
+</div>
+<p class="qba-saldo"><b>Balance:</b> from four rewrites for an adjustment — about twenty minutes back at each round.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> You decide what a good result looks like</h2>
+<p>Of the three parts, the one almost everyone forgets is the third. We remember input and format because they’re visible. The definition of done stays in our head — and what stays only in our head doesn’t make it to the other side.</p>
+<p>The definition of done is a sentence that lets you answer yes or no without debate. “It’s good” isn’t a definition, it’s a wish. “It needs to cite the three decisions” is a definition: you include three, or you don’t.</p>
+<p data-ex="professor">A history teacher who corrected eighty student submissions per grading period wrote his definition once: each submission needs to point to a specific correct thing from the student’s text and one single thing to improve, in up to four lines, with no generic praise. With the definition up front, you can check the response in seconds.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Test yourself</p><p class="q">You asked for “support material about the new rule for the team” and got a correct, well-written text — that nobody used. What was missing from the request?</p>
+<button class="opt" data-k="a">A more advanced AI tool</button>
+<button class="opt" data-fb="The text was correct, so it wasn’t a capacity problem: it was a target. Without saying who it’s for, how many lines, and what needs to appear, any plausible answer fulfills the request — including one that doesn’t work." data-k="b">The definition of done: who it’s for, how many lines, and what needs to appear</button>
+<button class="opt" data-k="c">Ask again, with more details of context about the company</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> Before you send it to be executed, ask for what’s missing</h2>
+<p>There’s a 30-second step that avoids most of the rework: before you send someone to do it, ask what still needs to be done to do it well. Write your request and close with one line — “before executing, tell me what’s missing for you to deliver this the right way.”</p>
+<p>The answer is usually a short and uncomfortable list: the audience is missing, the deadline is missing, the original text is missing. Exactly what you would have found after reading a bad answer—only now you discover it before, while the topic is still fresh in your mind.</p>
+<p data-ex="gestora">A manager used this line before asking for the notice about the new expense reimbursement rule. The answer asked which month the rule applied from, and whether it covered people who had already requested reimbursements in that month. Both pieces of information were indeed missing—and they would have generated an incorrect notice sent to the entire team.</p>
+<div class="qanchor"><p>AI doesn’t guess what you didn’t write.</p></div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">mark as read</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p1">
+<p class="pk">Practice now <span class="pcount">0/3 done</span></p>
+<h3 class="ph">Turn your real request into a complete request</h3>
+<p class="pgoal">Ready when the response comes back usable without rewriting—just fine-tuning. About 10 min.</p>
+<p class="psafe">Nothing here is sent to anyone or saved anywhere besides your own conversation. If the response comes back weird, erase it and send it again, changing one line—there’s no attempt limit and no harm in getting it wrong.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copy</button><pre class="pcode">MATERIAL
+&lt;paste here the text, the data, or the example she needs to read&gt;
+
+OUTPUT
+Format: &lt;e.g., up to 10 lines, in bullets&gt;
+For: &lt;e.g., my team, who doesn’t know this rule yet&gt;
+Tone: &lt;e.g., cordial and direct, without excessive formality&gt;
+
+DEFINITION OF DONE
+It’s only ready if: &lt;e.g., cite the 3 decisions and the responsible person for each&gt;
+
+Before you run it, tell me what’s missing for you to deliver this correctly.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>Pick a request you made for real this week and that came back badly. Fill in the three parts of the template above with the real case.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Send it and read the list of what’s missing first. Complete what it pointed out, and only then ask to run it.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>Compare with the old answer. You should see the definition of done met item by item—check by counting, not by overall impression.</span></label></li>
+</ol>
+<p class="pdone">You just turned a loose question into a complete request and got back something usable without rewriting.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; what you don’t write doesn’t pass through: the request box is the only input, and what’s missing in it is filled in by the average" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="54" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="74" x="18" y="40"></rect>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".6" text-anchor="middle" x="55" y="32">what you know</text>
+<path d="M30 56h50M30 68h38M30 80h46" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="30" rx="5" stroke="var(--accent)" stroke-width="1.4" width="74" x="18" y="112"></rect>
+<path d="M30 127h34" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="55" y="158">what you wrote</text>
+<path d="M96 127h34" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M124 122l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="54" rx="5" stroke="var(--accent)" stroke-width="1.4" width="66" x="136" y="100"></rect>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".6" text-anchor="middle" x="169" y="172">response</text>
+<path d="M148 118h42M148 130h30M148 142h38" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M96 68h30" opacity=".35" stroke="currentColor" stroke-dasharray="3 4" stroke-width="1.4"></path>
+<path d="M130 62l-8 12M122 62l8 12" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the three parts that make a request arrive complete — one is missing, and the answer drops into the average" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="40" rx="5" stroke="var(--accent)" stroke-width="1.4" width="172" x="24" y="26"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="38" y="44">material</text>
+<path d="M38 54h130" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="40" rx="5" stroke="var(--accent)" stroke-width="1.4" width="172" x="24" y="80"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="38" y="98">output</text>
+<path d="M38 108h96" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="40" rx="5" stroke="var(--accent)" stroke-width="1.4" width="172" x="24" y="134"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="38" y="152">definition of done</text>
+<path d="M38 162h112" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M14 46v108" opacity=".5" stroke="var(--accent)" stroke-width="1.4"></path>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; definition of done is what gets counted: either the three items are there, or they aren’t" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="132" opacity=".45" rx="6" stroke="currentColor" stroke-width="1.4" width="160" x="30" y="34"></rect>
+<path d="M48 64l7 7 13-14" stroke="var(--accent)" stroke-width="2"></path>
+<path d="M80 66h84" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M48 100l7 7 13-14" stroke="var(--accent)" stroke-width="2"></path>
+<path d="M80 102h70" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<circle cx="57" cy="136" opacity=".5" r="8" stroke="currentColor" stroke-width="1.6"></circle>
+<path d="M80 138h58" opacity=".3" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="110" y="188">2 of 3 — not yet</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the thirty-second question: the list of what’s missing reaches before the bad answer, not after" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="36" rx="5" stroke="var(--accent)" stroke-width="1.4" width="76" x="26" y="30"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="64" y="52">request</text>
+<path d="M64 70v22" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M59 86l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="46" rx="5" stroke="var(--accent)" stroke-dasharray="4 4" stroke-width="1.4" width="92" x="18" y="98"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="64" y="118">what’s missing?</text>
+<path d="M34 130h60" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M110 121h34" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M138 116l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="46" rx="5" stroke="var(--accent)" stroke-width="1.4" width="52" x="150" y="98"></rect>
+<path d="M162 116h28M162 128h20" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="176" y="166">run it</text>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>AI starts each conversation without knowing anything about your work: what it doesn’t receive, it fills in with the average—and the average comes back generic.</li>
+<li>A complete request delivers three things: the material she reads, the structure of the response, and the definition of done.</li>
+<li>You define what counts as a good result. The tool can only chase a target that was written down.</li>
+<li>Asking what’s missing before asking it to run costs half a minute and saves you from redoing a whole text.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You just managed to write a request that comes back ready to use.</p>
+<p class="na-action">In the next 15 minutes, at your real job: take the next complete request you were going to make today and write the three parts before sending it. Save the text — in Lesson 5 it turns into a template.</p>
+<p class="na-hook">In the next lesson, you solve this problem: the request was good, the reply arrived clearly written — and it can still be wrong. You will build the checking ruler that separates one from the other in two minutes.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← track</a><a href="#aula-2">next lesson →</a></nav>
+<footer>Lesson 1 · OSWork v5 · INEMA.CLUB PRO</footer>
+<script id="cards-1" type="application/json">
+[
+  {
+    "front": "You sent today the same type of complete request as yesterday and the reply came back generic again. Which of the three parts likely got left out?",
+    "back": "The material. Without the text, the numbers, or the example pasted right next to it, it answers with the average of what it has already seen — and the average never looks like your work."
+  },
+  {
+    "front": "What’s the difference between asking “write a short announcement” and asking “write up to 120 words, in three paragraphs”?",
+    "back": "The first is a wish and it depends on opinion. The second lets you check whether it was followed, by counting—no discussion."
+  },
+  {
+    "front": "Before you ask someone to carry out a long request, what do you write on the last line—and what do you gain from that?",
+    "back": "Write that it should say what’s missing to deliver it properly. Half a minute of checking instead of a whole lost text."
+  },
+  {
+    "front": "A manager has three minutes to request the notice of the new reimbursement rule. What does she write first, before any sentence of the notice?",
+    "back": "The definition of done: starting from which month it applies, who it applies to, and that it fits in one paragraph. That’s the target—without it, any plausible text slips through."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="21min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: professor, gestora, professor, gestora)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 10 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz com data-fb na opção certa)
+-->
+</section>
+<!-- ===== AULA 2 ===== -->
+<section class="view" data-aula="2" data-tempo="22min" id="v-aula-2">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 2</p>
+<h1>The checking<br/><em>ruler</em></h1>
+<p class="promise">At the end of this lesson, you can check an AI response in less than two minutes, using a three-item checking ruler that you write yourself before you ask.</p>
+<p class="why">The wrong answer arrives with exactly the same tone as the right answer: clearly written, organized, no hesitation. Without a short annotated list before you ask, you check by the feeling that it sounds well written. And that is the only sign the tool always gets right. The cost shows up when the wrong number is already out in the delivered material.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<rect height="26" opacity=".4" rx="3" stroke="currentColor" stroke-width="1.5" width="230" x="30" y="52"></rect>
+<rect height="26" opacity=".4" rx="3" stroke="currentColor" stroke-width="1.5" width="230" x="30" y="104"></rect>
+<path d="M30 168h240" stroke="var(--accent)" stroke-width="2"></path>
+<path d="M30 168v-14M66 168v-9M102 168v-14M138 168v-9M174 168v-14M210 168v-9M246 168v-14" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M260 46v40" opacity=".45" stroke="currentColor" stroke-dasharray="3 4" stroke-width="1.5"></path>
+<path d="M246 98v40" stroke="var(--accent)" stroke-dasharray="3 4" stroke-width="1.5"></path>
+<text fill="currentColor" font-family="monospace" font-size="11" opacity=".5" text-anchor="middle" x="145" y="30">two boards of the same size</text>
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="145" y="196">only the meter shows which one is left over</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> The confident tone of the reply says nothing about whether it is correct</h2>
+<p>A text AI does not keep a file of truths to look up. It builds the next sentence by choosing the most likely word after the previous one. When the material exists, the likely word is usually the correct one. When the material is missing, the likely word keeps showing up — only now it fills the gap with something plausible.</p>
+<p>That is why the made-up information never comes with a warning. It arrives in the same firm sentence, with the same punctuation and the same calm as the rest. You will not notice it by reading: both versions look like they are correct.</p>
+<p data-ex="professor">A geography teacher asked for a support paragraph about the watershed of a Brazilian river. It came back as a clean text, with the length in kilometers and the year of a historic flood. The length was correct. The year of the flood was off by two — and nothing in the text separated one from the other.</p>
+<div class="quiz" data-answer="c">
+<p class="qk">Test yourself</p><p class="q">Two responses about the same material arrived clearly written and disagree on a value. What signal clears up the doubt?</p>
+<button class="opt" data-k="a">The one that sounded safer and more detailed</button>
+<button class="opt" data-k="b">The one that came from the most recent tool</button>
+<button class="opt" data-fb="Consistency and richness of detail are the result of how the text is put together, not proof of origin. The only judge is the material you delivered: the value is in there, or it isn’t." data-k="c">Neither: only a comparison with the source material</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Write the three items before you send the request</h2>
+<p>Checking later, on the fly, almost always turns into a lazy reread. The way out is to note beforehand what you will hold them to. That is the <span class="gterm" data-def="A checking ruler is a list of three items you write before you make the complete request. With it, you compare the answer to the source material, not based on the feeling that it reads well." tabindex="0">checking ruler</span>: three lines, written while the topic is still fresh.</p>
+<p><b>One</b>, the fact you already know by heart — the bait. If it comes out wrong, the rest does not deserve to be read. <b>Two</b>, the number or name that must match the source, checked one by one. <b>Three</b>, what cannot appear: no statement that is not in the delivered material.</p>
+<p data-ex="gestora">A manager would set up the team’s vacation board. Before requesting it, she wrote down three lines. The balance of days for herself, which she knows by heart. The colleagues’ departure dates, to match the spreadsheet. And the prohibition on citing a rule outside the pasted document.</p>
+<div class="qbefore-after">
+<div class="qba-col qba-before">
+<p class="qba-lbl">Before</p>
+<p class="qba-txt">Read the entire answer twice, looking for something odd, and send it anyway when nothing catches your eye.</p>
+</div>
+<div class="qba-col qba-depois">
+<p class="qba-lbl">After</p>
+<p class="qba-txt">Three lines written before the request: the bait you already know, the numbers that need to match, and what can’t show up.</p>
+</div>
+<p class="qba-saldo"><b>Balance:</b> about eight minutes of unsafe rereading for a two-minute check, with a clear stopping point.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> You switch tools; the checking ruler stays the same</h2>
+<p>There are several AI conversation tools, and a new one appears every few months. They change the screen, the name, and the price. What doesn’t change is the way all of them build the sentence — and, with it, the chance of a plausible fact slipping in without warning.</p>
+<p>That’s good news for you: the checking ruler you wrote doesn’t age with the tool. The same three-line list works in today’s tool and in the one your school will adopt next year. You learn to check once, not once per tool.</p>
+<p data-ex="professor">A literature teacher changed tools because the old one became slow. In the first week, the new one delivered a reading list with a title that that author never wrote. He caught the error in item two of the same checking ruler: the titles had to match the library’s catalog.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> Checking is the task; deciding about someone stays with you</h2>
+<p>The checking ruler handles the checkable part: number, name, date, citation. There’s another part that no list covers, because it’s not about accuracy. It’s about consequences in a person’s life.</p>
+<p>A text can have all the correct data and still propose something you wouldn’t agree to. Ask for the write-up, accept the draft, check the items — and keep to yourself the final sentence that affects someone. This part isn’t slow due to carelessness: it’s slow because it’s yours.</p>
+<p data-ex="gestora">A manager used the tool to organize records of absences for an entire semester. The numbers were right and checked. The paragraph that suggested dismissing one of the people she deleted on the first reading. That conclusion doesn’t come from a ready-made text.</p>
+<div class="qanchor"><p>Confidence in tone isn’t proof of anything.</p></div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">mark as read</button>
+</section>
+<section class="practice" data-mode="analise" data-practice="p2">
+<p class="pk">Practice now <span class="pcount">0/3 done</span></p>
+<h3 class="ph">Find the made-up fact in two texts that look the same</h3>
+<p class="pgoal">Ready when you compare your answer to the answer key, item by item. About 12 min.</p>
+<p class="psafe">This case is fictional and stays here on the page: nothing is sent, nothing is saved, and nobody sees what you wrote. If your answer doesn’t match the answer key, read its comment and go back to the material — getting it wrong here is the goal of the exercise.</p>
+<p>Sílvia coordinates the support services of a school and received a cleaning proposal. She pasted the proposal into two AI tools and asked for the same thing: a four-line summary to take to management. Both texts came back well written. One of them includes a condition that does not exist in the proposal.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copy</button><pre class="pcode">PROPOSAL (the source material)
+Aurora Cleaning · 3 visits per week · R$ 4,200 per month
+12-month contract · annual adjustment by the price index
+
+TEXT A
+Aurora Cleaning offers three weekly visits for R$ 4,200
+per month, in a 12-month contract with annual adjustment. It also includes
+two extra visits per quarter, at no additional cost.
+
+TEXT B
+Proposal from Aurora Cleaning: three visits per week,
+R$ 4,200 per month, 12-month contract, and annual adjustment
+by the price index. No other conditions are described.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>Write Sílvia’s checking ruler in three lines, looking only at the proposal. A decoy, the numbers that must match, and what cannot appear.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Answer in writing: which text fails, which of the three items catches the failure, and what Sílvia does before taking the summary to management.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>Open the answer key below and compare your three answers with his, one by one.</span></label></li>
+</ol>
+<details>
+<summary>Annotated answer key</summary>
+<p><b>Which text fails:</b> the Text A. The two extra visits per quarter are not in the proposal. Notice that it’s the best-written text of the two — the extra sentence is exactly what makes it look more complete at first glance.</p>
+<p><b>Which item catches:</b> the third — what cannot appear. The numbers in Text A match the proposal in every point, so items one and two pass. Only the ban on quoting what was not delivered knocks the sentence down.</p>
+<p><b>What Sílvia does:</b> she uses Text B, or deletes the extra sentence from A. And she doesn’t ask the tool to confirm whether the condition exists: it confirms it in the proposal, which is the source.</p>
+</details>
+<p class="pdone">You just checked two answers against the source material in a few minutes, with a checking ruler written in advance.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the two answers come out with the same finish; the gap is in the content, not the form, and reading alone doesn’t separate one from the other" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="96" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="78" x="20" y="40"></rect>
+<path d="M32 62h54M32 78h44M32 94h54M32 110h38" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="96" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="78" x="122" y="40"></rect>
+<path d="M134 62h54M134 94h54M134 110h38" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M134 78h44" stroke="var(--accent)" stroke-width="2"></path>
+<circle cx="188" cy="78" r="6" stroke="var(--accent)" stroke-width="1.6"></circle>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="59" y="158">correct</text>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="161" y="158">an invented fact</text>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".45" text-anchor="middle" x="110" y="182">the same finish</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the checking ruler is born before the request and comes back afterward as a filter: three lines written on one side, three check marks on the other" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="30" rx="5" stroke="var(--accent)" stroke-width="1.4" width="84" x="18" y="28"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="60" y="48">writes the checking ruler</text>
+<path d="M60 62v18" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M55 74l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="30" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="84" x="18" y="86"></rect>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".6" text-anchor="middle" x="60" y="106">makes the request</text>
+<path d="M102 101h26" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M122 96l7 5-7 5" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="62" rx="5" stroke="var(--accent)" stroke-width="1.4" width="70" x="132" y="70"></rect>
+<path d="M144 88h46M144 101h46M144 114h46" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="167" y="152">checks the 3 items</text>
+<path d="M60 130v34h72" stroke="var(--accent)" stroke-dasharray="4 4" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".45" text-anchor="middle" x="110" y="182">the same list, on both sides</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; three different tools fit into the same checking ruler: what changes is the screen, not the way you check" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="30" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="52" x="16" y="26"></rect>
+<rect height="30" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="52" x="16" y="82"></rect>
+<rect height="30" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="52" x="16" y="138"></rect>
+<path d="M68 41h34l10 46M68 97h44M68 153h34l10-46" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="46" rx="5" stroke="var(--accent)" stroke-width="1.4" width="86" x="116" y="74"></rect>
+<path d="M128 88h62M128 97h62M128 106h62" opacity=".75" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="159" y="140">the same ruler</text>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".45" text-anchor="middle" x="42" y="188">tools</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the cut line: what is checkable passes through the ruler; the decision about a person comes before them and stays with you" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M110 24v152" stroke="var(--accent)" stroke-dasharray="5 5" stroke-width="1.6"></path>
+<rect height="26" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="72" x="20" y="40"></rect>
+<rect height="26" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="72" x="20" y="78"></rect>
+<rect height="26" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="72" x="20" y="116"></rect>
+<path d="M92 53h26M92 91h26M92 129h26" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M112 48l7 5-7 5M112 86l7 5-7 5M112 124l7 5-7 5" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="56" y="30">number, name, date</text>
+<rect height="30" rx="5" stroke="var(--accent)" stroke-width="1.6" width="78" x="124" y="150"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="163" y="170">stays with you</text>
+<path d="M163 96v42" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M158 132l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="163" y="88">a decision about someone</text>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>An incorrect answer comes with the same firm tone as a certain one. The tone is an effect of how the text is put together, not proof of origin.</li>
+<li>The checking ruler has three lines, noted before the request. A decoy you already know, the data that must match the source, and what cannot appear.</li>
+<li>Switching tools doesn’t change the checking ruler. You learn to check once, and you take this list to the next screen that shows up.</li>
+<li>The checking covers what can be verified. The sentence that decides something about a person is still written by you.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You just managed to separate a reliable answer from a well-written one, in just a few minutes.</p>
+<p class="na-action">In the next 15 minutes, in your real work: take the last AI reply you used without checking. Write the three lines of the checking ruler now and run the text through them. Note what you found.</p>
+<p class="na-hook">In the next lesson you solve the following problem: checking every time is tiring, because you restate the same material in each new conversation. The payoff comes from saving the context in one place only — one folder per piece of work.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← track</a><a href="#aula-3">next lesson →</a></nav>
+<footer>Lesson 2 · OSWork v5 · INEMA.CLUB PRO</footer>
+<script id="cards-2" type="application/json">
+[
+  {
+    "front": "A support text came with three dates and you only feel sure about one of them. Which one do you check first, and why?",
+    "back": "The one you know by heart, because that’s the bait. If it comes out wrong, the rest of the text doesn’t deserve to be read: you discard it and ask again."
+  },
+  {
+    "front": "You’re going to ask for a proposal summary and you have thirty seconds to spare. What do you write before sending?",
+    "back": "The three lines you’ll ask for later: one detail you already know by heart, the numbers to match against the document, and the rule against citing a condition that isn’t in it."
+  },
+  {
+    "front": "Your school adopted another AI tool on Monday. What changes in how you check?",
+    "back": "Nothing changes. The switch changes the screen and the name, not the chance that a plausible data point enters without warning in the middle of the text."
+  },
+  {
+    "front": "A report arrives with the checked numbers and suggests moving a staff member away. What do you not hand to the tool right there?",
+    "back": "The judgment about the person. Checking the data is your task; signing the consequence in someone’s life is still your responsibility."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-2 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1, verbatim do currículo)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: professor, gestora, professor, gestora)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="analise"] (exatamente 1, com mini-caso + 3 perguntas + gabarito em <details>)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1, 4 itens afirmativos)
+  [OK] next-action        .next-action no fecho (1, com gancho para a Aula 3)
+  [OK] cards              <script id="cards-2"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz com data-fb na opção certa)
+-->
+</section>
+<!-- ===== AULA 3 ===== -->
+<section class="view" data-aula="3" data-tempo="20min" id="v-aula-3">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 3</p>
+<h1>A folder<br/>for <em>context</em></h1>
+<p class="promise">At the end of this lesson you have, on your computer, a folder per piece of work, with the material that the AI needs to read — and that you know how to say what never belongs in there.</p>
+<p class="why">Today the material on a subject of yours is scattered. One part is in your email, another on your desktop, another inside an old attachment. That’s why you restate everything again in each new conversation. This isn’t your lack of memory — it’s the lack of a single place where the whole subject lives.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<path d="M24 52l40-14 8 20-38 16zM22 92l42-8 4 22-44 6zM30 132l40 4-2 22-42-8z" opacity=".35" stroke="currentColor" stroke-width="1.5"></path>
+<text fill="currentColor" font-family="monospace" font-size="11" opacity=".45" text-anchor="middle" x="50" y="206">loose</text>
+<rect height="128" rx="6" stroke="var(--accent)" stroke-width="1.5" width="136" x="140" y="46"></rect>
+<path d="M140 62h136" opacity=".5" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M156 70v88h44V70M156 78h44" opacity=".8" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M206 70v88h44V70M206 78h44" opacity=".55" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M166 96h24M166 110h20M216 96h24" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M208 186h52M208 186l-6-5M208 186l-6 5" opacity=".3" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="208" y="206">drawer</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> A subject, a folder — and no “folder by file type”</h2>
+<p>I call it <span class="gterm" data-def="A front of work is a topic that’s yours, with a beginning, middle, and end — and it comes back several times: a hiring, a discipline for the semester, an event, an annual report." tabindex="0">piece of work</span> any subject that shows up again in your week and has a life of its own. Each piece of work deserves its own folder, on your computer, with the material for that subject gathered together.</p>
+<p>The rule is simple: the folder is organized by the subject, not by file type. You don’t want one spreadsheet folder and another for texts. You want one folder where, when you open it, the whole piece of work is there — the text, the number, and the agreed plan.</p>
+<p data-ex="gestora">A manager opened a folder called “junior analyst hiring”. Inside it were the job posting description, the three interview questions, and the approved salary band table. Before that, each of those three materials was in a different place, and she restated the job at every new conversation with the AI.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="Windows 11 e macOS, set/2026">
+<h2><span class="n">02</span> Inside the folder goes what you would have had to explain out loud</h2>
+<p>You will see a common folder, just like any other on your computer, with three or four files inside. Nothing here is different from what you use every day — only the rule for who gets to enter changes. The rule is this: what you would have had to explain out loud if a new colleague took over the piece of work tomorrow.</p>
+<p>In practice, this usually gives you four things. The source material: the text, the table, the notes. An example of the result you consider good. The rules of the place where that will be used. And the decision already made that nobody should reopen.</p>
+<p data-ex="professor">A math teacher set up the second-semester recovery folder. She included the list of covered topics, an old test he corrected, and the coordination’s guidance on the minimum grade. With those three, each new exercise request comes out at the right level without him rewriting the agreed plan.</p>
+<div class="qerr">
+<p class="qk">Common mistake</p>
+<p class="qerr-txt"><b>Put everything in and wait for the AI to choose.</b> The folder turns into a storage bin: twenty versions of the same document, the abandoned draft, last year’s material. It will read everything with the same weight and be responsible for the wrong version. Keep the version that matters today and send the old ones to a folder called “antigo” inside the same tray.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Personal data and a password never go in—no exceptions, even if you’re in a rush</h2>
+<p>Anything that’s in the folder can end up being read by a system from outside your home. That’s why there’s a short list of what never goes in: another person’s ID document, home address, health data, and account number. And any password or access code, including yours.</p>
+<p>When the material only serves with names, replace each name with a nickname before you save: Student A, Team Member B. You keep the meaning of the case and remove anything that identifies someone. It takes a minute, and there’s no going back once the data leaves.</p>
+<p data-ex="gestora">A manager was going to save the team performance evaluation spreadsheet to ask for help writing the comments. The spreadsheet had full name, document number, and salary. She saved a second copy with Team Member A, B, and C, without the document and salary columns. Only that copy went into the folder.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="Windows 11 e macOS, set/2026">
+<h2><span class="n">04</span> Ten minutes per month keeps the folder standing</h2>
+<p>Any living folder quickly fills with clutter. Not because you’re disorganized, but because the work keeps moving: yesterday’s version becomes today’s wrong one. Without a short, marked cleanup, in two months the folder goes back to being the storage bin it came to fix.</p>
+<p>Mark ten minutes at the end of the month and go through the same sequence every time. The goal isn’t to make it look nice. It’s to make sure that when you open the folder, everything inside is still true.</p>
+<p data-ex="professor">A biology teacher does this on the last Friday of the month, in the science fair folder. In ten minutes, he removed two expired regulations and renamed the schedule for the new date. The draft invitation that had already been sent went down into the “antigo” folder. The folder ended up with five files, all valid.</p>
+<p>The sequence below is the same every time, and no step requires a hard decision. You just look, decide if it’s true today, and move whatever isn’t.</p>
+<div class="qsteps">
+<p class="qsk">The ten-minute cleanup</p>
+<ol>
+<li><b>Open the folder and look at one file at a time.</b> Without opening everything: the name and date already tell you almost everything.</li>
+<li><b>Ask about each one: is this still true today?</b> If it isn’t, it can’t stay in the first level.</li>
+<li><b>Send anything that has expired to the “antigo” folder.</b> Don’t delete—just move it out of the way.</li>
+<li><b>Rename what’s left with a confusing name.</b> Use subject and month: “September schedule,” not “final v3 new”.</li>
+<li><b>Check the list of what never goes in.</b> If any personal data slipped into the folder during the month, take it out now.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">mark as read</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p3">
+<p class="pk">Practice now <span class="pcount">0/4 done</span></p>
+<h3 class="ph">Build the folder for one of your work fronts now</h3>
+<p class="pgoal">Ready when you open a single folder and can see, without looking around elsewhere, the three materials that explain the front. About 12 min.</p>
+<p class="psafe">Nothing here gets deleted. Moving a file does not destroy anything: it leaves one place and appears in another. Your computer itself undoes the last move if you change your mind. If something seems wrong, stop and undo—none of the steps in this practice affects anything outside your computer.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>Choose an in-progress work front—one you worked on this week and will work on again next week. Say its name out loud before you continue.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Create a new folder on your desktop with the name of that front, written the way you would say it: “junior analyst hiring,” not “final proj2”.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>Move into it three materials that already exist. The source text, an example of the result you consider good, and the rule that nobody should reopen.</span></label></li>
+<li><label><input data-ptask="4" type="checkbox"/> <span>Open each of the three and check the list of what never goes in. If there is a full name, document, address, health data, or a password, save a copy with nicknames and keep only that one.</span></label></li>
+</ol>
+<p class="pdone">You just gathered an entire work front in one place. Inside it is the material the AI needs to read, and none of the things that should never leave your hands.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; cutting by subject brings together what you use together; cutting by file type separates exactly what needed to go side by side" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="54" opacity=".45" rx="5" stroke="currentColor" stroke-width="1.4" width="80" x="18" y="34"></rect>
+<path d="M30 52h30M30 64h44M30 76h22" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="58" y="104">by type</text>
+<rect height="44" opacity=".45" rx="5" stroke="currentColor" stroke-width="1.4" width="80" x="18" y="120"></rect>
+<path d="M30 138h40M30 150h28" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M104 100h20" opacity=".35" stroke="currentColor" stroke-dasharray="3 4" stroke-width="1.4"></path>
+<rect height="96" rx="5" stroke="var(--accent)" stroke-width="1.4" width="74" x="130" y="52"></rect>
+<path d="M130 68h74" opacity=".6" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M142 86h50M142 102h40M142 118h48" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="167" y="168">by topic</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the door filter: what you would have to explain out loud stays out; the draft and the outdated version are left out" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M22 40h44M22 62h44M22 84h44M22 106h44M22 128h44" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M84 30v120" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M84 52h10M84 96h10M84 118h10" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M88 47l6 5-6 5M88 91l6 5-6 5M88 113l6 5-6 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M78 74l-10 10M68 74l10 10M78 136l-10 10M68 136l10 10" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="100" rx="5" stroke="var(--accent)" stroke-width="1.4" width="82" x="120" y="42"></rect>
+<path d="M120 58h82" opacity=".6" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M134 78h54M134 96h44M134 114h52" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="161" y="164">the folder</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; what identifies a person before the door: the case stays useful with a nickname in place of the name" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="50" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="72" x="24" y="36"></rect>
+<path d="M36 54h48M36 66h34" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="60" y="102">with name</text>
+<path d="M102 62h26" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M122 57l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="50" rx="5" stroke="var(--accent)" stroke-width="1.4" width="64" x="134" y="36"></rect>
+<path d="M146 54h40M146 66h28" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="166" y="102">Student A</text>
+<rect height="44" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="100" x="60" y="126"></rect>
+<path d="M96 140v-8a14 14 0 0128 0v8" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M74 148h14M74 158h24" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M132 140l-14 18M118 140l14 18" opacity=".5" stroke="currentColor" stroke-width="1.6"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".5" text-anchor="middle" x="110" y="188">password: never</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; cleaning is a short, repeated cycle: what has expired goes one level down, what still matters stays in front" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="40" rx="5" stroke="var(--accent)" stroke-width="1.4" width="96" x="62" y="26"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="110" y="50">is it still true?</text>
+<path d="M62 46H34v52" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M29 92l5 7 5-7" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M158 46h28v52" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M181 92l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="40" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="76" x="12" y="104"></rect>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".6" text-anchor="middle" x="50" y="128">old</text>
+<rect height="40" rx="5" stroke="var(--accent)" stroke-width="1.4" width="76" x="132" y="104"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="170" y="128">stays</text>
+<path d="M170 148v18H110v-92" opacity=".6" stroke="var(--accent)" stroke-dasharray="4 5" stroke-width="1.4"></path>
+<path d="M105 82l5-8 5 8" opacity=".6" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".5" text-anchor="middle" x="110" y="186">every month</text>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>Each work front deserves its own folder, cut by the topic—not by the file type.</li>
+<li>Inside will be what you would have to explain out loud to a colleague who takes over the front tomorrow.</li>
+<li>Other people’s documents, address, health data, bank account number, and password stay out.</li>
+<li>Switching the name to a nickname solves most cases without losing the meaning of the material.</li>
+<li>Ten minutes scheduled at the end of the month keep the folder from turning back into a storage bin.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You just gathered an entire work front in one place, with the right material inside.</p>
+<p class="na-action">In the next 15 minutes, in your real work: repeat the same move on a second front and mark on the calendar the ten-minute cleanup from the last Friday of the month.</p>
+<p class="na-hook">In the next lesson you solve the following problem: the folder stores the material, but it does not store your rules. You will write the orientation sheet for that same front: the tone, what not to make up, how to sign. Once, instead of repeating it with every request.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← track</a><a href="#aula-4">next lesson →</a></nav>
+<footer>Lesson 3 · OSWork v5 · INEMA.CLUB PRO</footer>
+<script id="cards-3" type="application/json">
+[
+  {
+    "front": "You have a folder of spreadsheets, one of texts, and one of photos, and yet you re-explain the topic in every conversation. What’s the wrong cut here?",
+    "back": "The file-format cut. It groups exactly the pieces that are used together. Switch to an issue-based cut: everything from the same hiring, or the same subject, in the same place."
+  },
+  {
+    "front": "The team evaluation spreadsheet arrives with full name, ID, and salary, and you want help writing the evaluation comments. What do you do before saving?",
+    "back": "Save a second copy by replacing each person with Collaborator A, B and C and deleting the document and salary columns. Only this copy goes into the folder."
+  },
+  {
+    "front": "Your folder has twenty files, and three of them are old versions of the same schedule. What is the ten-minute move that solves it, and why not delete?",
+    "back": "Move the overdue versions to a subfolder called \"old\", within the same front. Deleting removes the chance to go back; removing it from the front is enough so the AI doesn’t read the wrong version."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-3 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (1, com 3 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=FERRAMENTA: teste-se não é obrigatório (marcador reflete a obrigação, não a presença)
+-->
+</section>
+<!-- ===== AULA 4 ===== -->
+<section class="view" data-aula="4" data-tempo="22min" id="v-aula-4">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 4</p>
+<h1>The orientation sheet<br/>from <em>project</em></h1>
+<p class="promise">At the end of this lesson you have an orientation sheet written for one of your work fronts, so you do not need to repeat its rules with every request.</p>
+<p class="why">You repeat the same three or four requirements in every new conversation: keep the formal tone, do not make up numbers, sign as coordination. In calm days you remember them all. On a busy day you forget one, and it is exactly on that day that the text comes out wrong and goes out. The folder from the previous lesson stores the material, but it does not store any of those rules.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<path d="M60 110L150 48l90 62" opacity=".35" stroke="currentColor" stroke-width="1.5"></path>
+<rect height="86" opacity=".35" rx="4" stroke="currentColor" stroke-width="1.5" width="144" x="78" y="110"></rect>
+<rect height="48" opacity=".35" rx="2" stroke="currentColor" stroke-width="1.5" width="36" x="132" y="148"></rect>
+<rect fill="none" height="106" rx="5" stroke="var(--accent)" stroke-width="1.5" width="86" x="96" y="28"></rect>
+<path d="M112 52h54M112 68h54M112 84h38M112 100h48" opacity=".8" stroke="var(--accent)" stroke-width="1.5"></path>
+<circle cx="232" cy="150" r="9" stroke="var(--accent)" stroke-width="1.5"></circle>
+<path d="M241 150h22M258 150v10" stroke="var(--accent)" stroke-width="1.5"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="150" y="222">the house manual</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="ferramenta" data-versao="telas de chat de IA, set/2026">
+<h2><span class="n">01</span> Your rules fit on a single sheet, written once</h2>
+<p>Think about who covers your vacations. You don’t call every day: you leave a sheet with your house combinations, and the person looks it up on their own. A <span class="gterm" data-def="An orientation sheet is a short text, written by you, with the rules that apply to everything that comes out of a front of work." tabindex="0">orientation sheet</span> is that sheet, for the work ahead.</p>
+<p>She keeps it inside the folder you set up in the lesson before, along with the materials. Whenever you start a new conversation about that work front, you attach the sheet before asking for anything. Your rules arrive complete, and you don’t have to type any of them again.</p>
+<p>Before you see the sheet from the inside, in the practice of this lesson, a translation. What you’ll see is a plain text, in Portuguese, written in your own way — no special screen and no code. In technology teams, this same sheet is often called an <b>AGENTS.md</b>. The name is his; the content is yours, and you only change the sentences.</p>
+<p data-ex="gestora">A purchasing manager repeated two requirements in every conversation. Supplier treated by company name, and a deadline always with a date on the calendar. She wrote both lines once and stopped typing them.</p>
+<div class="qerr">
+<p class="qk">Common mistake</p>
+<p class="qerr-txt"><b>Fill the materials sheet instead of rules.</b> Many people paste the entire contract inside it, the month spreadsheet, the meeting transcript. The sheet gets bulky, and the rule that mattered gets lost in the middle.</p>
+<p class="qerr-txt">The division is simple: materials go loose in the folder, the rule goes in the sheet. If the sentence changes every week, it’s materials. If it applies to everything that comes out of there, it’s a rule.</p>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s41">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Four questions, and the sheet is written</h2>
+<p>A good sheet isn’t a long sheet. Four questions cover almost everything you repeat today by memory, and each answer fits in two lines.</p>
+<p><b>Who reads what comes out of here</b> sets the tone and vocabulary. <b>How I write</b> keeps your mark: sentence length, greeting, signature. <b>What can never appear</b> is the hard limit: a person’s name, a number you didn’t verify, a contract value. <b>How I know it’s ready</b> is the criterion you already use since the very first lesson.</p>
+<p>Answer each one with something you can verify. “Be clear” doesn’t work, because nobody can say whether it was followed. “Sentences of up to twenty words” does work: you can count.</p>
+<p data-ex="professor">A science teacher wrote the reminder sheet that goes in families’ agenda. Who reads it: guardians, many with little time. Never can appear: student name and individual grade. Ready when: it fits in one paragraph and ends with the date.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s42">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> There’s a rule of yours that always applies, and a rule that’s only for that work front</h2>
+<p>After the second sheet is written, you notice you copied the same lines in both. Those are your general rules: they apply to everything you produce, in any work front. They deserve their own sheet, saved one level above the folders.</p>
+<p>Project rules stay in the sheet of each folder, and only apply there. When the two overlap, the project one wins — it’s the one closest to the work. Writing that once avoids the discussion for every request.</p>
+<p data-ex="gestora">A manager generally has the rule of never sending a number without the source next to it. In the board’s monthly report, there is one more rule, only for that: always compare with the same month from the previous year, never with the last month.</p>
+<div class="qsteps">
+<p class="qsk">Separating the two layers</p>
+<ol>
+<li><b>Read each line from your orientation sheets out loud.</b> One at a time, no rush.</li>
+<li><b>Ask: does this apply to every front of work I run?</b> Respond yes or no, with no in-between.</li>
+<li><b>Yes becomes the general rule.</b> Cut out the line and move it to the general sheet, outside the folders.</li>
+<li><b>It doesn’t stay where it is.</b> That’s a rule for that front of work and it doesn’t interfere with the others.</li>
+<li><b>When in doubt, treat it as a project rule.</b> A rule that’s too narrow costs little; a rule that’s too broad cuts across work that has nothing to do with it.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s43">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> The sheet gets old — mark the date and revise</h2>
+<p>The sheet describes a job that changes. The team reorganizes, the class changes, the board asks for a different format. The sheet stays the same, followed to the letter, pushing you into a way of working that is already over.</p>
+<p>The fix costs little: write the revision date on the first line and come back to it when the work changes shape. Read line by line and ask if it’s still true. A rule that no longer holds goes away; it isn’t marked as old—it’s removed for real.</p>
+<p data-ex="professor">A teacher put together the recovery study-lesson roadmap in March, with the morning class. In August, they took over the night class, with students who work. The line “propose reading for the next day” turned into an impossible demand, and they only realized it after three strange roadmaps.</p>
+<div class="quiz" data-answer="c">
+<p class="qk">Test yourself</p><p class="q">You wrote the front-desk service sheet, and three months later, the answers start coming out with a treatment the team had abandoned. What’s the most likely cause?</p>
+<button class="opt" data-k="a">The tool got worse and needs to be replaced with another one</button>
+<button class="opt" data-k="b">The sheet is too short and needs more rules</button>
+<button class="opt" data-fb="The orientation sheet is followed exactly as it is written. When the work changes and it doesn’t, it starts to enforce the old agreement with all firmness. The warning sign is exactly this: results that match a reality that has already ended." data-k="c">The sheet is outdated and still imposes the old agreement</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s44">mark as read</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p4">
+<p class="pk">Practice now <span class="pcount">0/3 done</span></p>
+<h3 class="ph">Write the sheet for the folder you set up in the previous lesson</h3>
+<p class="pgoal">Ready when the sheet answers the four questions and fits on one screen, with no material pasted inside. About 12 min.</p>
+<p class="psafe">The sheet is your own text, saved on your computer. Nothing goes anywhere while you don’t attach it. If a rule turns out bad, delete the line and write another—there’s no final version and no harm in changing your mind.</p>
+<p>The template below is just a paper with four questions and a space to answer. You swap what’s between the less-than and greater-than signs, and you don’t change anything else.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copy</button><pre class="pcode">ORIENTATION SHEET — &lt;front of work name&gt;
+Revised on: &lt;day/month/year&gt;
+
+WHO READS WHAT COMES OUT FROM HERE
+&lt;e.g., the people responsible for sixth-grade students&gt;
+
+HOW I WRITE
+&lt;e.g., short sentences, cordial tone, I sign as the coordinator&gt;
+
+WHAT CAN NEVER APPEAR
+&lt;e.g., student name, individual grade, anyone’s phone number&gt;
+
+HOW I KNOW IT’S DONE
+&lt;e.g., fits on a single paragraph and ends with the deadline date&gt;</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>Open the folder of the previous lesson and create a new text there using this template. Answer the four questions with the real case. Don’t invent a requirement that you don’t ask for.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Reread each answer and replace every opinion sentence with one you can check. If you can’t answer yes or no just by looking at the result, rewrite the line.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>Attach the orientation sheet to a new conversation and make a small request from this side. Check, item by item, whether all four answers were respected.</span></label></li>
+</ol>
+<p class="pdone">You just put your written rules in one place, ready to count in every request from that side.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the orientation sheet lives in the folder and goes along with every new conversation—rules arrive without you typing them" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M24 52h38l8 10h56v70H24z" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="74" y="150">front folder</text>
+<rect height="42" rx="3" stroke="var(--accent)" stroke-width="1.4" width="34" x="36" y="74"></rect>
+<path d="M44 86h18M44 96h18M44 106h12" opacity=".8" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="26" opacity=".4" rx="3" stroke="currentColor" stroke-width="1.4" width="32" x="84" y="82"></rect>
+<path d="M126 96h34" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M154 91l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="52" rx="4" stroke="var(--accent)" stroke-width="1.4" width="36" x="166" y="70"></rect>
+<path d="M176 86h16M176 98h16M176 110h10" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="184" y="142">conversation</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; each question turns into a block of the orientation sheet, and each answer must be checkable" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="168" x="26" y="24"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="40" y="45">who reads</text>
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="168" x="26" y="66"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="40" y="87">how you write</text>
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="168" x="26" y="108"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="40" y="129">what never goes in</text>
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="168" x="26" y="150"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="40" y="171">when it is ready</text>
+<path d="M16 41h8M16 83h8M16 125h8M16 167h8" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; two layers: the general rule stays above the folders, the project rule inside a single one— and the project rule prevails" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="34" opacity=".55" rx="4" stroke="currentColor" stroke-width="1.4" width="112" x="54" y="22"></rect>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".6" text-anchor="middle" x="110" y="43">general rule</text>
+<path d="M110 56v20M66 76v14M154 76v14" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M66 76h88" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="72" rx="5" stroke="var(--accent)" stroke-width="1.4" width="72" x="30" y="92"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="66" y="112">front A</text>
+<path d="M44 128h44M44 140h32" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="72" rx="5" stroke="var(--accent)" stroke-width="1.4" width="72" x="118" y="92"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="154" y="112">front B</text>
+<path d="M132 128h44M132 140h26" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="110" y="186">closer to the work, stronger</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the date at the top marks the age of the orientation sheet: in the review, the rule that stopped being true leaves the page" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="148" rx="5" stroke="var(--accent)" stroke-width="1.4" width="152" x="34" y="26"></rect>
+<path d="M50 46h64" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="150" y="50">revised in</text>
+<path d="M50 78h120M50 102h96" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M50 126h108" opacity=".25" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M44 126h120" opacity=".55" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M50 150h72" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="110" y="192">the scratched line comes out</text>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>The orientation sheet holds your requirements for a work side, and it starts to stand on its own in every new conversation.</li>
+<li>Four questions are enough: who reads, how you write, what can never show up, and what it means to be ready.</li>
+<li>Your rule that applies to every side goes up one level; the narrow rule stays in its folder and prevails when the two meet.</li>
+<li>Every orientation sheet ages along with the work, so it gets a date at the top and loses the lines that are no longer true.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You just put your rules in one place, instead of repeating them with every request.</p>
+<p class="na-action">In the next 15 minutes, in your real work: attach the orientation sheet to the next conversation for this side and notice how many requirements you stopped typing. Write down the missing one and add the line.</p>
+<p class="na-hook">In the next lesson you solve this next problem: the sheet applies to the entire work side, but it’s missing the template of the task you repeat every week. That’s the one you will build and save.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-3">← previous lesson</a><a href="#aula-5">next lesson →</a></nav>
+<footer>Lesson 4 · OSWork v5 · INEMA.CLUB PRO</footer>
+<script id="cards-4" type="application/json">
+[
+  {
+    "front": "You just wrote a line saying \"be objective\". Why does it not survive in the sheet?",
+    "back": "Because nobody can tell if it was fulfilled. Replace it with a measurable limit, like phrases of up to twenty words."
+  },
+  {
+    "front": "You have a spreadsheet with a thousand lines and a requirement for tone. Which one goes into the sheet, and why?",
+    "back": "Only the tone requirement. The spreadsheet is content from that week and goes loose into the folder; the sheet carries only what governs everything that comes out of there."
+  },
+  {
+    "front": "Your general sheet always asks you to cite the source, and the project sheet waives the source in internal draft. Which one rules?",
+    "back": "The project one, because it’s closer to the task. In case of a tie or doubt, write the exception in the narrow sheet, never in the wide one."
+  },
+  {
+    "front": "A manager switched teams, and the texts keep coming out in the old format, with no obvious errors. What should you check first?",
+    "back": "The sheet’s review date. It is followed to the letter, enforcing a rule that already ended—re-reading line by line fixes it in minutes."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-4 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1, verbatim do currículo)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=FERRAMENTA: o teste-se não é obrigatório nesta linha da matriz.
+  Fato registrado: há 1 quiz opcional presente no step 4, com data-fb na opção certa — o
+  marcador acima reflete a obrigação, não a presença.
+  Dosagem (teto 5, usados 4): .qerr (step 1) · .qsteps (step 3) · quiz (step 4) · cards-4.
+  Densidade: quadros funcionais nos steps 1 e 3, nunca adjacentes.
+  data-kind: step 1 é ferramenta (depende da tela de anexo do chat) e leva carimbo
+  data-versao; steps 2, 3 e 4 são fundamento — valem em qualquer ferramenta.
+-->
+</section>
+<!-- ===== AULA 5 ===== -->
+<section class="view" data-aula="5" data-tempo="21min" id="v-aula-5">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 5</p>
+<h1>The template<br/>that you <em>reuse</em></h1>
+<p class="promise">At the end of this lesson, you have a request template saved for the task that repeats most in your month, ready to use by changing only what changes.</p>
+<p class="why">Every week you rewrite almost the same request from scratch. Since you write from memory, the result changes depending on the day: on a calm Tuesday you get something good; on a rushed Friday you get only half. The task is the same; what varies is how fast you are when you ask. You fix that once, and it stays fixed.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="150" y="24">the form</text>
+<rect height="52" rx="6" stroke="var(--accent)" stroke-width="1.5" width="128" x="86" y="34"></rect>
+<path d="M118 34v52M150 34v52M182 34v52" opacity=".45" stroke="var(--accent)" stroke-width="1.2"></path>
+<path d="M110 92v26M190 92v26" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M105 112l5 7 5-7M185 112l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="58" opacity=".6" rx="6" stroke="currentColor" stroke-width="1.5" width="92" x="42" y="126"></rect>
+<path d="M60 148h56M60 164h34" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="58" opacity=".6" rx="6" stroke="currentColor" stroke-width="1.5" width="92" x="166" y="126"></rect>
+<path d="M184 148h30M184 164h56" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="11" opacity=".5" text-anchor="middle" x="88" y="206">June</text>
+<text fill="currentColor" font-family="monospace" font-size="11" opacity=".5" text-anchor="middle" x="212" y="206">July</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> What you redo every month is already asking for a template</h2>
+<p>There’s a task in your month that always comes back the same in form and different in content. The numbers change, the people change — but the type of work is the same. That’s the natural candidate to become a template.</p>
+<p>A <span class="gterm" data-def="A template is a written complete request made once and kept. The part that never changes already comes ready. The parts that change are marked so you can swap them each time you use it." tabindex="0">template</span> is the complete request you learned in Lesson 1, only written all at once and saved. You don’t redo it: you open it, change what changes, and send it. The decision of how to ask was made on a day when you were calm, and it keeps applying on the days when you’re not.</p>
+<p data-ex="gestora">Every Friday, a manager creates the department’s metrics report for the board. The four indicators, the audience, and the size are always the same. Only the week’s numbers change. She rewrites this request forty times per year.</p>
+<div class="qerr">
+<p class="qk">Common mistake</p>
+<p class="qerr-txt"><b>Keep the response that came out good, instead of keeping the request that produced it.</b> It’s the natural reflection: the nice text is what’s on the screen, so it’s what goes into the folder. But that text works for that situation, and for no other.</p>
+<p class="qerr-txt">What you reuse isn’t the result. It’s the recipe that created it.</p>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Separate what never changes from what changes with each use</h2>
+<p>Making the template is making a separation, and that’s all. Take the last real request for this task and put a line in each row: does this apply every time, or only this time?</p>
+<p>What applies to every time is written out in full and is never typed again. It’s your role, the audience, the tone, the size, and the rules you always repeat. What applies only to this time becomes a blank: a marked space, with a short example of what goes there. A blank without an example is too open, and the answer comes out different with each use.</p>
+<p data-ex="professor">A teacher prepares the recovery practice questions list every two months. Fixed: twelve questions, from the simplest to the hardest, with an answer key explained in two lines. Blank: the bimestre’s content and the two errors that showed up the most on the test. He wrote this once.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Test yourself</p><p class="q">You built a template and used it twice. The two answers came out with very different sizes and tones. What’s the most likely cause?</p>
+<button class="opt" data-k="a">The AI tool changed between one use and the next</button>
+<button class="opt" data-fb="Tone and size are the parts that count for every time. If they came out different, it’s because they were left out of the fixed text or written in a vague way. Bring them into the fixed part, with a number: how many lines, for whom, and in what tone." data-k="b">Tone and size were vague, or left out of the fixed part of the template</button>
+<button class="opt" data-k="c">The content you pasted for the two uses was very different</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> The definition of done lives inside the template</h2>
+<p>A template that only has material and format saves typing, but it doesn’t save checking. The part that gets most tiring with repetition is deciding, every time, whether the result works.</p>
+<p>Write that decision once, inside the template, in two lines: what the answer absolutely needs to include, and what it can never do. With both in place, checking turns into counting instead of opinion.</p>
+<p data-ex="gestora">A service manager used to answer each complaint by hand as it came in through the site’s form. In her template, the required line says: you need to repeat the problem using the customer’s words, give a deadline with a date, and sign off through the department. The forbidden line says: never promise a refund of value. Checking dropped to twenty seconds per response.</p>
+<div class="qsteps">
+<p class="qsk">Building your template</p>
+<ol>
+<li><b>Open the last real request</b> you wrote for this task — the real one, with its mistakes, not a cleaned-up memory version.</li>
+<li><b>Mark each line</b> as fixed or variable, asking whether that applies every time or only to this one.</li>
+<li><b>Transform each variable line into a blank</b> and write a short example of what goes there beside it.</li>
+<li><b>Add the two criteria lines:</b> what the answer must have and what it can never do.</li>
+<li><b>Use two times in a row</b> with different content, and correct what was ambiguous in the first reading.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="ChatGPT · set/2026">
+<h2><span class="n">04</span> Save where your hand will find it on Friday</h2>
+<p>A template you can’t find in ten seconds is a template you don’t use. It lives in the front-work folder of Lesson 3, next to the orientation sheet. Not left on the desktop, and not lost in an old conversation.</p>
+<p>Give it a name that describes the task, not the content: “template — weekly report for management” is right; “good text version 3” is not. Many chat apps also save reusable text in a menu called library, saved, or favorites. If yours has it, use both places: the folder is your copy, the app is the shortcut.</p>
+<p data-ex="professor">A teacher writes recommendation letters for former students who request them throughout the whole year. She saved the template in the school folder named “template — recommendation letter”. When a request comes in November, she opens it, changes the student name and the period, and delivers it the same day.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">mark as read</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p5">
+<p class="pk">Practice now <span class="pcount">0/3 done</span></p>
+<h3 class="ph">Set up your template and run it twice with different content</h3>
+<p class="pgoal">Ready when the same template, filled with two different contents, returns two answers of the same size and the same tone. About 12 min.</p>
+<p class="psafe">Nothing here leaves your computer or gets sent to someone. The template is your own text, saved by you, that you erase or rewrite whenever you want. If the first round comes out crooked, change one line and run again—there’s no limit to attempts and no cost for getting it wrong.</p>
+<p>The block below is a form. Where it says “write once,” you fill it in today and leave it. Where it says “you change this,” you fill it in every time you use it. You only edit those parts.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copy</button><pre class="pcode">TEMPLATE — &lt;write once — the repeating task name&gt;
+
+FIXED (applies to all times)
+My job: &lt;write once — e.g., coordination of a team of eight people&gt;
+Who it is for: &lt;write once — e.g., management, which doesn’t follow day-to-day&gt;
+Tone and size: &lt;write once — e.g., direct, in bullets, up to 12 lines&gt;
+
+BLANKS (I change this every time)
+Material for this time: &lt;change this — paste the text or the numbers here&gt;
+Period for this time: &lt;change this — e.g., week of October 6 to 10&gt;
+
+DEFINITION OF DONE CRITERIA (applies to all times)
+It’s only done if: &lt;write once — e.g., bring the 4 indicators with number and variation&gt;
+Never can: &lt;write once — e.g., use a number that isn’t in the pasted material&gt;</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>Open the last real request from your most repeated task. Fill in the FIXED and DEFINITION OF DONE CRITERIA parts with what applies to all times.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Fill in the blanks with this week’s content, send it, and check the answer by listing the items from the definition of done.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>Run the same template again, just replacing the blanks with different content. If the size or tone changes, press the fixed part and save the template in the folder.</span></label></li>
+</ol>
+<p class="pdone">You just saved a template that returns the same answer pattern any day of the week.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; three repetitions of the same work become one text: the template is the part that survives the switch of content" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="26" opacity=".5" rx="4" stroke="currentColor" stroke-width="1.4" width="72" x="22" y="26"></rect>
+<rect height="26" opacity=".5" rx="4" stroke="currentColor" stroke-width="1.4" width="72" x="22" y="62"></rect>
+<rect height="26" opacity=".5" rx="4" stroke="currentColor" stroke-width="1.4" width="72" x="22" y="98"></rect>
+<path d="M34 39h40M34 75h28M34 111h46" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="58" y="146">3 weeks</text>
+<path d="M98 39h26q8 0 8 8v22M98 75h30M98 111h26q8 0 8-8v-22" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M126 70l6 7 6-7" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="44" rx="5" stroke="var(--accent)" stroke-width="1.5" width="60" x="142" y="54"></rect>
+<path d="M154 70h36M154 82h24" opacity=".8" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="172" y="120">template</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the solid line is what you never type again; the dashed line is the gap you fill in every time you use it" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="152" opacity=".45" rx="6" stroke="currentColor" stroke-width="1.4" width="168" x="26" y="24"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" x="42" y="48">fixed</text>
+<path d="M42 62h136M42 78h108" stroke="var(--accent)" stroke-width="1.6"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".6" x="42" y="108">blank</text>
+<path d="M42 122h136M42 138h96" opacity=".55" stroke="currentColor" stroke-dasharray="5 5" stroke-width="1.6"></path>
+<path d="M42 158h136" stroke="var(--accent)" stroke-width="1.6"></path>
+<path d="M16 62v16M16 122v16" opacity=".5" stroke="var(--accent)" stroke-width="1.4"></path>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; with both criterion lines inside the template, checking stops being an opinion and becomes a count" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="70" opacity=".45" rx="6" stroke="currentColor" stroke-width="1.4" width="160" x="30" y="22"></rect>
+<path d="M46 46h128M46 64h92" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="58" rx="6" stroke="var(--accent)" stroke-width="1.5" width="160" x="30" y="104"></rect>
+<path d="M48 124l6 6 11-12" stroke="var(--accent)" stroke-width="2"></path>
+<path d="M76 126h94" opacity=".7" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M48 142l14 14M62 142l-14 14" stroke="var(--warm)" stroke-width="1.8"></path>
+<path d="M76 149h72" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="110" y="184">has to have · can never be</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the template lives in the front folder of your work, next to the orientation sheet—and it comes back from there every time you use it" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M28 52h54l10 14h100v96H28z" opacity=".55" stroke="currentColor" stroke-width="1.5"></path>
+<rect height="28" opacity=".45" rx="4" stroke="currentColor" stroke-width="1.4" width="72" x="46" y="86"></rect>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="82" y="105">orientation sheet</text>
+<rect height="28" rx="4" stroke="var(--accent)" stroke-width="1.5" width="72" x="46" y="124"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="82" y="143">template</text>
+<path d="M122 138h44" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M160 133l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M166 138q16 0 16-20t-16-20h-40" opacity=".6" stroke="var(--accent)" stroke-dasharray="4 4" stroke-width="1.4"></path>
+<path d="M132 93l-7 5 7 5" opacity=".6" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".5" text-anchor="middle" x="110" y="186">opens · switches · returns</text>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>A task that comes back every month does not ask for rewriting from zero: it asks for a saved template.</li>
+<li>In the template, the part that always matters is written in full, and the part that varies turns into a blank with an example next to it.</li>
+<li>What makes an answer acceptable is inside the template itself, not in your memory of a single day.</li>
+<li>A template you can’t find in ten seconds is a template you don’t use.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You just managed to save the request for your most repeated task, ready to reuse by changing only what changes.</p>
+<p class="na-action">In the next 15 minutes, in your real work: use the template on the first real occurrence that shows up. Then write down, next to it, the only line you felt like correcting while using it.</p>
+<p class="na-hook">In the next lesson, you solve the following problem: the template improves with every use, and that’s where it risks things. You change it to improve, the result gets worse, and the version that worked was already saved over. You’ll set up the return point that prevents this.</p>
+</div>
+</div>
+<script id="cards-5" type="application/json">
+[
+  {
+    "front": "Friday, under pressure, you can’t find your template inside the folder. Looking at the name you gave to the text, what was the mistake?",
+    "back": "The name describes what happened that day, not the task. Named by the task, it jumps out in the scan; named by version, it disappears among dozens of texts."
+  },
+  {
+    "front": "One task comes back twice a year and another comes back four times a month. Which one do you turn into a template first?",
+    "back": "The one that comes back four times a month. The work of setting up pays off with frequency; with two yearly occurrences, you spend more organizing than you save."
+  },
+  {
+    "front": "What’s the difference between saving the text that turned out well and saving the complete request that produced that text?",
+    "back": "The text solves one case and stops there. The complete request keeps producing new results every time the content changes."
+  },
+  {
+    "front": "A teacher has twenty recommendation letters to deliver in two weeks. What does he write in the template so he doesn’t have to evaluate each letter by sight?",
+    "back": "The two lines of criteria: what every letter must have and what it must never say. That way, checking becomes quick counting."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-5 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1, verbatim do currículo)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="21min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1, 4 itens afirmativos)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-5"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=FERRAMENTA: teste-se não é obrigatório — o marcador reflete a obrigação, não a presença.
+  Fato registrado: há 1 quiz opcional no step 2, com data-fb na opção certa. Dosagem = qerr + qsteps + quiz + cards = 4 tipos (teto 5).
+-->
+</section>
+<!-- ===== AULA 6 ===== -->
+<section class="view" data-aula="6" data-tempo="20min" id="v-aula-6">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 6</p>
+<h1>Don’t lose<br/>what <em>already worked</em></h1>
+<p class="promise">At the end of this lesson, you can change a work material while knowing you can go back to the exact previous version, without relying on remembering what changed.</p>
+<p class="why">You tweak a rule in your orientation sheet to improve a small detail, and the result of the following week comes out worse than it was. When you try to undo it, you realize you saved over the good version. This wasn’t carelessness: you were missing a return point, and no one tells you it’s necessary until the day it becomes necessary.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<rect height="112" opacity=".4" rx="5" stroke="currentColor" stroke-width="1.5" width="150" x="24" y="36"></rect>
+<path d="M44 66h110M44 84h92M44 102h116M44 120h74" opacity=".4" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M60 156h78" opacity=".25" stroke="currentColor" stroke-width="3"></path>
+<text fill="currentColor" font-family="monospace" font-size="11" opacity=".45" text-anchor="middle" x="99" y="180">the board will be erased</text>
+<rect height="68" rx="4" stroke="var(--accent)" stroke-width="1.5" width="84" x="192" y="60"></rect>
+<rect height="44" opacity=".6" rx="2" stroke="var(--accent)" stroke-width="1.2" width="68" x="200" y="68"></rect>
+<path d="M208 84h52M208 96h38" opacity=".7" stroke="var(--accent)" stroke-width="1.2"></path>
+<circle cx="234" cy="46" r="7" stroke="var(--accent)" stroke-width="1.4"></circle>
+<path d="M234 40v6l4 3" stroke="var(--accent)" stroke-width="1.2"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="234" y="150">the saved photo</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Every improvement in a material that already works is a bet</h2>
+<p>When you change a rule in a material that was already producing results, you’re betting that the new one will be better. Sometimes it is. Other times, the change fixes the detail that was bothering you and breaks something that had been working quietly without you noticing. You only find out on the next use, days later.</p>
+<p>The problem isn’t betting — betting is how the material improves. The problem is betting without <span class="gterm" data-def="A point of return is an intact copy of the version that used to work, stored before the change, so you can go back without depending on memory." tabindex="0">a return point</span>. Without it, a bad bet costs the whole reconstruction of what you already had.</p>
+<p data-ex="gestora">A manager adjusted the time-off rule in the shift schedule spreadsheet to cover a holiday. The holiday schedule came out right. Two weeks later, the same adjusted rule left two Saturdays in a row with nobody — and the old version of the spreadsheet had already been saved over.</p>
+<div class="qbefore-after">
+<div class="qba-col qba-before">
+<p class="qba-lbl">Before</p>
+<p class="qba-txt">Open the material, change the rule, save. The version that worked stops existing at the exact same moment.</p>
+</div>
+<div class="qba-col qba-depois">
+<p class="qba-lbl">After</p>
+<p class="qba-txt">Duplicate the material with today’s date in the name, change the rule in the original file, save. Both versions exist.</p>
+</div>
+<p class="qba-saldo"><b>Balance:</b> fifteen seconds more per change, instead of rewriting from scratch in half an afternoon when the change goes wrong.</p>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> The copy with the date in the name, made before you touched anything</h2>
+<p>The point of no return fits in one action: before you change any material that already works, duplicate the file and put today’s date at the beginning of the copy’s name. That’s it. You end up with two files in the same folder: the one you’ll change and the one that stays frozen in the good state.</p>
+<p>Always use the same way of writing the date, from largest to smallest: year, month, and day. Written this way, the computer sorts the copies for you, from the oldest to the most recent. You can see the timeline just by looking at the folder.</p>
+<p data-ex="professor">A math teacher keeps the orientation sheet for recovery exam questions. Before loosening the minimum grade requirement, they duplicated the file and named the copy with that day’s date. The new criterion turned out to be too lenient. They opened the copy, read the old rule, and put back the exact sentence. It took less than a minute, without trying to remember anything.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Write down the reason, because what changed in the material already shows it</h2>
+<p>Saving the copy solves half. The other half is knowing why you changed it. In three months, with the two files open side by side, you can see on your own which sentence came in and which one went out. What neither of them keeps is the reason. And it’s the reason that stops you from undoing a well-made decision months later.</p>
+<p>So the record is short, and it has only one thing: the reason. One line per change, with the date, in the same place every time. A notebook works; an notes file works. The criterion is to be able to write it in fifteen seconds—otherwise you drop it in the second week.</p>
+<p data-ex="gestora">A manager changed the minutes template for the purchasing committee. She recorded: “I removed the estimated value field because two suppliers received the minutes by mistake.” Four months later, someone suggested putting the field back. The line answered in two seconds what no one’s memory could.</p>
+<div class="qanchor"><p>The material shows what changed. Only you keep the why.</p></div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> One line per mistake, written on the day it happens</h2>
+<p>The same notebook gets a second type of line: the mistakes. Every time a result comes out wrong and you fix it, write the date, what came out wrong, and the smallest fix that solved it. One line, no story. Write it on the day, not at the end of the month, because at the end of the month you’ve already forgotten the fix.</p>
+<p>Isolated, these lines seem useless. In ten or twelve lines, they stop feeling that way. What shows up is repetition: the same kind of error coming back through different paths. Then you stop fixing the result of that day and correct the rule that produces the error. It’s usually a sentence missing from your sheet.</p>
+<p data-ex="professor">A science teacher documented for a month the flaws in the lab worksheet generated with AI. Three lines said the same thing: the safety warning for heated material was missing. They stopped adding the warning by hand every week and wrote the requirement in the orientation sheet, once.</p>
+<div class="quiz" data-answer="c">
+<p class="qk">Test yourself</p><p class="q">You changed a rule in your orientation sheet two weeks ago, and the result got worse. You have the dated copy saved, but you didn’t note anything. What did you lose?</p>
+<button class="opt" data-k="a">The previous version of the material, which needs to be rewritten by hand</button>
+<button class="opt" data-k="b">Nothing: the dated copy alone solves any situation</button>
+<button class="opt" data-fb="The copy gives you the entire earlier text back, so the version didn’t get lost. What disappeared was the reason for the change. You go back without knowing which problem that rule solved, and you risk recreating it." data-k="c">The reason for the change — you backtrack without knowing what problem that rule solved</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">mark as read</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p6">
+<p class="pk">Practice now <span class="pcount">0/4 done</span></p>
+<h3 class="ph">Create the return point in your orientation sheet</h3>
+<p class="pgoal">Ready when there are two files in the folder — the dated copy and the edited sheet — and a line written with the reason. About 10 min.</p>
+<p class="psafe">You don’t erase anything in this practice: the first step is to duplicate. If the change doesn’t feel right, open the copy and return to the earlier text. Nothing here is sent to anyone, and redoing as many times as you want has no cost.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>Open the front work folder and find the orientation sheet you wrote in Lesson 4. Don’t open the file yet.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Duplicate the sheet and rename the copy starting with today’s date in year-month-day format, followed by the old name. Example: 2026-09-21 appointment sheet.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>Now open the original sheet and change one rule that’s been bothering you — just one, the one that gets in your way the most. Save.</span></label></li>
+<li><label><input data-ptask="4" type="checkbox"/> <span>In your notebook or in a notes file, write one line with the date and the reason for the change. Acceptable when the line answers “why” and not “what”.</span></label></li>
+</ol>
+<p class="pdone">You just changed a work material while keeping the entire previous version and having the reason recorded outside your memory.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; every change opens two paths; without a saved copy, the back path doesn’t exist" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="36" rx="5" stroke="var(--accent)" stroke-width="1.4" width="58" x="20" y="82"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="49" y="104">works</text>
+<path d="M82 100h26" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M102 95l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<circle cx="118" cy="100" opacity=".6" r="9" stroke="currentColor" stroke-width="1.4"></circle>
+<path d="M128 94l24-30M128 106l24 30" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="32" rx="5" stroke="var(--accent)" stroke-width="1.4" width="50" x="152" y="44"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="177" y="64">better</text>
+<rect height="32" opacity=".6" rx="5" stroke="currentColor" stroke-width="1.4" width="50" x="152" y="124"></rect>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".6" text-anchor="middle" x="177" y="144">worse</text>
+<path d="M152 140H92v-22" opacity=".35" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.4"></path>
+<path d="M86 124l6-10 6 10" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".45" text-anchor="middle" x="110" y="186">the return is hatched</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; duplicating before you make a change turns the return into a file that already exists—not into memory" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="46" opacity=".55" rx="5" stroke="currentColor" stroke-width="1.4" width="72" x="26" y="32"></rect>
+<path d="M38 50h48M38 62h32" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="62" y="24">good version</text>
+<path d="M98 55h28" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M120 50l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="46" rx="5" stroke="var(--accent)" stroke-width="1.4" width="66" x="128" y="32"></rect>
+<path d="M138 50h46M138 62h30" opacity=".6" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="161" y="24">2026-09-21</text>
+<path d="M62 82v26" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M57 102l5 7 5-7" opacity=".5" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="46" opacity=".55" rx="5" stroke="currentColor" stroke-width="1.4" width="72" x="26" y="114"></rect>
+<path d="M38 132h40M38 144h50" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="62" y="176">changed</text>
+<path d="M128 137H104" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M110 132l-7 5 7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<rect height="46" rx="5" stroke="var(--accent)" stroke-dasharray="4 4" stroke-width="1.4" width="66" x="128" y="114"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="161" y="176">possible return</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the files keep the text; the notebook line keeps the reason that no file contains" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="52" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="60" x="22" y="36"></rect>
+<path d="M32 54h40M32 66h28" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="52" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="60" x="98" y="36"></rect>
+<path d="M108 54h40M108 66h36" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".5" text-anchor="middle" x="90" y="104">what changed: visible</text>
+<path d="M52 92v18h76V92" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<rect height="44" rx="5" stroke="var(--accent)" stroke-width="1.4" width="172" x="22" y="126"></rect>
+<path d="M34 144h26" opacity=".8" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M68 144h110" opacity=".5" stroke="var(--accent)" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="108" y="188">date + why: only here</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; loose lines become diagnosis when the same failure shows up three times" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M26 42h150M26 66h150M26 90h150M26 114h150M26 138h150" opacity=".28" stroke="currentColor" stroke-width="1.4"></path>
+<rect fill="var(--accent)" height="10" opacity=".85" width="10" x="24" y="32"></rect>
+<rect fill="var(--accent)" height="10" opacity=".85" width="10" x="24" y="80"></rect>
+<rect fill="var(--accent)" height="10" opacity=".85" width="10" x="24" y="128"></rect>
+<rect height="10" opacity=".4" stroke="currentColor" stroke-width="1.2" width="10" x="24" y="56"></rect>
+<rect height="10" opacity=".4" stroke="currentColor" stroke-width="1.2" width="10" x="24" y="104"></rect>
+<path d="M44 37h92M44 61h68M44 85h100M44 109h56M44 133h84" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M186 37v101" opacity=".6" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M181 46l5-9 5 9M181 129l5 9 5-9" opacity=".6" stroke="var(--accent)" stroke-width="1.2"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="110" y="176">3 times: fix the rule</text>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>Messing with a rule in a material that already delivers results is a gamble: it can improve things and it can also mess up something that was working silently.</li>
+<li>Duplicating the file with today’s date in the name, before you change anything, takes fifteen seconds and keeps the entire previous version.</li>
+<li>With both files open side by side, the text that came in and the text that came out show up on their own; the reason for the decision only exists if you write it down.</li>
+<li>Failures noted one per line, on the day, accumulate until the pattern appears. Then the right fix stops being the one for the day and becomes the one for the rule.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You just managed to change a work material with a guaranteed way back.</p>
+<p class="na-action">In the next 15 minutes, in your real work: repeat the practice gesture in the complete request template from Lesson 5. Duplicate with the date, change one gap, and write the reason line in the same notebook.</p>
+<p class="na-hook">In the next lesson you complete the track. With context, rules, template, and a clear return point in place, you can decide what you delegate and what you keep doing yourself.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← track</a><a href="#aula-7">next lesson →</a></nav>
+<footer>Lesson 6 · OSWork v5 · INEMA.CLUB PRO</footer>
+<script id="cards-6" type="application/json">
+[
+  {
+    "front": "You changed a rule today and the result got worse. What needed to exist before the change so you could go back in one minute?",
+    "back": "A dated copy of the material saved before any changes. Without it, the good text was covered, and there’s nowhere to go back to."
+  },
+  {
+    "front": "Two records of the same change: \"I changed the third paragraph\" and \"I removed the requirement for formal tone because the team found it distant.\" Which one will matter three months from now?",
+    "back": "The second. The first describes something you can see by opening both versions; the second holds the reason, which isn’t written in either of them."
+  },
+  {
+    "front": "Your notebook shows three different notes where the result came out too long. What is this repetition asking for?",
+    "back": "A correction to the size requirement within the same orientation sheet, not a patch to the day’s complete request. Repetition points to the cause; an isolated occurrence does not."
+  },
+  {
+    "front": "You have thirty seconds before you edit the weekly complete request template. What is the only step you can’t skip?",
+    "back": "Duplicate the material and put today’s date at the beginning of the duplicate’s name. The other precautions come later; that’s what creates the way back."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-6 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 10 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-6"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz com data-fb na opção certa)
+-->
+</section>
+<!-- ===== AULA 7 ===== -->
+<section class="view" data-aula="7" data-tempo="24min" id="v-aula-7">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Track 01 · Lesson 7</p>
+<h1>What you delegate<br/>and what <em>you keep doing</em></h1>
+<p class="promise">At the end of this lesson, you have your full AI environment set up and a written list of what you delegate, what you check, and what you don’t hand off to anyone.</p>
+<p class="why">The pieces are already there, each in its right place. What’s missing is the decision about where the delegation ends. Without that written line beforehand, it gets drawn right in the middle of a busy day — and then the choice almost always ends up on the wrong side. Deciding calmly today takes fifteen minutes and pays off for months.</p>
+<p class="cue"><span class="arw">↓</span> scroll to study</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<path d="M24 176h252" opacity=".45" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M44 176v40M256 176v40" opacity=".3" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M36 36h228" opacity=".35" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M62 36v26M104 36v26M146 36v26M188 36v26M230 36v26" stroke="var(--accent)" stroke-width="1.5"></path>
+<rect height="34" rx="3" stroke="var(--accent)" stroke-width="1.5" width="24" x="50" y="62"></rect>
+<circle cx="104" cy="76" r="14" stroke="var(--accent)" stroke-width="1.5"></circle>
+<path d="M136 62h20v34h-20z" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M188 62l12 34h-24z" stroke="var(--accent)" stroke-width="1.5"></path>
+<rect height="34" rx="11" stroke="var(--accent)" stroke-width="1.5" width="24" x="218" y="62"></rect>
+<rect height="44" opacity=".45" rx="4" stroke="currentColor" stroke-width="1.5" width="72" x="66" y="126"></rect>
+<path d="M80 142h44M80 156h30" opacity=".35" stroke="currentColor" stroke-width="1.5"></path>
+<rect height="44" rx="4" stroke="var(--accent)" stroke-width="1.5" width="72" x="162" y="126"></rect>
+<path d="M176 142h44M176 156h34" opacity=".6" stroke="var(--accent)" stroke-width="1.5"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="11" text-anchor="middle" x="150" y="232">workbench set up</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="pratica">
+<h2><span class="n">01</span> You delegate the execution, never the responsibility</h2>
+<p>A task has two parts that need to be separated here: the work of producing what gets made, and the fact that someone is accountable for the outcome. The AI can take the first part. The second one is still yours, completely, even when you didn’t write a single word of what was sent.</p>
+<p>That’s why this course calls this <span class="gterm" data-def="Supervised delegation is handing the execution of a task to the AI. It’s written who checks the result and who is responsible for it after it’s sent." tabindex="0">supervised delegation</span>. The name is literal: you hand over the doing and you keep hold of the answering. If you don’t separate the two, you only find out on the worst possible day.</p>
+<p data-ex="gestora">A manager at a call center asked for the monthly indicator report for the board. The text came well assembled, and she sent it without reading the last table, which switched reopened tickets for resolved ones. In the meeting, the one who explained the mistake was her — and she was right that it would be.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">mark as read</button>
+</section>
+<section class="step" data-fig="2" data-kind="pratica">
+<h2><span class="n">02</span> Every task fits one of three levels</h2>
+<p>There is no delegating or not delegating. There are three positions, and most tasks change places over time. <b>Do it yourself</b> is what you accept without looking, because an error there costs almost nothing. <b>Do it and show it</b> is what comes out ready and goes through your eyes before moving on. <b>Only suggests</b> is what you keep doing with your own hands, using the response as just a first draft or as a list of ideas.</p>
+<p>The position doesn’t depend on the AI being good at that. It depends on who signs and what happens if it goes wrong.</p>
+<p data-ex="professor">A biology teacher put the review exercise list in do it and show it: he reads the ten questions before printing. The welcome text from the room’s bulletin board ended up in do it yourself. The bimonthly assessment ended up in only suggests, because the student’s grade depends on it.</p>
+<div class="qsteps">
+<p class="qsk">How to classify a task with three questions</p>
+<ol>
+<li><b>Who signs.</b> If the result comes out under your name or goes outside the team, it doesn’t go into do it yourself.</li>
+<li><b>How much the error costs.</b> If wrong information there creates rework for other people, it moves up to do it and show it at least.</li>
+<li><b>You can check it quickly.</b> If you can’t verify the result in a few minutes, the task stays in only suggests until you have a checking ruler that fits that time.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">mark as read</button>
+</section>
+<section class="step" data-fig="3" data-kind="pratica">
+<h2><span class="n">03</span> The time to review counts toward your earnings</h2>
+<p>The account most people make is too simple: the task took forty minutes, the answer came back in one, so the earnings were thirty-nine. You still miss a share. Reviewing costs time, and that time comes out of the same day.</p>
+<p>An honest account has three parts: write the complete request, review the answer, and adjust what came back crooked. When the sum of the three gets close to the time it takes to do it by hand, the delegation gives back nothing. It only shifts the effort to a different place, with one extra risk.</p>
+<p data-ex="gestora">An operations manager moved the vacation schedule for the team to AI. Putting it together took twenty minutes; reviewing holidays, shift coverage, and the day limit took eighteen. She brought the schedule back to her own hands and delegated the email that goes with it, which takes fifteen minutes to write and two minutes to review.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">mark as read</button>
+</section>
+<section class="step" data-fig="4" data-kind="pratica">
+<h2><span class="n">04</span> The list stays true only if it has a date</h2>
+<p>Your list grows old fast, and for a good reason: you get better at asking. A task that looked simple in January can be ready to do by May. The opposite is also true, and that’s the case that hurts more.</p>
+<p>That’s why the list needs a fixed time in your calendar, once a week, fifteen minutes. In that meeting, you upload what tested well, drop what failed twice, and note the why in one line. Without a marked date, nobody comes back: the list becomes a nice paper, written once and never read again.</p>
+<p>Rosana, a manager of an appointment-setting service, put everything together in one month. She created the front-desk folder, wrote the orientation sheet with the department’s rules, and saved the template for the rescheduling notice. In the fourth week, the notice went out with a deadline that was already past, and the dated copy sent back the good version in two minutes. The line she wrote afterward — the deadline changed, the sheet didn’t follow — became the first item on the next review checklist.</p>
+<p data-ex="professor">A geography teacher scheduled his review for Friday at 4:00 PM, right after the last lesson. In fifteen minutes, he revisits the list, reviews two materials from the week, and adjusts one rule on the sheet. In four weeks, two tasks moved up a level and one moved down.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">mark as read</button>
+</section>
+<section class="step" data-fig="5" data-kind="pratica">
+<h2><span class="n">05</span> What you have now, together, is an environment</h2>
+<p>It’s worth naming the parts. You write a complete request, with material, format, and definition of done. You have a three-item checking ruler, written before you ask. You have a folder for each work front. You have an orientation sheet with your rules. You have a template for the task that repeats the most. And you have the dated copy, which guarantees the way back.</p>
+<p>Separated, they’re six loose habits. Together, with the delegation list on top, they’re an environment. Each request starts in a folder, follows an orientation sheet, comes out of a template, goes through a checking ruler, and has a return point. You can explain that to someone else in five minutes — and that’s the measure that it’s set up.</p>
+<p data-ex="gestora">A project office manager used exactly this to welcome a new person to the team. She handed over the folder, the orientation sheet, and the template on day one, and instead of two weeks of scattered questions, the onboarding took three days. What she passed on wasn’t a tool: it was the written agreement.</p>
+<div class="qapply"><p class="qak">Apply it to your case</p><ul><li><b>Manager:</b> start with what the whole team can see. On-call scale in does and shows, internal routine notice in does alone, performance review in only suggests.</li><li><b>Teacher:</b> start with what turns into a grade. Exercise bank in does and shows, support material in does alone, exam correction in only suggests.</li></ul></div>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">mark as read</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p7">
+<p class="pk">Practice now <span class="pcount">0/4 done</span></p>
+<h3 class="ph">Write your delegation list and mark the first check-in</h3>
+<p class="pgoal">Ready when your one-week tasks are distributed across the three columns and there’s a day and time marked in the calendar. About 15 min.</p>
+<p class="psafe">This list is yours and it’s going nowhere. Write with a pen if you prefer. No rating is final: moving a task from a column is a sign that the list is working.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> <span>List ten to fifteen tasks you did in the last week, including the ones that seem too small.</span></label></li>
+<li><label><input data-ptask="2" type="checkbox"/> <span>Make three columns: does alone, does and shows, only suggests. Place each task using the three questions from the board—who signs, how much the mistake costs, can you check it quickly.</span></label></li>
+<li><label><input data-ptask="3" type="checkbox"/> <span>In the only suggests column, mark the tasks you’ll never deliver to anyone, no matter what happens. Write a line explaining why for each one.</span></label></li>
+<li><label><input data-ptask="4" type="checkbox"/> <span>Open your calendar and schedule now the first weekly check-in, with day and time, fifteen minutes, repeating every week. Keep the list in the front work folder, along with the orientation sheet.</span></label></li>
+</ol>
+<p class="pdone">You now have the whole setup ready and your written list of what you delegate, what you check, and what stays yours.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the execution crosses to the other side; the signature always stays on this side" data-fig="1">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="92" rx="5" stroke="var(--accent)" stroke-width="1.4" width="76" x="18" y="52"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="56" y="42">you</text>
+<path d="M32 78h48M32 94h34" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M32 122l7 7 13-14" stroke="var(--accent)" stroke-width="2"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" x="72" y="128">sign</text>
+<rect height="92" opacity=".5" rx="5" stroke="currentColor" stroke-width="1.4" width="76" x="126" y="52"></rect>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".6" text-anchor="middle" x="164" y="42">execution</text>
+<path d="M140 84h48M140 100h40M140 116h44" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M98 70h22" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M114 65l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M120 126h-22" stroke="var(--accent)" stroke-dasharray="4 4" stroke-width="1.4"></path>
+<path d="M104 121l-7 5 7 5" stroke="var(--accent)" stroke-width="1.4"></path>
+<path d="M110 160v16" opacity=".3" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="10" opacity=".55" text-anchor="middle" x="110" y="192">answers: you</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the three levels are steps: a task goes up when you prove it, and drops at the first repeated failure" data-fig="2">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="56" x="24" y="140"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="52" y="161">only suggests</text>
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="56" x="82" y="102"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="110" y="118">does and</text>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="110" y="130">shows</text>
+<rect height="34" rx="4" stroke="var(--accent)" stroke-width="1.4" width="56" x="140" y="64"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="168" y="80">does</text>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="168" y="92">alone</text>
+<path d="M80 148h52M138 110h22" opacity=".35" stroke="currentColor" stroke-width="1.4"></path>
+<path d="M96 52h74" opacity=".3" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".55" text-anchor="middle" x="134" y="44">less checking</text>
+<path d="M24 186h172" opacity=".3" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".5" text-anchor="middle" x="110" y="198">the cost of the mistake decides the step</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the real gain is what’s left after subtracting complete request, checking, and adjustment" data-fig="3">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="26" opacity=".5" rx="4" stroke="currentColor" stroke-width="1.4" width="172" x="24" y="40"></rect>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".6" text-anchor="middle" x="110" y="32">doing by hand</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="34" x="24" y="92"></rect>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="48" x="62" y="92"></rect>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="30" x="114" y="92"></rect>
+<rect height="26" opacity=".6" rx="4" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.4" width="48" x="148" y="92"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="8" text-anchor="middle" x="41" y="136">request</text>
+<text fill="var(--accent)" font-family="monospace" font-size="8" text-anchor="middle" x="86" y="136">checking</text>
+<text fill="var(--accent)" font-family="monospace" font-size="8" text-anchor="middle" x="129" y="136">adjustment</text>
+<text fill="currentColor" font-family="monospace" font-size="8" opacity=".6" text-anchor="middle" x="172" y="136">leftover</text>
+<path d="M148 160h48" stroke="var(--accent)" stroke-width="2"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="110" y="178">only this is gain</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the weekly check-in is what keeps the list standing: without a date, it stops mattering" data-fig="4">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="110" cy="100" opacity=".4" r="60" stroke="currentColor" stroke-width="1.4"></circle>
+<path d="M110 40a60 60 0 0 1 42 102" stroke="var(--accent)" stroke-width="1.6"></path>
+<path d="M146 136l6 8 9-4" stroke="var(--accent)" stroke-width="1.6"></path>
+<rect height="40" rx="4" stroke="var(--accent)" stroke-width="1.4" width="56" x="82" y="80"></rect>
+<path d="M94 94h32M94 106h20" opacity=".45" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="var(--accent)" font-family="monospace" font-size="10" text-anchor="middle" x="110" y="176">Friday · 15 min</text>
+<path d="M60 60l-8-8M160 60l8-8M60 140l-8 8" opacity=".25" stroke="currentColor" stroke-width="1.4"></path>
+<text fill="currentColor" font-family="monospace" font-size="9" opacity=".5" text-anchor="middle" x="110" y="192">up, down, notes</text>
+</svg>
+</div>
+<div class="fig" data-cap="&lt;b&gt;Fig.&lt;/b&gt; the six fitted pieces: the complete request goes through all of them before it turns into delivered work" data-fig="5">
+<svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="82" x="18" y="28"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="59" y="45">folder</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="82" x="120" y="28"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="161" y="45">orientation sheet</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="82" x="18" y="72"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="59" y="89">template</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="82" x="120" y="72"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="161" y="89">complete request</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="82" x="18" y="116"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="59" y="133">checking ruler</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.4" width="82" x="120" y="116"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="161" y="133">dated copy</text>
+<rect height="26" rx="4" stroke="var(--accent)" stroke-width="1.6" width="184" x="18" y="156"></rect>
+<text fill="var(--accent)" font-family="monospace" font-size="9" text-anchor="middle" x="110" y="173">delegation list</text>
+<path d="M110 142v14" opacity=".4" stroke="currentColor" stroke-width="1.4"></path>
+</svg>
+</div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Highlight any section to turn it into a review card.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Summary</p>
+<ul>
+<li>Delegating the execution of a task doesn’t transfer authorship or the responsibility for the result: the one who signs is still you.</li>
+<li>Each task takes one of three steps—does alone, does and shows, only suggests—chosen by the cost of the mistake, not by the tool’s skill.</li>
+<li>The real gain is the time left over after you subtract the complete request, checking, and adjustment.</li>
+<li>A weekly check-in with a scheduled time keeps the list alive; without a date, it quietly ages and stops being worth anything.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Your next step</p>
+<p class="na-win">You set up the whole environment and you can say, in writing, what you delegate, what you check, and what remains yours.</p>
+<p class="na-action">In the next 15 minutes, in your real work: fit the tasks from your next week into the three columns. Keep the list inside the folder, next to the orientation sheet.</p>
+<p class="na-hook">The course ends here; the work starts with the first weekly check-in you marked on your calendar. That’s where the list gets corrected: one task goes up, another goes down. In a month, you decide it without needing to reread anything.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← track</a><a href="#trilha">complete ✓ →</a></nav>
+<footer>Lesson 7 · OSWork v5 · INEMA.CLUB PRO</footer>
+<script id="cards-7" type="application/json">
+[
+  {
+    "front": "A task arrives that your tool handles very well and fast, but it comes out of your room with your name on it. Which rung does it belong on?",
+    "back": "In do and show, at least. The rung is decided by who answers after it’s sent, never by the quality of the text that came back."
+  },
+  {
+    "front": "A task takes twelve minutes by hand and seven to review when it’s ready. Is it worth moving to AI?",
+    "back": "Not much. You buy five minutes and take on the risk of letting an error slip through. Move first what has cheap review."
+  },
+  {
+    "front": "There are fifteen minutes to review on Friday and the week was full. What do you open first?",
+    "back": "The delegation list. Mark what worked and what failed twice, write one line for the why, and only then edit the sheet or the template."
+  },
+  {
+    "front": "A new task appears and you don’t know which column to put it in. What two questions solve that in ten seconds?",
+    "back": "Who signs the result and how much it costs if it turns out wrong. If both answers carry weight, it starts by only suggesting and then rises afterward, if it deserves it."
+  }
+]
+</script>
+<!--
+COMPLETUDE aula-7 | tipo=PRATICA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="24min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (5/5: gestora, professor, gestora, professor, gestora)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (5/5)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 15 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-7"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=PRATICA: obrigação não se aplica (dosagem PRÁTICA/INTEGRAÇÃO)
+-->
+</section>
+<script src="assets/curso.js"></script>
+
+<script>(function(){document.querySelectorAll(".langsel a[data-lang]").forEach(function(a){a.addEventListener("click",function(e){if(location.hash){e.preventDefault();location.href=a.getAttribute("href")+location.hash;}});});})();</script></body>
+</html>

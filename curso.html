@@ -1,0 +1,1755 @@
+<!doctype html>
+<!-- OSWork v5 — formato-curso v5 (página única, contrato pedagógico 40+). -->
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="curso" content="oswork5">
+<title>OSWork v5 · Organize seu ambiente de IA · INEMA.CLUB PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/aula.css">
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (SKILL.md, Passo 0 — respondido em 21/09/2026, antes da geração):
+  - Público específico: profissionais de 40+ anos, iniciantes em IA, que já usam um chat
+    de IA de vez em quando e querem parar de improvisar.
+  - Profissões-alvo (2): gestora (coordena equipe e processos) · professor (prepara
+    material e devolutivas).
+  - Familiaridade com tecnologia: baixa — usa computador e celular no trabalho, nunca
+    programou, nunca abriu uma tela de comandos.
+  - Resultado prático esperado: sair com o próprio ambiente de IA organizado — pastas por
+    contexto, uma ficha de orientação, um molde de pedido reutilizável e uma rotina de
+    conferência.
+  - Tempo por sessão: 20 a 25 minutos.
+
+  DECISÕES REGISTRADAS:
+  - Sem .termdemo em todo o curso: o currículo não tem nenhum comando real a demonstrar
+    (CHECKLIST-V5 §5.1 — omissão registrada, não silenciosa).
+  - Aula 7 (PRÁTICA/INTEGRAÇÃO) tem cards-7 autorais de forma "aplicação": o manifesto de
+    completude exige a linha `cards` em toda aula, e essa exigência prevalece sobre o traço
+    "—" da matriz de dosagem, que trata de obrigação e não de proibição. Teto ≤5 respeitado.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+  @media(max-width:720px){#v-trilha .au{grid-template-columns:44px 1fr}#v-trilha .au .meta{grid-column:2;text-align:left}}
+  @media print{.bar,.panel,.scrim,.seltb,.prog,.grain,.lnav,button{display:none!important}
+    html,body{background:#fff!important;color:#111!important}.view{display:block!important}
+    .col p,.col li,h1,h2,h3{color:#111!important}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-inner">
+  <span class="brand"><a class="mark" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a><a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a><a class="course" href="landing.html">OSWork v5</a></span>
+  <div class="langsel"><span class="lang-cur">Português</span><a href="en/curso.html" data-lang="en">English</a><a href="es/curso.html" data-lang="es">Español</a></div>
+  <a class="back" href="#trilha" style="display:none">← trilha</a>
+  <button id="pill" class="pill" style="display:none">0 lido</button>
+  <button id="revbtn">revisar <span id="revn">0</span></button>
+  <button id="exbtn">exercícios</button>
+  <button id="jorbtn">jornada</button>
+  <button id="helpbtn" aria-label="Como funciona">?</button>
+  <button id="prefsbtn" aria-label="Preferências de leitura">Aa</button>
+  <button id="themebtn">tema: escuro</button>
+</div></div>
+
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+  <header class="t-hero"><div class="wrap">
+    <p class="kicker">Trilha única · 7 aulas</p>
+    <h1>Organize seu <em>ambiente</em> de IA</h1>
+    <p class="lead">Você sai daqui com pastas por frente de trabalho, uma ficha de orientação escrita, um molde de pedido que se reusa e uma rotina de conferência. Sem programar, sem tela de comandos.</p>
+  </div></header>
+  <section><div class="wrap">
+    <div class="statcards"></div>
+    <p class="eyebrow">Aulas</p>
+    <h2>Do pedido solto ao ambiente montado</h2>
+    <div class="aulas">
+      <a class="au on" data-aula="1" href="#aula-1">
+        <div class="num">1</div>
+        <div><h3>Pedido completo, não pergunta solta</h3><p>Saia sabendo transformar uma pergunta vaga num pedido que volta pronto para usar.</p><div class="prog"><i></i></div></div>
+        <div class="meta">21 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="2" href="#aula-2">
+        <div class="num">2</div>
+        <div><h3>A régua de conferência</h3><p>Saia sabendo conferir uma resposta em dois minutos, com três itens escritos antes de pedir.</p><div class="prog"><i></i></div></div>
+        <div class="meta">22 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="3" href="#aula-3">
+        <div class="num">3</div>
+        <div><h3>Uma pasta por contexto</h3><p>Saia com uma pasta real montada para uma frente de trabalho sua — e com o que nunca entra ali.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="4" href="#aula-4">
+        <div class="num">4</div>
+        <div><h3>A ficha de orientação do projeto</h3><p>Saia com suas regras escritas uma vez, em vez de repetidas a cada pedido.</p><div class="prog"><i></i></div></div>
+        <div class="meta">22 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="5" href="#aula-5">
+        <div class="num">5</div>
+        <div><h3>O molde que você reusa</h3><p>Saia com o pedido da sua tarefa mais repetida guardado e pronto para trocar só o que muda.</p><div class="prog"><i></i></div></div>
+        <div class="meta">21 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="6" href="#aula-6">
+        <div class="num">6</div>
+        <div><h3>Não perder o que já funcionava</h3><p>Saia sabendo mudar um material com um ponto de retorno garantido para a versão anterior.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="7" href="#aula-7">
+        <div class="num">7</div>
+        <div><h3>O que você delega e o que continua seu</h3><p>Saia com o ambiente montado por inteiro e a sua lista de delegação escrita.</p><div class="prog"><i></i></div></div>
+        <div class="meta">24 min · abrir →</div>
+      </a>
+    </div>
+  </div></section>
+  <footer><div class="wrap">OSWork v5 · INEMA.CLUB PRO</div></footer>
+</section>
+
+<!-- ===== AULA 1 ===== -->
+<section class="view" id="v-aula-1" data-aula="1" data-tempo="21min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 1</p>
+    <h1>Pedido completo,<br>não <em>pergunta solta</em></h1>
+
+    <p class="promise">Ao fim desta aula você consegue transformar uma pergunta solta num pedido completo — com material, formato de saída e critério de pronto — e receber de volta algo que você usa sem reescrever.</p>
+
+    <p class="why">O retrabalho tem um horário preferido: o fim da tarde, quando você já gastou o tempo bom do dia e recebe de volta um texto que precisa ser refeito inteiro. Quase sempre a causa está no que ficou de fora na hora de pedir — e o que ficou de fora você só descobre depois de ler a resposta. Esta aula inverte essa ordem.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <rect x="28" y="30" width="112" height="160" rx="6" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <path d="M48 66h56M48 86h40" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <rect x="160" y="30" width="112" height="160" rx="6" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M180 60h72M180 78h72M180 96h52" stroke="var(--accent)" stroke-width="1.5" opacity=".8"/>
+    <path d="M180 120h72M180 138h60M180 156h68" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/>
+    <path d="M176 44l6 6 12-12" stroke="var(--accent)" stroke-width="2"/>
+    <path d="M44 44l6 6 12-12" stroke="currentColor" stroke-width="2" opacity=".25"/>
+    <text x="84" y="214" font-family="monospace" font-size="11" fill="currentColor" opacity=".45" text-anchor="middle">recado no balcão</text>
+    <text x="216" y="214" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">ordem de serviço</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> A IA começa toda conversa sem saber nada do seu trabalho</h2>
+      <p>Quando você abre uma conversa nova, do outro lado não há ninguém que conheça a sua escola, a sua equipe ou o combinado da semana passada. Há um sistema que lê o que você escreveu naquela caixa e nada além disso. Tudo o que você não contar, ele preenche pela média do que já viu em milhões de textos — e a média é sempre genérica.</p>
+      <p>Esse conjunto de informações que você entrega junto com o pedido tem nome: é o <span class="gterm" tabindex="0" data-def="Contexto é todo material que você entrega junto com o pedido: o texto original, os dados, o exemplo de como você quer, e a situação em que aquilo vai ser usado.">contexto</span>. Ele não é enfeite do pedido. É a matéria-prima do trabalho.</p>
+      <p data-ex="professor">Um professor pede &ldquo;faça um resumo da aula de ontem&rdquo; e recebe um texto sobre o tema em geral, servível para qualquer turma do país. Ele não colou o próprio plano de aula, não disse que a turma é de sétimo ano e não avisou que o resumo é para quem faltou. Nada disso estava na caixa — então nada disso apareceu na resposta.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Material, saída e critério — o que o pedido precisa carregar</h2>
+      <p>Quem deixa um carro na oficina não diz só &ldquo;dá uma olhada&rdquo;. A ordem de serviço registra o que o dono ouviu, o que ele quer resolvido e quando precisa do carro de volta. É o que permite trabalhar sem interromper o dono a cada dúvida. Um pedido de trabalho para uma IA carrega as mesmas três informações.</p>
+      <p><b>O material</b> é o que ela precisa ler: o texto original, os números, o exemplo de como você quer. <b>A saída</b> é a forma da resposta: quantas linhas, em que tom, para quem vai ler. <b>O critério de pronto</b> é o que obrigatoriamente precisa aparecer para você aceitar o resultado.</p>
+      <p data-ex="gestora">Uma gestora precisava transformar uma norma de segurança de trinta páginas no cronograma do treinamento obrigatório da equipe. Em vez de pedir &ldquo;monta um cronograma disso&rdquo;, colou a norma, disse &ldquo;uma tabela de quatro colunas: tema, carga horária, público e mês&rdquo; e fechou com &ldquo;só está pronto se cobrir os cinco temas exigidos pela norma&rdquo;.</p>
+      <div class="qbefore-after">
+        <div class="qba-col qba-before">
+          <p class="qba-lbl">Antes</p>
+          <p class="qba-txt">&ldquo;Monta um cronograma de treinamento com base nessa norma.&rdquo;</p>
+        </div>
+        <div class="qba-col qba-depois">
+          <p class="qba-lbl">Depois</p>
+          <p class="qba-txt">Norma colada · tabela de quatro colunas: tema, carga horária, público e mês · só está pronto se cobrir os cinco temas exigidos.</p>
+        </div>
+        <p class="qba-saldo"><b>Saldo:</b> de quatro reescritas para um ajuste — cerca de vinte minutos devolvidos a cada rodada.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Quem decide o que é um bom resultado é você</h2>
+      <p>Das três partes, a que quase todo mundo esquece é a terceira. Material e formato a gente lembra porque são visíveis. O critério de pronto fica implícito na nossa cabeça — e o que fica só na nossa cabeça não chega do outro lado.</p>
+      <p>Critério de pronto é uma frase que permite responder sim ou não sem discussão. &ldquo;Fica bom&rdquo; não é critério, é desejo. &ldquo;Precisa citar as três decisões&rdquo; é critério: você conta três, ou não conta.</p>
+      <p data-ex="professor">Um professor de história que corrige oitenta devolutivas por bimestre escreveu o critério dele uma vez: cada devolutiva precisa apontar um acerto específico do texto do aluno e uma única coisa a melhorar, em até quatro linhas, sem elogio genérico. Com o critério na frente, dá para conferir a resposta em segundos.</p>
+      <div class="quiz" data-answer="b">
+        <p class="qk">Teste-se</p><p class="q">Você pediu &ldquo;um material de apoio sobre a nova regra para a equipe&rdquo; e recebeu um texto correto, bem escrito — que ninguém usou. O que faltou no pedido?</p>
+        <button class="opt" data-k="a">Uma ferramenta de IA mais avançada</button>
+        <button class="opt" data-k="b" data-fb="O texto estava correto, então o problema não era capacidade: era alvo. Sem dizer para quem é, em quantas linhas e o que precisa aparecer, qualquer resposta plausível cumpre o pedido — inclusive uma que não serve.">O critério de pronto: para quem é, em quantas linhas e o que precisa aparecer</button>
+        <button class="opt" data-k="c">Pedir de novo, com mais detalhes de contexto sobre a empresa</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> Antes de mandar executar, peça o que está faltando</h2>
+      <p>Existe um passo de trinta segundos que evita a maior parte do retrabalho: antes de mandar fazer, pergunte o que ainda falta para fazer bem feito. Escreva o seu pedido e feche com uma linha — &ldquo;antes de executar, me diga o que falta para você entregar isso direito&rdquo;.</p>
+      <p>A resposta costuma ser uma lista curta e desconfortável: falta o público, falta o prazo, falta o texto original. É exatamente o que você teria descoberto depois de ler uma resposta ruim — só que agora você descobre antes, e ainda está com o assunto fresco na cabeça.</p>
+      <p data-ex="gestora">Uma gestora usou essa linha antes de pedir o aviso sobre a nova regra de reembolso de despesas. A resposta perguntou a partir de que mês a regra valia e se alcançava quem já tinha pedido reembolso naquele mês. As duas informações faltavam mesmo — e teriam gerado um aviso errado enviado para a equipe inteira.</p>
+      <div class="qanchor"><p>A IA não adivinha o que você não escreveu.</p></div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p1" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Transforme um pedido seu de verdade num pedido completo</h3>
+      <p class="pgoal">Pronto quando a resposta voltar utilizável sem reescrita — só ajuste fino. Cerca de 10 min.</p>
+      <p class="psafe">Nada aqui é enviado para ninguém nem salvo em lugar nenhum além da sua própria conversa. Se a resposta vier estranha, apague e mande de novo mudando uma linha — não existe limite de tentativas nem prejuízo em errar.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">MATERIAL
+&lt;cole aqui o texto, os dados ou o exemplo que ela precisa ler&gt;
+
+SAÍDA
+Formato: &lt;ex.: até 10 linhas, em tópicos&gt;
+Para quem: &lt;ex.: minha equipe, que ainda não conhece essa regra&gt;
+Tom: &lt;ex.: cordial e direto, sem formalidade excessiva&gt;
+
+CRITÉRIO DE PRONTO
+Só está pronto se: &lt;ex.: citar as 3 decisões e o responsável de cada uma&gt;
+
+Antes de executar, me diga o que falta para você entregar isso direito.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Escolha um pedido que você já fez esta semana e que voltou ruim. Preencha as três partes do molde acima com o caso real.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Mande e leia primeiro a lista do que está faltando. Complete o que ela apontou e só então peça para executar.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Compare com a resposta antiga. Você deve ver o critério de pronto cumprido item por item — confira contando, não pela impressão geral.</span></label></li>
+      </ol>
+      <p class="pdone">Você acabou de transformar uma pergunta solta num pedido completo e recebeu de volta algo utilizável sem reescrever.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> o que você não escreve não atravessa: a caixa do pedido é a única entrada, e o que falta nela é preenchido pela média">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="18" y="40" width="74" height="54" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="55" y="32" font-family="monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="middle">o que você sabe</text>
+          <path d="M30 56h50M30 68h38M30 80h46" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <rect x="18" y="112" width="74" height="30" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M30 127h34" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="55" y="158" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">o que você escreveu</text>
+          <path d="M96 127h34" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M124 122l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="136" y="100" width="66" height="54" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="169" y="172" font-family="monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="middle">resposta</text>
+          <path d="M148 118h42M148 130h30M148 142h38" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M96 68h30" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4" opacity=".35"/>
+          <path d="M130 62l-8 12M122 62l8 12" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> as três partes que fazem um pedido chegar inteiro — falta uma, e a resposta cai na média">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="24" y="26" width="172" height="40" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="38" y="44" font-family="monospace" font-size="10" fill="var(--accent)">material</text>
+          <path d="M38 54h130" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <rect x="24" y="80" width="172" height="40" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="38" y="98" font-family="monospace" font-size="10" fill="var(--accent)">saída</text>
+          <path d="M38 108h96" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <rect x="24" y="134" width="172" height="40" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="38" y="152" font-family="monospace" font-size="10" fill="var(--accent)">critério de pronto</text>
+          <path d="M38 162h112" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M14 46v108" stroke="var(--accent)" stroke-width="1.4" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> critério de pronto é o que se conta: ou os três itens estão lá, ou não estão">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="30" y="34" width="160" height="132" rx="6" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M48 64l7 7 13-14" stroke="var(--accent)" stroke-width="2"/>
+          <path d="M80 66h84" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M48 100l7 7 13-14" stroke="var(--accent)" stroke-width="2"/>
+          <path d="M80 102h70" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <circle cx="57" cy="136" r="8" stroke="currentColor" stroke-width="1.6" opacity=".5"/>
+          <path d="M80 138h58" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
+          <text x="110" y="188" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">2 de 3 — ainda não</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> a pergunta de trinta segundos: a lista do que falta chega antes da resposta ruim, não depois">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="26" y="30" width="76" height="36" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="64" y="52" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">pedido</text>
+          <path d="M64 70v22" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M59 86l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="18" y="98" width="92" height="46" rx="5" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 4"/>
+          <text x="64" y="118" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">o que falta?</text>
+          <path d="M34 130h60" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M110 121h34" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M138 116l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="150" y="98" width="52" height="46" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M162 116h28M162 128h20" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="176" y="166" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">executa</text>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>A IA começa cada conversa sem saber nada do seu trabalho: o que ela não recebe, ela preenche pela média — e a média volta genérica.</li>
+    <li>Um pedido completo entrega três coisas: o material que ela lê, a forma da resposta e o critério de pronto.</li>
+    <li>Quem define o que é um bom resultado é você. A ferramenta só consegue perseguir um alvo que foi escrito.</li>
+    <li>Perguntar o que falta antes de mandar executar custa meio minuto e devolve o retrabalho de um texto inteiro.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de conseguir escrever um pedido que volta pronto para usar.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: pegue o próximo pedido que você já ia fazer hoje e escreva as três partes antes de mandar. Guarde o texto — na Aula 5 ele vira um molde.</p>
+  <p class="na-hook">Na próxima aula você resolve o problema seguinte: o pedido ficou bom, a resposta chegou bem escrita — e ainda pode estar errada. Você vai montar a régua que separa uma da outra em dois minutos.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-2">próxima aula →</a></nav>
+<footer>Aula 1 · OSWork v5 · INEMA.CLUB PRO</footer>
+
+<script type="application/json" id="cards-1">
+[
+  {"front":"Você mandou hoje o mesmo tipo de pedido de ontem e a resposta voltou genérica outra vez. Qual das três partes provavelmente ficou de fora?","back":"O material. Sem o texto, os números ou o exemplo colados junto, ela responde pela média do que já viu — e a média nunca tem a cara do seu trabalho."},
+  {"front":"Qual a diferença entre pedir \"escreva um comunicado curto\" e pedir \"escreva em até 120 palavras, em três parágrafos\"?","back":"A primeira é um desejo e depende de opinião. A segunda permite conferir cumprimento contando, sem discussão."},
+  {"front":"Antes de mandar executar um pedido longo, o que você escreve na última linha — e o que ganha com isso?","back":"Escreve que ela diga o que falta para entregar direito. Meio minuto de checagem no lugar de um texto inteiro perdido."},
+  {"front":"Uma gestora tem três minutos para pedir o aviso da nova regra de reembolso. O que ela escreve primeiro, antes de qualquer frase do aviso?","back":"O critério de pronto: a partir de que mês vale, quem alcança, e que caiba em um parágrafo. É o alvo — sem ele, qualquer texto plausível passa."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="21min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: professor, gestora, professor, gestora)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 10 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz com data-fb na opção certa)
+-->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===== AULA 2 ===== -->
+<section class="view" id="v-aula-2" data-aula="2" data-tempo="22min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 2</p>
+    <h1>A régua de<br><em>conferência</em></h1>
+
+    <p class="promise">Ao fim desta aula você consegue conferir uma resposta de IA em menos de dois minutos, usando uma régua de três itens que você mesma escreve antes de pedir.</p>
+
+    <p class="why">A resposta errada chega com exatamente o mesmo tom da resposta certa: bem escrita, organizada, sem hesitação. Sem uma lista curta anotada antes de pedir, você confere pela impressão de estar bem escrito. E esse é o único sinal que a ferramenta sempre acerta. O custo aparece quando o número errado já saiu no material entregue.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <rect x="30" y="52" width="230" height="26" rx="3" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
+    <rect x="30" y="104" width="230" height="26" rx="3" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
+    <path d="M30 168h240" stroke="var(--accent)" stroke-width="2"/>
+    <path d="M30 168v-14M66 168v-9M102 168v-14M138 168v-9M174 168v-14M210 168v-9M246 168v-14" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M260 46v40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4" opacity=".45"/>
+    <path d="M246 98v40" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <text x="145" y="30" font-family="monospace" font-size="11" fill="currentColor" opacity=".5" text-anchor="middle">duas tábuas do mesmo tamanho</text>
+    <text x="145" y="196" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">só o metro mostra qual sobra</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> O tom seguro da resposta não diz nada sobre ela estar certa</h2>
+      <p>Uma IA de texto não guarda um arquivo de verdades para consultar. Ela monta a frase seguinte escolhendo a palavra mais provável depois da anterior. Quando o material existe, a palavra provável costuma ser a correta. Quando falta material, a palavra provável continua chegando — só que agora ela preenche o buraco com algo plausível.</p>
+      <p>Por isso o dado inventado nunca vem com aviso. Ele chega na mesma frase firme, com a mesma pontuação e a mesma calma do resto. Você não vai perceber lendo: as duas versões têm a mesma aparência de acerto.</p>
+      <p data-ex="professor">Um professor de geografia pediu um parágrafo de apoio sobre a bacia de um rio brasileiro. Voltou um texto limpo, com extensão em quilômetros e ano de uma cheia histórica. A extensão estava certa. O ano da cheia estava trocado por dois — e nada no texto separava um do outro.</p>
+      <div class="quiz" data-answer="c">
+        <p class="qk">Teste-se</p><p class="q">Duas respostas sobre o mesmo material chegaram bem escritas e discordam num valor. Qual sinal resolve a dúvida?</p>
+        <button class="opt" data-k="a">A que soou mais segura e detalhada</button>
+        <button class="opt" data-k="b">A que veio da ferramenta mais recente</button>
+        <button class="opt" data-k="c" data-fb="Firmeza e riqueza de detalhe são efeito do modo como o texto é montado, não prova de origem. O único juiz é o material que você entregou: o valor está lá dentro, ou não está.">Nenhum dos dois: só a comparação com o material de origem</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Escreva os três itens antes de mandar o pedido</h2>
+      <p>Conferir depois, no improviso, quase sempre vira uma releitura preguiçosa. A saída é anotar antes o que você vai cobrar. Isso é a <span class="gterm" tabindex="0" data-def="Régua de conferência é uma lista de três itens que você escreve antes de fazer o pedido. Com ela você checa a resposta contra o material de origem, não pela impressão de estar bem escrita.">régua de conferência</span>: três linhas, escritas enquanto o assunto ainda está fresco.</p>
+      <p><b>Um</b>, o fato que você já sabe de cor — a isca. Se ele sair errado, o resto não merece leitura. <b>Dois</b>, o número ou nome que precisa bater com a fonte, conferido um por um. <b>Três</b>, o que não pode aparecer: nenhuma afirmação que não esteja no material entregue.</p>
+      <p data-ex="gestora">Uma gestora ia montar o quadro de férias da equipe. Antes de pedir, anotou três linhas. O saldo de dias dela mesma, que ela sabe de cor. As datas de saída dos colegas, para bater com a planilha. E a proibição de citar regra fora do documento colado.</p>
+      <div class="qbefore-after">
+        <div class="qba-col qba-before">
+          <p class="qba-lbl">Antes</p>
+          <p class="qba-txt">Ler a resposta inteira duas vezes procurando algo estranho, e mandar assim mesmo quando nada salta aos olhos.</p>
+        </div>
+        <div class="qba-col qba-depois">
+          <p class="qba-lbl">Depois</p>
+          <p class="qba-txt">Três linhas escritas antes do pedido: a isca que você já sabe, os números que precisam bater, e o que não pode aparecer.</p>
+        </div>
+        <p class="qba-saldo"><b>Saldo:</b> de cerca de oito minutos de releitura insegura para uma conferência de dois minutos, com um ponto de parada claro.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Você troca de ferramenta; a régua continua a mesma</h2>
+      <p>Existem várias ferramentas de conversa por IA, e uma nova aparece a cada poucos meses. Elas mudam de tela, de nome e de preço. O que não muda é a forma como todas montam a frase — e, com ela, a chance de um dado plausível entrar sem aviso.</p>
+      <p>Isso é uma boa notícia para você: a régua que você escreveu não envelhece junto com a ferramenta. A mesma lista de três linhas vale na ferramenta de hoje e na que a sua escola vai adotar no ano que vem. Você aprende a conferir uma vez, não uma vez por ferramenta.</p>
+      <p data-ex="professor">Um professor de literatura mudou de ferramenta porque a antiga ficou lenta. Na primeira semana, a nova entregou uma lista de leituras com um título que aquela autora nunca escreveu. Ele pegou o erro no item dois da mesma régua: os títulos tinham de bater com o catálogo da biblioteca.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> Conferir é tarefa; decidir sobre alguém continua com você</h2>
+      <p>A régua resolve a parte checável: número, nome, data, citação. Existe outra parte que nenhuma lista cobre, porque ela não é sobre exatidão. É sobre consequência na vida de uma pessoa.</p>
+      <p>Um texto pode estar com todos os dados corretos e ainda assim propor algo que você não assinaria. Peça o levantamento, aceite o rascunho, confira os itens — e guarde para si a frase final que afeta alguém. Essa parte não é lenta por descuido: é lenta porque é sua.</p>
+      <p data-ex="gestora">Uma gestora usou a ferramenta para organizar os registros de faltas de um semestre inteiro. Os números vieram certos e conferidos. O parágrafo que sugeria o desligamento de uma das pessoas ela apagou na primeira leitura. Essa conclusão não sai de um texto pronto.</p>
+      <div class="qanchor"><p>Confiança no tom não é evidência de nada.</p></div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p2" data-mode="analise">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Ache o dado inventado em dois textos que parecem iguais</h3>
+      <p class="pgoal">Pronto quando você comparar a sua resposta com o gabarito, item por item. Cerca de 12 min.</p>
+      <p class="psafe">Este caso é fictício e fica aqui na página: nada é enviado, nada é salvo, ninguém vê o que você anotou. Se a sua resposta não bater com o gabarito, leia o comentário dele e volte ao material — errar aqui é o objetivo do exercício.</p>
+      <p>Sílvia coordena os serviços de apoio de uma escola e recebeu uma proposta de limpeza. Ela colou a proposta em duas ferramentas de IA e pediu a mesma coisa: um resumo de quatro linhas para levar à direção. Os dois textos voltaram bem escritos. Um deles traz uma condição que não existe na proposta.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">PROPOSTA (o material de origem)
+Limpeza Aurora · 3 visitas por semana · R$ 4.200 por mês
+Contrato de 12 meses · reajuste anual pelo índice de preços
+
+TEXTO A
+A Limpeza Aurora oferece três visitas semanais por R$ 4.200
+mensais, em contrato de 12 meses com reajuste anual. Inclui
+ainda duas visitas extras por trimestre, sem custo adicional.
+
+TEXTO B
+Proposta da Limpeza Aurora: três visitas por semana,
+R$ 4.200 por mês, contrato de 12 meses e reajuste anual
+pelo índice de preços. Não há outras condições descritas.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Escreva a régua de Sílvia em três linhas, olhando só para a proposta. Uma isca, os números que precisam bater, e o que não pode aparecer.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Responda por escrito: qual texto falha, qual dos três itens pega a falha, e o que Sílvia faz antes de levar o resumo à direção.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Abra o gabarito abaixo e compare as suas três respostas com as dele, uma a uma.</span></label></li>
+      </ol>
+      <details>
+        <summary>Gabarito comentado</summary>
+        <p><b>Qual texto falha:</b> o Texto A. As duas visitas extras por trimestre não estão na proposta. Repare que ele é o texto mais bem escrito dos dois — a frase extra é justamente o que o deixa mais completo aos olhos.</p>
+        <p><b>Qual item pega:</b> o terceiro — o que não pode aparecer. Os números do Texto A batem todos com a proposta, então os itens um e dois passam. Só a proibição de citar o que não foi entregue derruba a frase.</p>
+        <p><b>O que Sílvia faz:</b> usa o Texto B, ou apaga a frase extra do A. E não pede à ferramenta para confirmar se a condição existe: ela confirma na proposta, que é a fonte.</p>
+      </details>
+      <p class="pdone">Você acabou de conferir duas respostas contra o material de origem em poucos minutos, com uma régua escrita antes.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> as duas respostas saem com o mesmo acabamento; o furo está no conteúdo, não na forma, e a leitura sozinha não separa uma da outra">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="20" y="40" width="78" height="96" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M32 62h54M32 78h44M32 94h54M32 110h38" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <rect x="122" y="40" width="78" height="96" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M134 62h54M134 94h54M134 110h38" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M134 78h44" stroke="var(--accent)" stroke-width="2"/>
+          <circle cx="188" cy="78" r="6" stroke="var(--accent)" stroke-width="1.6"/>
+          <text x="59" y="158" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">certa</text>
+          <text x="161" y="158" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">um dado inventado</text>
+          <text x="110" y="182" font-family="monospace" font-size="10" fill="currentColor" opacity=".45" text-anchor="middle">mesmo acabamento</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> a régua nasce antes do pedido e volta depois como filtro: três linhas escritas de um lado, três checagens do outro">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="18" y="28" width="84" height="30" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="60" y="48" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">escreve a régua</text>
+          <path d="M60 62v18" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M55 74l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="18" y="86" width="84" height="30" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="60" y="106" font-family="monospace" font-size="9" fill="currentColor" opacity=".6" text-anchor="middle">faz o pedido</text>
+          <path d="M102 101h26" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M122 96l7 5-7 5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="132" y="70" width="70" height="62" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M144 88h46M144 101h46M144 114h46" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <text x="167" y="152" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">confere os 3 itens</text>
+          <path d="M60 130v34h72" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 4"/>
+          <text x="110" y="182" font-family="monospace" font-size="9" fill="currentColor" opacity=".45" text-anchor="middle">a mesma lista, dos dois lados</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> três ferramentas diferentes entram na mesma régua: o que muda é a tela, não o jeito de conferir">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="16" y="26" width="52" height="30" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="16" y="82" width="52" height="30" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="16" y="138" width="52" height="30" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M68 41h34l10 46M68 97h44M68 153h34l10-46" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <rect x="116" y="74" width="86" height="46" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M128 88h62M128 97h62M128 106h62" stroke="var(--accent)" stroke-width="1.4" opacity=".75"/>
+          <text x="159" y="140" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">a mesma régua</text>
+          <text x="42" y="188" font-family="monospace" font-size="9" fill="currentColor" opacity=".45" text-anchor="middle">ferramentas</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> a linha de corte: o que é checável atravessa a régua; a decisão sobre uma pessoa para antes dela e fica com você">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <path d="M110 24v152" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="5 5"/>
+          <rect x="20" y="40" width="72" height="26" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="20" y="78" width="72" height="26" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="20" y="116" width="72" height="26" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M92 53h26M92 91h26M92 129h26" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M112 48l7 5-7 5M112 86l7 5-7 5M112 124l7 5-7 5" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="56" y="30" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">número, nome, data</text>
+          <rect x="124" y="150" width="78" height="30" rx="5" stroke="var(--accent)" stroke-width="1.6"/>
+          <text x="163" y="170" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">fica com você</text>
+          <path d="M163 96v42" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M158 132l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="163" y="88" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">decisão sobre alguém</text>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Uma resposta errada chega com o mesmo tom firme de uma certa. O tom é efeito da forma como o texto é montado, não prova de origem.</li>
+    <li>A régua tem três linhas, anotadas antes do pedido. Uma isca que você já sabe, os dados que precisam bater com a fonte, e o que não pode aparecer.</li>
+    <li>Mudar de ferramenta não muda a régua. Você aprende a conferir uma vez, e leva essa lista para a próxima tela que aparecer.</li>
+    <li>A conferência cobre o que é checável. A frase que decide algo sobre uma pessoa continua sendo escrita por você.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de conseguir separar uma resposta confiável de uma bem escrita, em poucos minutos.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: pegue a última resposta de IA que você usou sem conferir. Escreva as três linhas da régua agora e passe o texto por elas. Anote o que encontrou.</p>
+  <p class="na-hook">Na próxima aula você resolve o problema seguinte: conferir toda vez cansa, porque você reexplica o mesmo material em cada conversa nova. O ganho vem de guardar o contexto num lugar só — uma pasta por frente de trabalho.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-3">próxima aula →</a></nav>
+<footer>Aula 2 · OSWork v5 · INEMA.CLUB PRO</footer>
+
+<script type="application/json" id="cards-2">
+[
+  {"front":"Um texto de apoio veio com três datas e você só tem certeza de uma delas. Qual você confere primeiro, e por quê?","back":"A que você sabe de cor, porque ela é a isca. Se essa sair errada, o restante do texto não merece leitura: você descarta e pede de novo."},
+  {"front":"Você vai pedir o resumo de uma proposta e tem trinta segundos sobrando. O que escreve antes de mandar?","back":"As três linhas que vai cobrar depois: um dado que você já sabe de cor, os números para bater com o documento, e a proibição de citar condição que não esteja nele."},
+  {"front":"Sua escola adotou outra ferramenta de IA na segunda-feira. O que muda no seu jeito de conferir?","back":"Nada muda. A troca altera a tela e o nome, não a chance de um dado plausível entrar sem aviso no meio do texto."},
+  {"front":"Um relatório chega com os números conferidos e sugere afastar um funcionário. O que você não entrega à ferramenta ali?","back":"O julgamento sobre a pessoa. Checar o dado é tarefa; assinar a consequência na vida de alguém continua sendo seu."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-2 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1, verbatim do currículo)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: professor, gestora, professor, gestora)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="analise"] (exatamente 1, com mini-caso + 3 perguntas + gabarito em <details>)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1, 4 itens afirmativos)
+  [OK] next-action        .next-action no fecho (1, com gancho para a Aula 3)
+  [OK] cards              <script id="cards-2"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz com data-fb na opção certa)
+-->
+</section>
+
+<!-- ===== AULA 3 ===== -->
+<section class="view" id="v-aula-3" data-aula="3" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 3</p>
+    <h1>Uma pasta<br>por <em>contexto</em></h1>
+
+    <p class="promise">Ao fim desta aula você tem no seu computador uma pasta por frente de trabalho, com o material que a IA precisa ler — e sabe dizer o que nunca entra ali.</p>
+
+    <p class="why">Hoje o material de um assunto seu está espalhado. Um pedaço no e-mail, outro na área de trabalho, outro dentro de um anexo antigo. Por isso você reexplica tudo de novo a cada conversa nova. Não é falta de memória sua — é falta de um lugar único onde o assunto mora inteiro.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <path d="M24 52l40-14 8 20-38 16zM22 92l42-8 4 22-44 6zM30 132l40 4-2 22-42-8z" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <text x="50" y="206" font-family="monospace" font-size="11" fill="currentColor" opacity=".45" text-anchor="middle">solto</text>
+    <rect x="140" y="46" width="136" height="128" rx="6" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M140 62h136" stroke="var(--accent)" stroke-width="1.5" opacity=".5"/>
+    <path d="M156 70v88h44V70M156 78h44" stroke="var(--accent)" stroke-width="1.5" opacity=".8"/>
+    <path d="M206 70v88h44V70M206 78h44" stroke="var(--accent)" stroke-width="1.5" opacity=".55"/>
+    <path d="M166 96h24M166 110h20M216 96h24" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+    <path d="M208 186h52M208 186l-6-5M208 186l-6 5" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
+    <text x="208" y="206" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">gaveta</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Um assunto, uma pasta — e nada de pasta por tipo de arquivo</h2>
+      <p>Chamo de <span class="gterm" tabindex="0" data-def="Frente de trabalho é um assunto seu que tem começo, meio e fim e volta várias vezes: uma contratação, uma disciplina do semestre, um evento, um relatório anual.">frente de trabalho</span> qualquer assunto que volta a aparecer na sua semana e tem vida própria. Cada frente merece uma pasta só dela, no seu computador, com o material daquele assunto reunido.</p>
+      <p>A regra é simples: a pasta é organizada pelo assunto, não pelo tipo de arquivo. Você não quer uma pasta de planilhas e outra de textos. Você quer uma pasta em que, ao abrir, a frente inteira está ali — o texto, o número e o combinado.</p>
+      <p data-ex="gestora">Uma gestora abriu uma pasta chamada &ldquo;contratação analista júnior&rdquo;. Dentro dela ficaram a descrição da vaga, as três perguntas da entrevista e a tabela de faixas salariais aprovada. Antes, cada um desses três materiais estava em um lugar diferente, e ela reexplicava a vaga a cada conversa nova com a IA.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="Windows 11 e macOS, set/2026">
+      <h2><span class="n">02</span> Dentro da pasta vai o que você teria que explicar de boca</h2>
+      <p>Você vai ver uma pasta comum, igual a qualquer outra do seu computador, com três ou quatro arquivos dentro. Nada aqui é diferente do que você já usa todo dia — muda só o critério de quem entra. O critério é este: entra o que você teria que explicar de boca se um colega novo assumisse a frente amanhã.</p>
+      <p>Na prática isso costuma dar quatro coisas. O material de origem: o texto, a tabela, as anotações. Um exemplo do resultado que você considera bom. As regras do lugar onde aquilo será usado. E a decisão já tomada que ninguém deve reabrir.</p>
+      <p data-ex="professor">Um professor de matemática montou a pasta da recuperação do segundo semestre. Pôs a lista de conteúdos cobrados, uma prova antiga corrigida por ele e a orientação da coordenação sobre nota mínima. Com esses três, cada pedido de exercício novo sai no nível certo sem ele redigitar o combinado.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Jogar tudo dentro e esperar que a IA escolha.</b> A pasta vira um depósito: vinte versões do mesmo documento, o rascunho abandonado, o material de outro ano. Ela vai ler tudo com o mesmo peso e responder pela versão errada. Guarde a versão que vale hoje e mande as antigas para uma pasta chamada &ldquo;antigo&rdquo; dentro da mesma frente.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Dado pessoal e senha nunca entram — sem exceção de pressa</h2>
+      <p>Tudo o que está na pasta pode acabar sendo lido por um sistema de fora da sua casa. Por isso existe uma lista curta do que nunca entra. Documento de identificação de outra pessoa, endereço residencial, dado de saúde e número de conta. E qualquer senha ou código de acesso, inclusive os seus.</p>
+      <p>Quando o material só serve com os nomes, troque cada nome por um apelido antes de guardar: Aluno A, Colaborador B. Você mantém o sentido do caso e tira o que identifica alguém. Leva um minuto e não tem volta depois que o dado saiu.</p>
+      <p data-ex="gestora">Uma gestora ia guardar a planilha de avaliação de desempenho da equipe para pedir ajuda na escrita dos comentários. A planilha tinha nome completo, número de documento e salário. Ela salvou uma segunda cópia com Colaborador A, B e C, sem as colunas de documento e de salário. Só essa cópia foi para a pasta.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="Windows 11 e macOS, set/2026">
+      <h2><span class="n">04</span> Dez minutos por mês seguram a pasta de pé</h2>
+      <p>Toda pasta viva junta entulho. Não porque você é desorganizado, mas porque o trabalho anda: a versão de ontem vira a errada de hoje. Sem uma limpeza curta e marcada, em dois meses a pasta volta a ser o depósito que ela veio resolver.</p>
+      <p>Marque dez minutos no fim do mês e passe pela mesma sequência sempre. A meta não é deixar bonito. É garantir que, ao abrir a pasta, tudo o que está lá dentro ainda é verdade.</p>
+      <p data-ex="professor">Um professor de biologia faz isso na última sexta do mês, na pasta da feira de ciências. Em dez minutos ele tirou dois regulamentos vencidos e renomeou o cronograma para a data nova. O rascunho do convite já enviado desceu para a pasta &ldquo;antigo&rdquo;. A pasta ficou com cinco arquivos, todos válidos.</p>
+      <p>A sequência abaixo é a mesma toda vez, e nenhum passo exige decisão difícil. Você só olha, decide se vale hoje, e move o que não vale.</p>
+      <div class="qsteps">
+        <p class="qsk">A limpeza de dez minutos</p>
+        <ol>
+          <li><b>Abra a pasta e olhe um arquivo por vez.</b> Sem abrir todos: o nome e a data já dizem quase tudo.</li>
+          <li><b>Pergunte de cada um: isto ainda é verdade hoje?</b> Se não é, ele não pode continuar no primeiro nível.</li>
+          <li><b>Mande o que venceu para a pasta &ldquo;antigo&rdquo;.</b> Não apague — só tire da frente.</li>
+          <li><b>Renomeie o que ficou com nome confuso.</b> Use assunto e mês: &ldquo;cronograma setembro&rdquo;, não &ldquo;final v3 novo&rdquo;.</li>
+          <li><b>Confira a lista do que nunca entra.</b> Se algum dado pessoal escorregou para dentro no mês, tire agora.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p3" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Monte agora a pasta de uma frente de trabalho sua</h3>
+      <p class="pgoal">Pronto quando você abrir uma única pasta e enxergar, sem procurar em outro lugar, os três materiais que explicam a frente. Cerca de 12 min.</p>
+      <p class="psafe">Nada aqui é apagado. Mover um arquivo não destrói nada: ele sai de um lugar e aparece em outro. O próprio computador desfaz o último movimento se você mudar de ideia. Se algo parecer errado, pare e desfaça — nenhum passo desta prática tem efeito fora do seu computador.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Escolha uma frente de trabalho em andamento — uma que você tocou nesta semana e vai tocar de novo na próxima. Escreva o nome dela em voz alta antes de continuar.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Crie uma pasta nova na sua área de trabalho com o nome dessa frente, escrito como você falaria: &ldquo;contratação analista júnior&rdquo;, não &ldquo;proj2 final&rdquo;.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Mova para dentro três materiais que já existem. O texto de origem, um exemplo do resultado que você considera bom, e a regra que ninguém deve reabrir.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="4"> <span>Abra cada um dos três e confira a lista do que nunca entra. Se houver nome completo, documento, endereço, dado de saúde ou senha, salve uma cópia com apelidos e guarde só essa.</span></label></li>
+      </ol>
+      <p class="pdone">Você acabou de reunir uma frente de trabalho inteira num lugar só. Dentro dela está o material que a IA precisa ler, e nada do que nunca deveria sair da sua mão.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> recortar por assunto junta o que se usa junto; recortar por tipo de arquivo separa justo o que precisava andar colado">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="18" y="34" width="80" height="54" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M30 52h30M30 64h44M30 76h22" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <text x="58" y="104" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">por tipo</text>
+          <rect x="18" y="120" width="80" height="44" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M30 138h40M30 150h28" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M104 100h20" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4" opacity=".35"/>
+          <rect x="130" y="52" width="74" height="96" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M130 68h74" stroke="var(--accent)" stroke-width="1.4" opacity=".6"/>
+          <path d="M142 86h50M142 102h40M142 118h48" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <text x="167" y="168" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">por assunto</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> o filtro da porta: entra o que você teria que explicar de boca, fica de fora o rascunho e a versão vencida">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <path d="M22 40h44M22 62h44M22 84h44M22 106h44M22 128h44" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M84 30v120" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M84 52h10M84 96h10M84 118h10" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M88 47l6 5-6 5M88 91l6 5-6 5M88 113l6 5-6 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M78 74l-10 10M68 74l10 10M78 136l-10 10M68 136l10 10" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <rect x="120" y="42" width="82" height="100" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M120 58h82" stroke="var(--accent)" stroke-width="1.4" opacity=".6"/>
+          <path d="M134 78h54M134 96h44M134 114h52" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="161" y="164" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">a pasta</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> o que identifica uma pessoa para antes da porta: o caso continua útil com apelido no lugar do nome">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="24" y="36" width="72" height="50" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M36 54h48M36 66h34" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="60" y="102" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">com nome</text>
+          <path d="M102 62h26" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M122 57l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="134" y="36" width="64" height="50" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M146 54h40M146 66h28" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <text x="166" y="102" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">Aluno A</text>
+          <rect x="60" y="126" width="100" height="44" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M96 140v-8a14 14 0 0128 0v8" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M74 148h14M74 158h24" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <path d="M132 140l-14 18M118 140l14 18" stroke="currentColor" stroke-width="1.6" opacity=".5"/>
+          <text x="110" y="188" font-family="monospace" font-size="9" fill="currentColor" opacity=".5" text-anchor="middle">senha: nunca</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> a limpeza é um ciclo curto e repetido: o que venceu desce um nível, o que vale continua na frente">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="62" y="26" width="96" height="40" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="110" y="50" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">ainda é verdade?</text>
+          <path d="M62 46H34v52" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M29 92l5 7 5-7" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M158 46h28v52" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M181 92l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="12" y="104" width="76" height="40" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="50" y="128" font-family="monospace" font-size="9" fill="currentColor" opacity=".6" text-anchor="middle">antigo</text>
+          <rect x="132" y="104" width="76" height="40" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="170" y="128" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">fica</text>
+          <path d="M170 148v18H110v-92" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 5" opacity=".6"/>
+          <path d="M105 82l5-8 5 8" stroke="var(--accent)" stroke-width="1.4" opacity=".6"/>
+          <text x="110" y="186" font-family="monospace" font-size="9" fill="currentColor" opacity=".5" text-anchor="middle">todo mês</text>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Cada frente de trabalho merece uma pasta própria, recortada pelo assunto e não pelo tipo de arquivo.</li>
+    <li>Dentro vai aquilo que você teria que explicar de boca a um colega que assumisse a frente amanhã.</li>
+    <li>Documento de outra pessoa, endereço, dado de saúde, número de conta e senha ficam de fora.</li>
+    <li>Trocar o nome por um apelido resolve a maioria dos casos sem perder o sentido do material.</li>
+    <li>Dez minutos marcados no fim do mês impedem que a pasta volte a virar depósito.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de reunir uma frente de trabalho inteira num lugar só, com o material certo dentro.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: repita o movimento numa segunda frente e marque no calendário a limpeza de dez minutos da última sexta do mês.</p>
+  <p class="na-hook">Na próxima aula você resolve o problema seguinte: a pasta guarda o material, mas não guarda as suas regras. Você vai escrever a ficha de orientação dessa mesma frente: o tom, o que não inventar, como assinar. Uma vez só, em vez de repetir a cada pedido.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-4">próxima aula →</a></nav>
+<footer>Aula 3 · OSWork v5 · INEMA.CLUB PRO</footer>
+
+<script type="application/json" id="cards-3">
+[
+  {"front":"Você tem uma pasta de planilhas, uma de textos e uma de fotos, e mesmo assim reexplica o assunto a cada conversa. Qual é o recorte errado aqui?","back":"O recorte por formato do arquivo. Ele separa justo as peças que se usam juntas. Troque por um recorte por assunto: tudo da mesma contratação, ou da mesma disciplina, no mesmo lugar."},
+  {"front":"Chegou a planilha de avaliação da equipe com nome completo, documento e salário, e você quer ajuda para escrever os comentários de avaliação. O que você faz antes de guardar?","back":"Salva uma segunda cópia trocando cada pessoa por Colaborador A, B e C e apagando as colunas de documento e de salário. Só essa cópia vai para a pasta."},
+  {"front":"Sua pasta tem vinte arquivos e três deles são versões velhas do mesmo cronograma. Qual é o movimento de dez minutos que resolve, e por que não apagar?","back":"Mover as versões vencidas para uma subpasta chamada \"antigo\", dentro da mesma frente. Apagar tira a chance de voltar atrás; tirar da frente já basta para a IA não ler a versão errada."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-3 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (1, com 3 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=FERRAMENTA: teste-se não é obrigatório (marcador reflete a obrigação, não a presença)
+-->
+</section>
+
+<!-- ===== AULA 4 ===== -->
+<section class="view" id="v-aula-4" data-aula="4" data-tempo="22min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 4</p>
+    <h1>A ficha de orientação<br>do <em>projeto</em></h1>
+
+    <p class="promise">Ao fim desta aula você tem uma ficha de orientação escrita para uma frente de trabalho sua, que dispensa repetir suas regras a cada pedido.</p>
+
+    <p class="why">Você repete as mesmas três ou quatro exigências em toda conversa nova: mantenha o tom formal, não invente número, assine como coordenação. Nos dias calmos você lembra de todas. No dia corrido você esquece uma, e é justo nesse dia que o texto sai errado e vai para fora. A pasta da aula anterior guarda o material, mas não guarda nenhuma dessas regras.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <path d="M60 110L150 48l90 62" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <rect x="78" y="110" width="144" height="86" rx="4" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <rect x="132" y="148" width="36" height="48" rx="2" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <rect x="96" y="28" width="86" height="106" rx="5" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M112 52h54M112 68h54M112 84h38M112 100h48" stroke="var(--accent)" stroke-width="1.5" opacity=".8"/>
+    <circle cx="232" cy="150" r="9" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M241 150h22M258 150v10" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="150" y="222" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">o manual da casa</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="ferramenta" data-versao="telas de chat de IA, set/2026">
+      <h2><span class="n">01</span> Suas regras cabem num papel só, escrito uma vez</h2>
+      <p>Pense em quem cobre as suas férias. Você não fica ligando todo dia: deixa um papel com as combinações da casa, e a pessoa consulta sozinha. Uma <span class="gterm" tabindex="0" data-def="Ficha de orientação é um texto curto, escrito por você, com as regras que valem para tudo o que sai de uma frente de trabalho.">ficha de orientação</span> é esse papel, para a frente de trabalho.</p>
+      <p>Ela fica dentro da pasta que você montou na aula passada, junto do material. Sempre que abrir uma conversa nova sobre aquela frente, você anexa a ficha antes de pedir qualquer coisa. Suas regras chegam inteiras, sem você digitar nenhuma delas de novo.</p>
+      <p>Antes de você ver a ficha por dentro, na prática desta aula, uma tradução. O que você vai ver é um texto comum, em português, escrito do seu jeito — nada de tela especial nem de código. Em equipes de tecnologia esse mesmo papel costuma ser chamado de <b>AGENTS.md</b>. O nome é dele; o conteúdo é seu, e você só mexe nas frases.</p>
+      <p data-ex="gestora">Uma gestora de compras repetia duas exigências em toda conversa. Fornecedor tratado por razão social, e prazo sempre com data no calendário. Escreveu as duas linhas uma vez e parou de digitá-las.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Encher a ficha de material em vez de regras.</b> Muita gente cola dentro dela o contrato inteiro, a planilha do mês, a transcrição da reunião. A ficha incha, e a regra que importava se perde no meio.</p>
+        <p class="qerr-txt">A divisão é simples: material vai solto na pasta, regra vai na ficha. Se a frase muda a cada semana, é material. Se ela vale para tudo o que sai dali, é regra.</p>
+      </div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s41">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Quatro perguntas, e a ficha está escrita</h2>
+      <p>Ficha boa não é ficha longa. Quatro perguntas cobrem quase tudo o que você hoje repete de cabeça, e cada resposta cabe em duas linhas.</p>
+      <p><b>Quem lê o que sai daqui</b> define o tom e o vocabulário. <b>Como eu escrevo</b> guarda a sua marca: tamanho de frase, saudação, assinatura. <b>O que nunca pode aparecer</b> é o limite duro: nome de pessoa, número que você não conferiu, valor de contrato. <b>Como eu sei que está pronto</b> é o critério que você já usa desde a primeira aula.</p>
+      <p>Responda cada uma com algo que dá para conferir. &ldquo;Seja claro&rdquo; não serve, porque ninguém consegue dizer se foi cumprido. &ldquo;Frases de até vinte palavras&rdquo; serve: conta-se.</p>
+      <p data-ex="professor">Um professor de ciências escreveu a ficha do recado que vai na agenda das famílias. Quem lê: responsáveis, muitos com pouco tempo. Nunca pode aparecer: nome de aluno e nota individual. Pronto quando: cabe em um parágrafo e termina com a data.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s42">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Tem regra sua que vale sempre, e regra que é só daquela frente</h2>
+      <p>Depois da segunda ficha escrita você percebe que copiou linhas iguais nas duas. São as suas regras gerais: valem para tudo o que você produz, em qualquer frente. Elas merecem uma ficha só delas, guardada um nível acima das pastas.</p>
+      <p>As regras de projeto ficam na ficha de cada pasta, e só valem ali. Quando as duas se cruzam, vale a de projeto — ela é a mais próxima do trabalho. Escrever isso uma vez evita a discussão a cada pedido.</p>
+      <p data-ex="gestora">Uma gestora tem como regra geral nunca mandar número sem a fonte ao lado. No relatório mensal da diretoria vale ainda outra, só dali: comparar sempre com o mesmo mês do ano anterior, nunca com o mês passado.</p>
+      <div class="qsteps">
+        <p class="qsk">Separando as duas camadas</p>
+        <ol>
+          <li><b>Leia cada linha das suas fichas em voz alta.</b> Uma por vez, sem pressa.</li>
+          <li><b>Pergunte: isso vale em toda frente de trabalho minha?</b> Responda sim ou não, sem meio-termo.</li>
+          <li><b>Sim vira regra geral.</b> Recorte a linha e leve para a ficha geral, fora das pastas.</li>
+          <li><b>Não fica onde está.</b> É regra daquela frente e não atrapalha as outras.</li>
+          <li><b>Na dúvida, deixe como regra de projeto.</b> Uma regra estreita demais custa pouco; uma regra larga demais atravessa trabalhos que nada têm a ver.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s43">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> A ficha envelhece — marque a data e revise</h2>
+      <p>A ficha descreve um trabalho que muda. A equipe se reorganiza, a turma troca, a diretoria pede outro formato. A ficha continua a mesma, obedecida ao pé da letra, empurrando você para um jeito de trabalhar que já acabou.</p>
+      <p>O remédio custa pouco: escreva a data da revisão na primeira linha e volte nela quando o trabalho mudar de forma. Leia linha por linha e pergunte se ainda é verdade. Regra que não vale mais sai; não fica marcada como antiga, sai mesmo.</p>
+      <p data-ex="professor">Um professor montou a ficha do roteiro de estudos da recuperação em março, com a turma de manhã. Em agosto assumiu a turma da noite, com alunos que trabalham. A linha &ldquo;proponha leitura para o dia seguinte&rdquo; virou cobrança impossível, e ele só percebeu depois de três roteiros estranhos.</p>
+      <div class="quiz" data-answer="c">
+        <p class="qk">Teste-se</p><p class="q">Você escreveu a ficha da frente de atendimento e, três meses depois, as respostas começam a sair com um tratamento que a equipe abandonou. Qual é a causa mais provável?</p>
+        <button class="opt" data-k="a">A ferramenta piorou e precisa ser trocada por outra</button>
+        <button class="opt" data-k="b">A ficha ficou curta demais e precisa de mais regras</button>
+        <button class="opt" data-k="c" data-fb="A ficha é obedecida exatamente como está escrita. Quando o trabalho muda e ela não, ela passa a impor o combinado antigo com toda a firmeza. O sinal de alerta é justamente esse: resultados coerentes com uma realidade que acabou.">A ficha ficou desatualizada e ainda impõe o combinado antigo</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s44">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p4" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Escreva a ficha da pasta que você montou na aula passada</h3>
+      <p class="pgoal">Pronto quando a ficha responder às quatro perguntas e couber em uma tela, sem nenhum material colado dentro. Cerca de 12 min.</p>
+      <p class="psafe">A ficha é um texto seu, guardado no seu computador. Nada é enviado para lugar nenhum enquanto você não anexar. Se uma regra sair ruim, apague a linha e escreva outra — não existe versão definitiva nem prejuízo em mudar de ideia.</p>
+      <p>O molde abaixo é só um papel com quatro perguntas e um espaço para responder. Você troca o que está entre sinais de menor e maior, e não mexe em mais nada.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">FICHA DE ORIENTAÇÃO — &lt;nome da frente de trabalho&gt;
+Revisada em: &lt;dia/mês/ano&gt;
+
+QUEM LÊ O QUE SAI DAQUI
+&lt;ex.: os responsáveis pelos alunos do sexto ano&gt;
+
+COMO EU ESCREVO
+&lt;ex.: frases curtas, tom cordial, assino como coordenação&gt;
+
+O QUE NUNCA PODE APARECER
+&lt;ex.: nome de aluno, nota individual, telefone de ninguém&gt;
+
+COMO EU SEI QUE ESTÁ PRONTO
+&lt;ex.: cabe em um parágrafo e termina com a data do prazo&gt;</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Abra a pasta da aula passada e crie ali um texto novo com esse molde. Responda às quatro perguntas com o caso real. Não invente exigência que você não cobra.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Releia cada resposta e troque toda frase de opinião por uma que dá para conferir. Se não der para responder sim ou não olhando o resultado, reescreva a linha.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Anexe a ficha numa conversa nova e faça um pedido pequeno dessa frente. Confira item por item se as quatro respostas foram respeitadas.</span></label></li>
+      </ol>
+      <p class="pdone">Você acabou de deixar suas regras escritas em um lugar só, prontas para valerem em todo pedido daquela frente.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> a ficha mora na pasta e entra junto em toda conversa nova — as regras chegam sem serem digitadas">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <path d="M24 52h38l8 10h56v70H24z" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="74" y="150" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">pasta da frente</text>
+          <rect x="36" y="74" width="34" height="42" rx="3" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M44 86h18M44 96h18M44 106h12" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/>
+          <rect x="84" y="82" width="32" height="26" rx="3" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M126 96h34" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M154 91l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="166" y="70" width="36" height="52" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M176 86h16M176 98h16M176 110h10" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="184" y="142" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">conversa</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> cada pergunta vira um bloco da ficha, e cada resposta precisa ser conferível">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="26" y="24" width="168" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="40" y="45" font-family="monospace" font-size="10" fill="var(--accent)">quem lê</text>
+          <rect x="26" y="66" width="168" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="40" y="87" font-family="monospace" font-size="10" fill="var(--accent)">como eu escrevo</text>
+          <rect x="26" y="108" width="168" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="40" y="129" font-family="monospace" font-size="10" fill="var(--accent)">o que nunca entra</text>
+          <rect x="26" y="150" width="168" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="40" y="171" font-family="monospace" font-size="10" fill="var(--accent)">quando está pronto</text>
+          <path d="M16 41h8M16 83h8M16 125h8M16 167h8" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> duas camadas: a regra geral fica acima das pastas, a de projeto dentro de uma só — e a de projeto prevalece">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="54" y="22" width="112" height="34" rx="4" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <text x="110" y="43" font-family="monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="middle">regra geral</text>
+          <path d="M110 56v20M66 76v14M154 76v14" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M66 76h88" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <rect x="30" y="92" width="72" height="72" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="66" y="112" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">frente A</text>
+          <path d="M44 128h44M44 140h32" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <rect x="118" y="92" width="72" height="72" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="154" y="112" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">frente B</text>
+          <path d="M132 128h44M132 140h26" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <text x="110" y="186" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">perto do trabalho, mais forte</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> a data no topo marca a idade da ficha: na revisão, a regra que deixou de ser verdade sai da folha">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="34" y="26" width="152" height="148" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M50 46h64" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="150" y="50" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">revisada em</text>
+          <path d="M50 78h120M50 102h96" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M50 126h108" stroke="currentColor" stroke-width="1.4" opacity=".25"/>
+          <path d="M44 126h120" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <path d="M50 150h72" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="110" y="192" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">a linha riscada sai</text>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>A ficha de orientação guarda as suas exigências de uma frente de trabalho, e passa a valer sozinha em cada conversa nova.</li>
+    <li>Quatro perguntas bastam: quem lê, como você escreve, o que nunca pode aparecer e o que significa estar pronto.</li>
+    <li>Sua regra que vale em toda frente sobe um nível; a regra estreita fica na pasta dela e prevalece quando as duas se encontram.</li>
+    <li>Toda ficha envelhece junto com o trabalho, por isso ela leva data no topo e perde as linhas que deixaram de ser verdade.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de deixar as suas regras escritas em um lugar só, em vez de repetidas a cada pedido.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: anexe a ficha na próxima conversa dessa frente e observe quantas exigências você deixou de digitar. Anote a que faltou e acrescente a linha.</p>
+  <p class="na-hook">Na próxima aula você resolve o problema seguinte: a ficha vale para a frente de trabalho inteira, mas falta o molde da tarefa que você repete toda semana. É ele que você vai montar e guardar.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-3">← aula anterior</a><a href="#aula-5">próxima aula →</a></nav>
+<footer>Aula 4 · OSWork v5 · INEMA.CLUB PRO</footer>
+
+<script type="application/json" id="cards-4">
+[
+  {"front":"Você acabou de escrever uma linha dizendo \"seja objetivo\". Por que ela não sobrevive na ficha?","back":"Porque ninguém consegue dizer se foi cumprida. Troque por um limite contável, como frases de até vinte palavras."},
+  {"front":"Chegou uma planilha de mil linhas e uma exigência de tom. Qual das duas entra na ficha, e por quê?","back":"Só a exigência de tom. A planilha é conteúdo daquela semana e vai solta na pasta; a ficha carrega apenas o que rege tudo o que sai dali."},
+  {"front":"Sua ficha geral pede sempre citar a fonte, e a do projeto dispensa a fonte em rascunho interno. Qual das duas manda?","back":"A do projeto, por estar mais perto da tarefa. Em caso de empate ou dúvida, escreva a exceção na ficha estreita, nunca na ampla."},
+  {"front":"Uma gestora trocou de equipe e os textos continuam saindo no formato antigo, sem nenhum erro aparente. O que conferir primeiro?","back":"A data de revisão da ficha. Ela segue obedecida ao pé da letra, impondo um combinado que acabou — reler linha por linha resolve em minutos."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-4 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1, verbatim do currículo)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=FERRAMENTA: o teste-se não é obrigatório nesta linha da matriz.
+  Fato registrado: há 1 quiz opcional presente no step 4, com data-fb na opção certa — o
+  marcador acima reflete a obrigação, não a presença.
+  Dosagem (teto 5, usados 4): .qerr (step 1) · .qsteps (step 3) · quiz (step 4) · cards-4.
+  Densidade: quadros funcionais nos steps 1 e 3, nunca adjacentes.
+  data-kind: step 1 é ferramenta (depende da tela de anexo do chat) e leva carimbo
+  data-versao; steps 2, 3 e 4 são fundamento — valem em qualquer ferramenta.
+-->
+</section>
+
+<!-- ===== AULA 5 ===== -->
+<section class="view" id="v-aula-5" data-aula="5" data-tempo="21min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 5</p>
+    <h1>O molde<br>que você <em>reusa</em></h1>
+
+    <p class="promise">Ao fim desta aula você tem um molde de pedido guardado para a tarefa que mais se repete no seu mês, pronto para usar trocando só o que muda.</p>
+
+    <p class="why">Toda semana você reescreve quase o mesmo pedido do zero. Como escreve de cabeça, o resultado muda conforme o dia: numa terça calma sai bom, numa sexta corrida sai pela metade. A tarefa é a mesma; o que varia é a sua pressa na hora de pedir. Isso se conserta uma vez só.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <text x="150" y="24" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">a forma</text>
+    <rect x="86" y="34" width="128" height="52" rx="6" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M118 34v52M150 34v52M182 34v52" stroke="var(--accent)" stroke-width="1.2" opacity=".45"/>
+    <path d="M110 92v26M190 92v26" stroke="var(--accent)" stroke-width="1.4"/>
+    <path d="M105 112l5 7 5-7M185 112l5 7 5-7" stroke="var(--accent)" stroke-width="1.4"/>
+    <rect x="42" y="126" width="92" height="58" rx="6" stroke="currentColor" stroke-width="1.5" opacity=".6"/>
+    <path d="M60 148h56M60 164h34" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+    <rect x="166" y="126" width="92" height="58" rx="6" stroke="currentColor" stroke-width="1.5" opacity=".6"/>
+    <path d="M184 148h30M184 164h56" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+    <text x="88" y="206" font-family="monospace" font-size="11" fill="currentColor" opacity=".5" text-anchor="middle">junho</text>
+    <text x="212" y="206" font-family="monospace" font-size="11" fill="currentColor" opacity=".5" text-anchor="middle">julho</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> O que você refaz todo mês já está pedindo um molde</h2>
+      <p>Existe uma tarefa no seu mês que volta sempre igual na forma e diferente no conteúdo. Os números mudam, as pessoas mudam — mas o tipo de trabalho é o mesmo. Essa é a candidata natural a virar um molde.</p>
+      <p>Um <span class="gterm" tabindex="0" data-def="Molde é um pedido escrito uma vez e guardado. A parte que nunca muda já vem pronta. As partes que mudam ficam marcadas para você trocar a cada uso.">molde</span> é o pedido completo que você aprendeu na Aula 1, só que escrito de uma vez e guardado. Você não o refaz: você o abre, troca o que muda e manda. A decisão de como pedir foi tomada num dia em que você tinha calma, e continua valendo nos dias em que não tem.</p>
+      <p data-ex="gestora">Toda sexta-feira, uma gestora monta o relatório de indicadores do setor para a diretoria. Os quatro indicadores, o público e o tamanho são sempre os mesmos. Só os números da semana mudam. Ela reescreve esse pedido quarenta vezes por ano.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Guardar a resposta que ficou boa, em vez de guardar o pedido que a produziu.</b> É o reflexo natural: o texto bonito é o que está na tela, então é ele que vai para a pasta. Só que aquele texto serve para aquele caso e mais nenhum.</p>
+        <p class="qerr-txt">O que se reusa não é o resultado. É a receita que o gerou.</p>
+      </div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Separe o que nunca muda do que muda a cada uso</h2>
+      <p>Montar o molde é fazer uma separação, e só isso. Pegue o último pedido real dessa tarefa e passe um traço em cada linha: isto vale para todas as vezes, ou só para esta vez?</p>
+      <p>O que vale para todas as vezes fica escrito por extenso e nunca mais é digitado. É o seu papel, o público, o tom, o tamanho e as regras que você sempre repete. O que vale só para esta vez vira lacuna: um espaço marcado, com um exemplo curto do que entra ali. Lacuna sem exemplo abre demais, e a resposta sai diferente a cada uso.</p>
+      <p data-ex="professor">Um professor prepara a lista de exercícios de recuperação a cada bimestre. Fixo: doze questões, da mais simples à mais difícil, com gabarito comentado em duas linhas. Lacuna: o conteúdo do bimestre e os dois erros que mais apareceram na prova. Ele escreveu isso uma vez.</p>
+      <div class="quiz" data-answer="b">
+        <p class="qk">Teste-se</p><p class="q">Você montou um molde e usou duas vezes. As duas respostas vieram com tamanhos e tons bem diferentes. Qual a causa mais provável?</p>
+        <button class="opt" data-k="a">A ferramenta de IA mudou entre um uso e outro</button>
+        <button class="opt" data-k="b" data-fb="Tom e tamanho são a parte que vale para todas as vezes. Se vieram diferentes, é porque ficaram de fora do texto fixo ou foram escritos de forma vaga. Traga-os para a parte fixa, com número: quantas linhas, para quem, em que tom.">Tom e tamanho ficaram vagos ou de fora da parte fixa do molde</button>
+        <button class="opt" data-k="c">O conteúdo colado nas duas vezes era muito diferente</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> O critério de pronto mora dentro do molde</h2>
+      <p>Um molde que só tem material e formato economiza digitação, mas não economiza conferência. A parte que mais cansa na repetição é decidir, toda vez, se o resultado serve.</p>
+      <p>Escreva essa decisão uma vez, dentro do molde, em duas linhas: o que a resposta obrigatoriamente precisa ter, e o que ela nunca pode fazer. Com as duas no lugar, conferir vira contagem em vez de opinião.</p>
+      <p data-ex="gestora">Uma gestora de atendimento respondia à mão cada reclamação que chegava pelo formulário do site. No molde dela, a linha obrigatória diz: precisa repetir o problema com as palavras do cliente, dar um prazo com data e assinar pelo setor. A linha proibida diz: nunca prometer devolução de valor. A conferência caiu para vinte segundos por resposta.</p>
+      <div class="qsteps">
+        <p class="qsk">Montando o seu molde</p>
+        <ol>
+          <li><b>Abra o último pedido real</b> que você escreveu para essa tarefa — o de verdade, com os erros dele, não uma versão limpa de memória.</li>
+          <li><b>Marque cada linha</b> como fixa ou variável, perguntando se aquilo vale para todas as vezes ou só para esta.</li>
+          <li><b>Transforme cada linha variável em lacuna</b> e escreva ao lado um exemplo curto do que entra ali.</li>
+          <li><b>Acrescente as duas linhas de critério:</b> o que a resposta precisa ter e o que ela nunca pode fazer.</li>
+          <li><b>Use duas vezes seguidas</b> com conteúdos diferentes e corrija o que ficou ambíguo na primeira leitura.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="ChatGPT · set/2026">
+      <h2><span class="n">04</span> Guarde onde a sua mão vai achar na sexta-feira</h2>
+      <p>Um molde que você não encontra em dez segundos é um molde que você não usa. Ele mora na pasta da frente de trabalho da Aula 3, ao lado da ficha de orientação. Não solto na área de trabalho, nem perdido numa conversa antiga.</p>
+      <p>Dê a ele um nome que descreve a tarefa, não o conteúdo: &ldquo;molde — relatório semanal para a diretoria&rdquo; se acha; &ldquo;texto bom versão 3&rdquo; não. Muitos aplicativos de conversa também guardam textos reutilizáveis num menu chamado biblioteca, salvos ou favoritos. Se o seu tiver, use os dois lugares: a pasta é a sua cópia, o aplicativo é o atalho.</p>
+      <p data-ex="professor">Um professor escreve cartas de recomendação para ex-alunos que pedem ao longo do ano inteiro. Ele guardou o molde na pasta da escola com o nome &ldquo;molde — carta de recomendação&rdquo;. Quando chega um pedido em novembro, ele abre, troca o nome do aluno e o período, e entrega no mesmo dia.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p5" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Monte o seu molde e rode duas vezes com conteúdos diferentes</h3>
+      <p class="pgoal">Pronto quando o mesmo molde, preenchido com dois conteúdos diferentes, devolver duas respostas do mesmo tamanho e do mesmo tom. Cerca de 12 min.</p>
+      <p class="psafe">Nada aqui sai do seu computador nem é enviado para alguém. O molde é um texto seu, guardado por você, que você apaga ou reescreve quando quiser. Se a primeira rodada vier torta, mude uma linha e rode de novo — não há limite de tentativas nem custo em errar.</p>
+      <p>O bloco abaixo é um formulário. Onde diz &ldquo;escreva uma vez&rdquo;, você preenche hoje e deixa. Onde diz &ldquo;isto você troca&rdquo;, você preenche a cada uso. Você mexe só nesses trechos.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">MOLDE — &lt;escreva uma vez — nome da tarefa que se repete&gt;
+
+FIXO (vale para todas as vezes)
+Meu papel: &lt;escreva uma vez — ex.: coordenação de um setor de oito pessoas&gt;
+Para quem é: &lt;escreva uma vez — ex.: a diretoria, que não acompanha o dia a dia&gt;
+Tom e tamanho: &lt;escreva uma vez — ex.: direto, em tópicos, até 12 linhas&gt;
+
+LACUNAS (isto eu troco a cada uso)
+Material desta vez: &lt;isto você troca — cole aqui o texto ou os números&gt;
+Período desta vez: &lt;isto você troca — ex.: semana de 6 a 10 de outubro&gt;
+
+CRITÉRIO DE PRONTO (vale para todas as vezes)
+Só está pronto se: &lt;escreva uma vez — ex.: trazer os 4 indicadores com número e variação&gt;
+Nunca pode: &lt;escreva uma vez — ex.: usar número que não esteja no material colado&gt;</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Abra o último pedido real da sua tarefa mais repetida. Preencha as partes FIXO e CRITÉRIO DE PRONTO com o que vale para todas as vezes.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Preencha as lacunas com o conteúdo desta semana, mande e confira a resposta contando os itens do critério.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Rode o mesmo molde outra vez, só trocando as lacunas por um conteúdo diferente. Se o tamanho ou o tom mudarem, aperte a parte fixa e guarde o molde na pasta.</span></label></li>
+      </ol>
+      <p class="pdone">Você acabou de guardar um molde que devolve o mesmo padrão de resposta em qualquer dia da semana.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> três repetições do mesmo trabalho viram um texto só: o molde é a parte que sobrevive à troca de conteúdo">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="22" y="26" width="72" height="26" rx="4" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="22" y="62" width="72" height="26" rx="4" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="22" y="98" width="72" height="26" rx="4" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M34 39h40M34 75h28M34 111h46" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <text x="58" y="146" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">3 semanas</text>
+          <path d="M98 39h26q8 0 8 8v22M98 75h30M98 111h26q8 0 8-8v-22" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <path d="M126 70l6 7 6-7" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <rect x="142" y="54" width="60" height="44" rx="5" stroke="var(--accent)" stroke-width="1.5"/>
+          <path d="M154 70h36M154 82h24" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/>
+          <text x="172" y="120" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">molde</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> a linha cheia é o que nunca se digita de novo; a linha tracejada é a lacuna que você preenche a cada uso">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="26" y="24" width="168" height="152" rx="6" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="42" y="48" font-family="monospace" font-size="10" fill="var(--accent)">fixo</text>
+          <path d="M42 62h136M42 78h108" stroke="var(--accent)" stroke-width="1.6"/>
+          <text x="42" y="108" font-family="monospace" font-size="10" fill="currentColor" opacity=".6">lacuna</text>
+          <path d="M42 122h136M42 138h96" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 5" opacity=".55"/>
+          <path d="M42 158h136" stroke="var(--accent)" stroke-width="1.6"/>
+          <path d="M16 62v16M16 122v16" stroke="var(--accent)" stroke-width="1.4" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> com as duas linhas de critério dentro do molde, conferir deixa de ser opinião e vira contagem">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="30" y="22" width="160" height="70" rx="6" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M46 46h128M46 64h92" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <rect x="30" y="104" width="160" height="58" rx="6" stroke="var(--accent)" stroke-width="1.5"/>
+          <path d="M48 124l6 6 11-12" stroke="var(--accent)" stroke-width="2"/>
+          <path d="M76 126h94" stroke="var(--accent)" stroke-width="1.4" opacity=".7"/>
+          <path d="M48 142l14 14M62 142l-14 14" stroke="var(--warm)" stroke-width="1.8"/>
+          <path d="M76 149h72" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <text x="110" y="184" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">precisa ter · nunca pode</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> o molde mora na pasta da frente de trabalho, ao lado da ficha — e volta de lá a cada uso">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <path d="M28 52h54l10 14h100v96H28z" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+          <rect x="46" y="86" width="72" height="28" rx="4" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="82" y="105" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">ficha</text>
+          <rect x="46" y="124" width="72" height="28" rx="4" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="82" y="143" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">molde</text>
+          <path d="M122 138h44" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M160 133l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M166 138q16 0 16-20t-16-20h-40" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".6"/>
+          <path d="M132 93l-7 5 7 5" stroke="var(--accent)" stroke-width="1.4" opacity=".6"/>
+          <text x="110" y="186" font-family="monospace" font-size="10" fill="currentColor" opacity=".5" text-anchor="middle">abre · troca · devolve</text>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Uma tarefa que volta todo mês não pede reescrita do zero: pede um molde guardado.</li>
+    <li>No molde, a parte que vale sempre fica escrita por extenso, e a parte que varia vira lacuna com exemplo ao lado.</li>
+    <li>O que torna uma resposta aceitável fica dentro do próprio molde, e não na sua memória de um dia corrido.</li>
+    <li>Um molde que você não encontra em dez segundos é um molde que você não usa.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de conseguir guardar o pedido da sua tarefa mais repetida, pronto para reusar trocando só o que muda.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: use o molde na primeira ocorrência real que aparecer. Depois anote, ao lado dele, a única linha que você teve vontade de corrigir durante o uso.</p>
+  <p class="na-hook">Na próxima aula você resolve o problema seguinte: o molde melhora a cada uso, e é aí que ele corre risco. Você mexe para melhorar, o resultado piora, e a versão que funcionava já foi salva por cima. Você vai montar o ponto de retorno que evita isso.</p>
+</div>
+</div>
+
+<script type="application/json" id="cards-5">
+[
+  {"front":"Sexta-feira, no aperto, você não acha o seu molde dentro da pasta. Olhando para o nome que deu ao texto, qual foi o erro?","back":"O nome descreve o conteúdo daquele dia, e não a tarefa. Batizado pela tarefa, ele salta aos olhos na varredura; batizado por versão, some entre dezenas de textos."},
+  {"front":"Uma tarefa volta duas vezes por ano e outra volta quatro vezes por mês. Qual delas você transforma em molde primeiro?","back":"A de quatro vezes por mês. O trabalho de montar se paga pela frequência; com duas ocorrências anuais você gasta mais organizando do que economiza."},
+  {"front":"Qual a diferença entre salvar o texto que ficou bom e salvar o pedido que produziu aquele texto?","back":"O texto resolve um caso e morre ali. O pedido continua produzindo resultados novos toda vez que o conteúdo mudar."},
+  {"front":"Um professor tem vinte cartas de recomendação para entregar em duas semanas. O que ele escreve no molde para não avaliar cada carta no olho?","back":"As duas linhas de critério: o que toda carta obriga a ter e o que ela nunca pode dizer. Assim a conferência vira contagem rápida."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-5 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1, verbatim do currículo)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="21min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 12 min")
+  [OK] recap-autor        .recap-autor no fecho (1, 4 itens afirmativos)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-5"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=FERRAMENTA: teste-se não é obrigatório — o marcador reflete a obrigação, não a presença.
+  Fato registrado: há 1 quiz opcional no step 2, com data-fb na opção certa. Dosagem = qerr + qsteps + quiz + cards = 4 tipos (teto 5).
+-->
+</section>
+
+<!-- ===== AULA 6 ===== -->
+<section class="view" id="v-aula-6" data-aula="6" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 6</p>
+    <h1>Não perder<br>o que <em>já funcionava</em></h1>
+
+    <p class="promise">Ao fim desta aula você consegue mudar um material de trabalho sabendo que dá para voltar exatamente à versão anterior, sem depender de lembrar o que mudou.</p>
+
+    <p class="why">Você mexe numa regra da sua ficha de orientação para melhorar um detalhe, e o resultado da semana seguinte sai pior do que estava. Quando você tenta desfazer, percebe que salvou por cima da versão boa. Não foi descuido seu: faltou um ponto de retorno, e ninguém avisa que ele é necessário até o dia em que ele faz falta.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <rect x="24" y="36" width="150" height="112" rx="5" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
+    <path d="M44 66h110M44 84h92M44 102h116M44 120h74" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
+    <path d="M60 156h78" stroke="currentColor" stroke-width="3" opacity=".25"/>
+    <text x="99" y="180" font-family="monospace" font-size="11" fill="currentColor" opacity=".45" text-anchor="middle">o quadro será apagado</text>
+    <rect x="192" y="60" width="84" height="68" rx="4" stroke="var(--accent)" stroke-width="1.5"/>
+    <rect x="200" y="68" width="68" height="44" rx="2" stroke="var(--accent)" stroke-width="1.2" opacity=".6"/>
+    <path d="M208 84h52M208 96h38" stroke="var(--accent)" stroke-width="1.2" opacity=".7"/>
+    <circle cx="234" cy="46" r="7" stroke="var(--accent)" stroke-width="1.4"/>
+    <path d="M234 40v6l4 3" stroke="var(--accent)" stroke-width="1.2"/>
+    <text x="234" y="150" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">a foto guardada</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Toda melhora num material que já funciona é uma aposta</h2>
+      <p>Quando você muda uma regra de um material que já vinha entregando resultado, você está apostando que o novo será melhor. Às vezes é. Outras vezes a mudança resolve o detalhe que incomodava e estraga algo que vinha funcionando calado, sem você perceber. Você só descobre isso no uso seguinte, dias depois.</p>
+      <p>O problema não é apostar — apostar é como o material melhora. O problema é apostar sem <span class="gterm" tabindex="0" data-def="Ponto de retorno é uma cópia intacta da versão que funcionava, guardada antes da mudança, para você poder voltar a ela sem depender de memória.">ponto de retorno</span>. Sem ele, uma aposta ruim custa a reconstrução inteira do que você já tinha.</p>
+      <p data-ex="gestora">Uma gestora ajustou a regra de folga na planilha de escala do plantão para cobrir um feriado. A escala do feriado saiu certa. Duas semanas depois, a mesma regra ajustada deixou dois sábados seguidos sem ninguém — e a versão antiga da planilha já tinha sido salva por cima.</p>
+      <div class="qbefore-after">
+        <div class="qba-col qba-before">
+          <p class="qba-lbl">Antes</p>
+          <p class="qba-txt">Abrir o material, mudar a regra, salvar. A versão que funcionava deixa de existir no mesmo instante.</p>
+        </div>
+        <div class="qba-col qba-depois">
+          <p class="qba-lbl">Depois</p>
+          <p class="qba-txt">Duplicar o material com a data de hoje no nome, mudar a regra no arquivo original, salvar. As duas versões existem.</p>
+        </div>
+        <p class="qba-saldo"><b>Saldo:</b> quinze segundos a mais por alteração, no lugar de meia tarde reescrevendo do zero quando a mudança dá errado.</p>
+      </div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> A cópia com a data no nome, feita antes de mexer</h2>
+      <p>O ponto de retorno cabe em um gesto: antes de alterar qualquer material que já funciona, duplique o arquivo e coloque a data de hoje no começo do nome da cópia. Nada mais. Você fica com dois arquivos na mesma pasta: o que você vai mexer e o que ficou congelado no estado bom.</p>
+      <p>Use sempre a mesma forma de escrever a data, do maior para o menor: ano, mês e dia. Escrito assim, o computador ordena as cópias sozinho, da mais antiga para a mais recente. Você enxerga a linha do tempo só de olhar a pasta.</p>
+      <p data-ex="professor">Um professor de matemática guarda a ficha de orientação das provas de recuperação. Antes de afrouxar o critério de nota mínima, ele duplicou o arquivo e nomeou a cópia com a data daquele dia. O novo critério mostrou-se brando demais. Ele abriu a cópia, leu a regra antiga e recolocou a frase exata. Levou menos de um minuto, sem tentar lembrar nada.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Anote o porquê, porque o que mudou o material já mostra</h2>
+      <p>Guardar a cópia resolve metade. A outra metade é saber por que você mudou. Daqui a três meses, com os dois arquivos abertos lado a lado, você enxerga sozinho qual frase entrou e qual saiu. O que nenhum dos dois guarda é o motivo. E é o motivo que impede você de desfazer, meses depois, uma decisão bem tomada.</p>
+      <p>Então o registro é curto e tem uma coisa só: a razão. Uma linha por mudança, com a data, no mesmo lugar sempre. Um caderno serve, um arquivo de anotações serve. O critério é conseguir escrever em quinze segundos, senão você abandona na segunda semana.</p>
+      <p data-ex="gestora">Uma gestora mudou o modelo de ata do comitê de compras. Ela registrou: &ldquo;tirei o campo de valor estimado porque dois fornecedores receberam a ata por engano&rdquo;. Quatro meses depois, alguém sugeriu recolocar o campo. A linha respondeu em dois segundos o que a memória de ninguém respondia.</p>
+      <div class="qanchor"><p>O material mostra o que mudou. Só você guarda o porquê.</p></div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> Uma linha por falha, escrita no dia em que ela acontece</h2>
+      <p>O mesmo caderno recebe um segundo tipo de linha: as falhas. Toda vez que um resultado sai errado e você conserta, escreva a data, o que saiu errado e o menor conserto que resolveu. Uma linha, sem narrativa. Escrita no dia, não no fim do mês, porque no fim do mês você já esqueceu o conserto.</p>
+      <p>Isoladas, essas linhas parecem inúteis. Em dez ou doze linhas, elas deixam de parecer. O que aparece é a repetição: o mesmo tipo de erro voltando por caminhos diferentes. Aí você para de consertar o resultado do dia e corrige a regra que produz o erro. Costuma ser uma frase faltando na sua ficha.</p>
+      <p data-ex="professor">Um professor de ciências anotou por um mês as falhas do roteiro de laboratório gerado com IA. Três linhas diziam a mesma coisa: faltou o aviso de segurança do material aquecido. Ele parou de acrescentar o aviso à mão toda semana e escreveu a exigência na ficha, uma vez.</p>
+      <div class="quiz" data-answer="c">
+        <p class="qk">Teste-se</p><p class="q">Você mudou uma regra da sua ficha há duas semanas e o resultado piorou. Você tem a cópia datada guardada, mas não anotou nada. O que você perdeu?</p>
+        <button class="opt" data-k="a">A versão anterior do material, que precisa ser reescrita à mão</button>
+        <button class="opt" data-k="b">Nada: a cópia datada resolve sozinha qualquer situação</button>
+        <button class="opt" data-k="c" data-fb="A cópia te devolve o texto anterior inteiro, então a versão não se perdeu. O que sumiu foi a razão da mudança. Você volta atrás sem saber qual problema aquela regra resolvia, e corre o risco de recriá-lo.">A razão da mudança — você volta atrás sem saber que problema aquela regra resolvia</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p6" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Crie o ponto de retorno da sua ficha de orientação</h3>
+      <p class="pgoal">Pronto quando existirem dois arquivos na pasta — a cópia datada e a ficha alterada — e uma linha escrita com o motivo. Cerca de 10 min.</p>
+      <p class="psafe">Você não apaga nada nesta prática: o primeiro passo é justamente duplicar. Se a alteração não agradar, abra a cópia e volte ao texto anterior. Nada aqui é enviado para ninguém, e refazer quantas vezes quiser não tem custo.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Abra a pasta da frente de trabalho e encontre a ficha de orientação que você escreveu na Aula 4. Não abra o arquivo ainda.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Duplique a ficha e renomeie a cópia começando pela data de hoje no formato ano-mês-dia, seguida do nome antigo. Exemplo: 2026-09-21 ficha atendimento.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Agora abra a ficha original e altere uma regra que vem incomodando você — uma só, a que mais atrapalha. Salve.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="4"> <span>No seu caderno ou num arquivo de anotações, escreva uma linha com a data e o motivo da mudança. Aceitável quando a linha responde &ldquo;por quê&rdquo; e não &ldquo;o quê&rdquo;.</span></label></li>
+      </ol>
+      <p class="pdone">Você acabou de alterar um material de trabalho com a versão anterior inteira guardada e o motivo registrado fora da sua memória.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> toda alteração abre dois caminhos; sem cópia guardada, o caminho de volta não existe">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="20" y="82" width="58" height="36" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="49" y="104" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">funciona</text>
+          <path d="M82 100h26" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M102 95l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <circle cx="118" cy="100" r="9" stroke="currentColor" stroke-width="1.4" opacity=".6"/>
+          <path d="M128 94l24-30M128 106l24 30" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="152" y="44" width="50" height="32" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="177" y="64" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">melhor</text>
+          <rect x="152" y="124" width="50" height="32" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".6"/>
+          <text x="177" y="144" font-family="monospace" font-size="9" fill="currentColor" opacity=".6" text-anchor="middle">pior</text>
+          <path d="M152 140H92v-22" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" opacity=".35"/>
+          <path d="M86 124l6-10 6 10" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <text x="110" y="186" font-family="monospace" font-size="9" fill="currentColor" opacity=".45" text-anchor="middle">a volta é tracejada</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> duplicar antes de mexer transforma a volta em um arquivo que já existe, não em memória">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="26" y="32" width="72" height="46" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <path d="M38 50h48M38 62h32" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <text x="62" y="24" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">versão boa</text>
+          <path d="M98 55h28" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M120 50l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="128" y="32" width="66" height="46" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M138 50h46M138 62h30" stroke="var(--accent)" stroke-width="1.4" opacity=".6"/>
+          <text x="161" y="24" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">2026-09-21</text>
+          <path d="M62 82v26" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M57 102l5 7 5-7" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <rect x="26" y="114" width="72" height="46" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <path d="M38 132h40M38 144h50" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <text x="62" y="176" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">alterada</text>
+          <path d="M128 137H104" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M110 132l-7 5 7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="128" y="114" width="66" height="46" rx="5" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 4"/>
+          <text x="161" y="176" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">volta possível</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> os arquivos guardam o texto; a linha do caderno guarda a razão que nenhum arquivo contém">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="22" y="36" width="60" height="52" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M32 54h40M32 66h28" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <rect x="98" y="36" width="60" height="52" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <path d="M108 54h40M108 66h36" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <text x="90" y="104" font-family="monospace" font-size="9" fill="currentColor" opacity=".5" text-anchor="middle">o que mudou: visível</text>
+          <path d="M52 92v18h76V92" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <rect x="22" y="126" width="172" height="44" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M34 144h26" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/>
+          <path d="M68 144h110" stroke="var(--accent)" stroke-width="1.4" opacity=".5"/>
+          <text x="108" y="188" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">data + porquê: só aqui</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> linhas soltas viram diagnóstico quando a mesma falha aparece três vezes">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <path d="M26 42h150M26 66h150M26 90h150M26 114h150M26 138h150" stroke="currentColor" stroke-width="1.4" opacity=".28"/>
+          <rect x="24" y="32" width="10" height="10" fill="var(--accent)" opacity=".85"/>
+          <rect x="24" y="80" width="10" height="10" fill="var(--accent)" opacity=".85"/>
+          <rect x="24" y="128" width="10" height="10" fill="var(--accent)" opacity=".85"/>
+          <rect x="24" y="56" width="10" height="10" stroke="currentColor" stroke-width="1.2" opacity=".4"/>
+          <rect x="24" y="104" width="10" height="10" stroke="currentColor" stroke-width="1.2" opacity=".4"/>
+          <path d="M44 37h92M44 61h68M44 85h100M44 109h56M44 133h84" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <path d="M186 37v101" stroke="var(--accent)" stroke-width="1.4" opacity=".6"/>
+          <path d="M181 46l5-9 5 9M181 129l5 9 5-9" stroke="var(--accent)" stroke-width="1.2" opacity=".6"/>
+          <text x="110" y="176" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">3 vezes: corrija a regra</text>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Mexer numa regra de um material que já entrega resultado é uma aposta: pode melhorar e pode estragar algo que vinha funcionando calado.</li>
+    <li>Duplicar o arquivo com a data de hoje no nome, antes de alterar, custa quinze segundos e mantém a versão anterior inteira.</li>
+    <li>Os dois arquivos abertos lado a lado mostram sozinhos o texto que entrou e o que saiu; a razão da decisão só existe se você escrever.</li>
+    <li>Falhas anotadas uma por linha, no dia, acumulam até o padrão aparecer. Aí o conserto certo deixa de ser o do dia e passa a ser o da regra.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de conseguir alterar um material de trabalho com um caminho de volta garantido.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: repita o gesto da prática no molde de pedido da Aula 5. Duplique com a data, altere uma lacuna e escreva a linha do motivo no mesmo caderno.</p>
+  <p class="na-hook">Na próxima aula você fecha a trilha. Com contexto, regras, molde e ponto de retorno no lugar, dá para decidir o que você delega e o que continua seu.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-7">próxima aula →</a></nav>
+<footer>Aula 6 · OSWork v5 · INEMA.CLUB PRO</footer>
+
+<script type="application/json" id="cards-6">
+[
+  {"front":"Você alterou uma regra hoje e o resultado veio pior. O que precisava existir antes da alteração para você voltar em um minuto?","back":"Uma cópia do material guardada com a data no nome, feita antes de qualquer mexida. Sem ela, o texto bom foi coberto e não sobra para onde voltar."},
+  {"front":"Dois registros da mesma mudança: \"troquei o terceiro parágrafo\" e \"tirei a exigência de tom formal porque a equipe achou distante\". Qual serve daqui a três meses?","back":"O segundo. O primeiro descreve algo que se enxerga abrindo as duas versões; o segundo guarda a razão, que não está escrita em nenhum dos dois."},
+  {"front":"Seu caderno mostra três anotações diferentes em que o resultado saiu longo demais. O que essa repetição está pedindo?","back":"Uma correção na exigência de tamanho dentro da própria ficha, e não mais um remendo no pedido do dia. Repetição aponta causa; ocorrência isolada, não."},
+  {"front":"Você tem trinta segundos antes de mexer no molde de pedido da semana. Qual é o único passo que não dá para pular?","back":"Duplicar o material e pôr a data de hoje no começo do nome da duplicata. Os outros cuidados esperam; esse é o que cria o caminho de volta."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-6 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (4/4: gestora, professor, gestora, professor)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 10 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-6"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz com data-fb na opção certa)
+-->
+</section>
+
+<!-- ===== AULA 7 ===== -->
+<section class="view" id="v-aula-7" data-aula="7" data-tempo="24min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Trilha 01 · Aula 7</p>
+    <h1>O que você delega<br>e o que <em>continua seu</em></h1>
+
+    <p class="promise">Ao fim desta aula você tem o seu ambiente de IA montado por inteiro e uma lista escrita do que delega, do que confere e do que não entrega a ninguém.</p>
+
+    <p class="why">As peças já existem, cada uma no seu lugar. Falta a decisão de onde a delegação termina. Sem essa linha escrita antes, ela acaba sendo traçada no meio de um dia corrido — e aí a escolha quase sempre sai pelo lado errado. Decidir com calma hoje custa quinze minutos e vale por meses.</p>
+
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <path d="M24 176h252" stroke="currentColor" stroke-width="1.5" opacity=".45"/>
+    <path d="M44 176v40M256 176v40" stroke="currentColor" stroke-width="1.5" opacity=".3"/>
+    <path d="M36 36h228" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <path d="M62 36v26M104 36v26M146 36v26M188 36v26M230 36v26" stroke="var(--accent)" stroke-width="1.5"/>
+    <rect x="50" y="62" width="24" height="34" rx="3" stroke="var(--accent)" stroke-width="1.5"/>
+    <circle cx="104" cy="76" r="14" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M136 62h20v34h-20z" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M188 62l12 34h-24z" stroke="var(--accent)" stroke-width="1.5"/>
+    <rect x="218" y="62" width="24" height="34" rx="11" stroke="var(--accent)" stroke-width="1.5"/>
+    <rect x="66" y="126" width="72" height="44" rx="4" stroke="currentColor" stroke-width="1.5" opacity=".45"/>
+    <path d="M80 142h44M80 156h30" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+    <rect x="162" y="126" width="72" height="44" rx="4" stroke="var(--accent)" stroke-width="1.5"/>
+    <path d="M176 142h44M176 156h34" stroke="var(--accent)" stroke-width="1.5" opacity=".6"/>
+    <text x="150" y="232" font-family="monospace" font-size="11" fill="var(--accent)" text-anchor="middle">bancada montada</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="pratica">
+      <h2><span class="n">01</span> Você delega a execução, nunca a responsabilidade</h2>
+      <p>Uma tarefa tem duas partes que aqui precisam ser separadas: o trabalho de produzir aquilo e o fato de que alguém responde pelo resultado. A IA pode assumir a primeira. A segunda continua sua, inteira, mesmo quando você não escreveu uma palavra do que foi enviado.</p>
+      <p>É por isso que este curso chama isso de <span class="gterm" tabindex="0" data-def="Delegação supervisionada é entregar a execução de uma tarefa para a IA. Fica escrito quem confere o resultado e quem responde por ele depois de enviado.">delegação supervisionada</span>. O nome é literal: você entrega o fazer e segura o responder. Quem não separa as duas acaba descobrindo isso no pior dia possível.</p>
+      <p data-ex="gestora">Uma gestora de uma central de atendimento pediu o relatório mensal de indicadores para a diretoria. O texto veio bem montado e ela enviou sem ler a última tabela, que trocava chamados reabertos por resolvidos. Na reunião, quem explicou o erro foi ela — e estava certo que fosse.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="pratica">
+      <h2><span class="n">02</span> Toda tarefa cabe em um de três níveis</h2>
+      <p>Não existe delegar ou não delegar. Existem três posições, e a maior parte das tarefas muda de lugar com o tempo. <b>Faz sozinho</b> é o que você aceita sem olhar, porque um erro ali custa quase nada. <b>Faz e mostra</b> é o que sai pronto e passa pelos seus olhos antes de ir adiante. <b>Só sugere</b> é o que você continua fazendo com as próprias mãos, usando a resposta apenas como primeira versão ou como lista de ideias.</p>
+      <p>A posição não depende de a IA ser boa naquilo. Depende de quem assina e do que acontece se sair errado.</p>
+      <p data-ex="professor">Um professor de biologia colocou a lista de exercícios de revisão em faz e mostra: ele lê as dez questões antes de imprimir. O texto de boas-vindas do mural da sala ficou em faz sozinho. A avaliação bimestral ficou em só sugere, porque a nota do aluno depende dela.</p>
+      <div class="qsteps">
+        <p class="qsk">Como classificar uma tarefa em três perguntas</p>
+        <ol>
+          <li><b>Quem assina.</b> Se o resultado sai com o seu nome ou vai para fora da equipe, ele não entra em faz sozinho.</li>
+          <li><b>Quanto custa o erro.</b> Se uma informação errada ali gera retrabalho para outras pessoas, sobe para faz e mostra no mínimo.</li>
+          <li><b>Dá para conferir rápido.</b> Se você não consegue checar o resultado em poucos minutos, a tarefa fica em só sugere até você ter uma régua que caiba nesse tempo.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="pratica">
+      <h2><span class="n">03</span> O tempo de conferir entra na conta do ganho</h2>
+      <p>A conta que a maioria faz é simples demais: a tarefa levava quarenta minutos, a resposta chegou em um, logo o ganho foi de trinta e nove. Falta uma parcela. Conferir custa tempo, e esse tempo sai do mesmo dia.</p>
+      <p>A conta honesta tem três parcelas: escrever o pedido, conferir a resposta e ajustar o que voltou torto. Quando a soma das três chega perto do tempo de fazer à mão, a delegação não devolve nada. Ela só troca o esforço de lugar, com um risco a mais.</p>
+      <p data-ex="gestora">Uma gestora de operações passou a escala de férias da equipe para a IA. Montar levava vinte minutos; conferir feriado, cobertura de turno e limite de dias levava dezoito. Ela devolveu a escala para as próprias mãos e delegou o e-mail que a acompanha, que leva quinze minutos para escrever e dois para conferir.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="pratica">
+      <h2><span class="n">04</span> A lista só continua verdadeira se tiver uma data</h2>
+      <p>A sua lista envelhece rápido, e por um motivo bom: você fica melhor em pedir. Uma tarefa que estava em só sugere em março pode estar madura para faz e mostra em maio. O contrário também vale, e esse é o caso que machuca mais.</p>
+      <p>Por isso a lista precisa de um horário fixo na agenda, uma vez por semana, quinze minutos. Nesse encontro você sobe o que se provou, desce o que falhou duas vezes e anota o porquê em uma linha. Sem data marcada, ninguém volta: a lista vira um papel bonito, escrito uma vez e nunca mais lido.</p>
+      <p>Rosana, gestora de um serviço de agendamento, montou tudo em um mês. Criou a pasta da frente de atendimento, escreveu a ficha com as regras do setor e guardou o molde do aviso de reagendamento. Na quarta semana o aviso saiu com um prazo já vencido, e a cópia datada devolveu a versão boa em dois minutos. A linha que ela escreveu depois — o prazo mudou, a ficha não acompanhou — virou o primeiro item da conferência seguinte.</p>
+      <p data-ex="professor">Um professor de geografia marcou a conferência dele para sexta, às dezesseis horas, logo depois da última aula. Em quinze minutos ele revê a lista, confere dois materiais da semana e ajusta uma regra da ficha. Em quatro semanas, duas tarefas subiram de nível e uma desceu.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="5" data-kind="pratica">
+      <h2><span class="n">05</span> O que você tem agora, junto, é um ambiente</h2>
+      <p>Vale nomear as peças. Você escreve um pedido completo, com material, formato e critério de pronto. Tem uma régua de conferência de três itens, escrita antes de pedir. Tem uma pasta por frente de trabalho. Tem uma ficha de orientação com as suas regras. Tem um molde para a tarefa que mais se repete. E tem a cópia datada, que garante o caminho de volta.</p>
+      <p>Separadas, são seis hábitos soltos. Juntas, com a lista de delegação por cima, são um ambiente. Cada pedido nasce numa pasta, obedece a uma ficha, sai de um molde, passa por uma régua e tem um ponto de retorno. Isso você consegue explicar para outra pessoa em cinco minutos — e essa é a medida de que está montado.</p>
+      <p data-ex="gestora">Uma gestora de um escritório de projetos usou exatamente isso para receber uma pessoa nova na equipe. Entregou a pasta, a ficha e o molde no primeiro dia, e no lugar de duas semanas de perguntas soltas a integração levou três dias. O que ela passou adiante não foi uma ferramenta: foi o combinado escrito.</p>
+      <div class="qapply"><p class="qak">Aplique no seu caso</p><ul><li><b>Gestora:</b> comece pelo que a equipe inteira enxerga. Escala de plantão em faz e mostra, aviso interno de rotina em faz sozinho, avaliação de desempenho em só sugere.</li><li><b>Professor:</b> comece pelo que vira nota. Banco de exercícios em faz e mostra, material de apoio em faz sozinho, correção de prova em só sugere.</li></ul></div>
+      <div class="mobfig" data-mobfig="5"></div>
+      <button class="readbtn" data-read="s5">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p7" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Escreva a sua lista de delegação e marque a primeira conferência</h3>
+      <p class="pgoal">Pronto quando as suas tarefas de uma semana estiverem distribuídas nas três colunas e houver um dia e uma hora marcados na agenda. Cerca de 15 min.</p>
+      <p class="psafe">Esta lista é sua e não vai para lugar nenhum. Escreva à caneta se preferir. Nenhuma classificação é definitiva: mover uma tarefa de coluna é sinal de que a lista está funcionando.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> <span>Liste de dez a quinze tarefas que você fez na última semana, inclusive as que parecem pequenas demais.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="2"> <span>Faça três colunas: faz sozinho, faz e mostra, só sugere. Encaixe cada tarefa usando as três perguntas do quadro — quem assina, quanto custa o erro, dá para conferir rápido.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="3"> <span>Na coluna só sugere, marque as tarefas que você nunca vai entregar a ninguém, aconteça o que acontecer. Escreva uma linha explicando o porquê de cada uma.</span></label></li>
+        <li><label><input type="checkbox" data-ptask="4"> <span>Abra a sua agenda e marque agora a primeira conferência semanal, com dia e hora, quinze minutos, repetindo toda semana. Guarde a lista na pasta da frente de trabalho, junto da ficha.</span></label></li>
+      </ol>
+      <p class="pdone">Você tem agora o ambiente montado por inteiro e a sua lista escrita do que delega, do que confere e do que continua seu.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig.</b> a execução atravessa para o outro lado; a assinatura fica sempre do lado de cá">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="18" y="52" width="76" height="92" rx="5" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="56" y="42" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">você</text>
+          <path d="M32 78h48M32 94h34" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <path d="M32 122l7 7 13-14" stroke="var(--accent)" stroke-width="2"/>
+          <text x="72" y="128" font-family="monospace" font-size="9" fill="var(--accent)">assina</text>
+          <rect x="126" y="52" width="76" height="92" rx="5" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="164" y="42" font-family="monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="middle">execução</text>
+          <path d="M140 84h48M140 100h40M140 116h44" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <path d="M98 70h22" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M114 65l7 5-7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M120 126h-22" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 4"/>
+          <path d="M104 121l-7 5 7 5" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M110 160v16" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
+          <text x="110" y="192" font-family="monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">responde: você</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig.</b> os três níveis são degraus: uma tarefa sobe quando se prova, e desce na primeira falha repetida">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="24" y="140" width="56" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="52" y="161" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">só sugere</text>
+          <rect x="82" y="102" width="56" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="110" y="118" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">faz e</text>
+          <text x="110" y="130" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">mostra</text>
+          <rect x="140" y="64" width="56" height="34" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="168" y="80" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">faz</text>
+          <text x="168" y="92" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">sozinho</text>
+          <path d="M80 148h52M138 110h22" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <path d="M96 52h74" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
+          <text x="134" y="44" font-family="monospace" font-size="9" fill="currentColor" opacity=".55" text-anchor="middle">menos conferência</text>
+          <path d="M24 186h172" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
+          <text x="110" y="198" font-family="monospace" font-size="9" fill="currentColor" opacity=".5" text-anchor="middle">custo do erro decide o degrau</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig.</b> o ganho real é o que sobra depois de descontar pedido, conferência e ajuste">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="24" y="40" width="172" height="26" rx="4" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+          <text x="110" y="32" font-family="monospace" font-size="9" fill="currentColor" opacity=".6" text-anchor="middle">fazer à mão</text>
+          <rect x="24" y="92" width="34" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="62" y="92" width="48" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="114" y="92" width="30" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="148" y="92" width="48" height="26" rx="4" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" opacity=".6"/>
+          <text x="41" y="136" font-family="monospace" font-size="8" fill="var(--accent)" text-anchor="middle">pedido</text>
+          <text x="86" y="136" font-family="monospace" font-size="8" fill="var(--accent)" text-anchor="middle">conferir</text>
+          <text x="129" y="136" font-family="monospace" font-size="8" fill="var(--accent)" text-anchor="middle">ajuste</text>
+          <text x="172" y="136" font-family="monospace" font-size="8" fill="currentColor" opacity=".6" text-anchor="middle">sobra</text>
+          <path d="M148 160h48" stroke="var(--accent)" stroke-width="2"/>
+          <text x="110" y="178" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">só isto é ganho</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig.</b> a conferência semanal é o que mantém a lista em pé: sem data, ela para de valer">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <circle cx="110" cy="100" r="60" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+          <path d="M110 40a60 60 0 0 1 42 102" stroke="var(--accent)" stroke-width="1.6"/>
+          <path d="M146 136l6 8 9-4" stroke="var(--accent)" stroke-width="1.6"/>
+          <rect x="82" y="80" width="56" height="40" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <path d="M94 94h32M94 106h20" stroke="currentColor" stroke-width="1.4" opacity=".45"/>
+          <text x="110" y="176" font-family="monospace" font-size="10" fill="var(--accent)" text-anchor="middle">sexta · 15 min</text>
+          <path d="M60 60l-8-8M160 60l8-8M60 140l-8 8" stroke="currentColor" stroke-width="1.4" opacity=".25"/>
+          <text x="110" y="192" font-family="monospace" font-size="9" fill="currentColor" opacity=".5" text-anchor="middle">sobe, desce, anota</text>
+        </svg>
+      </div>
+      <div class="fig" data-fig="5" data-cap="<b>Fig.</b> as seis peças encaixadas: o pedido percorre todas antes de virar trabalho entregue">
+        <svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+          <rect x="18" y="28" width="82" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="59" y="45" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">pasta</text>
+          <rect x="120" y="28" width="82" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="161" y="45" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">ficha</text>
+          <rect x="18" y="72" width="82" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="59" y="89" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">molde</text>
+          <rect x="120" y="72" width="82" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="161" y="89" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">pedido completo</text>
+          <rect x="18" y="116" width="82" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="59" y="133" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">régua</text>
+          <rect x="120" y="116" width="82" height="26" rx="4" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="161" y="133" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">cópia datada</text>
+          <rect x="18" y="156" width="184" height="26" rx="4" stroke="var(--accent)" stroke-width="1.6"/>
+          <text x="110" y="173" font-family="monospace" font-size="9" fill="var(--accent)" text-anchor="middle">lista de delegação</text>
+          <path d="M110 142v14" stroke="currentColor" stroke-width="1.4" opacity=".4"/>
+        </svg>
+      </div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Delegar a execução de uma tarefa não transfere a autoria nem a resposta pelo resultado: quem assina continua sendo você.</li>
+    <li>Cada tarefa ocupa um de três degraus — faz sozinho, faz e mostra, só sugere — escolhido pelo custo do erro, não pela habilidade da ferramenta.</li>
+    <li>O ganho verdadeiro é o tempo que sobra depois de descontar pedido, conferência e ajuste.</li>
+    <li>Uma conferência semanal com hora marcada mantém a lista viva; sem data, ela envelhece em silêncio e deixa de valer.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você montou o ambiente por inteiro e sabe dizer, por escrito, o que delega, o que confere e o que continua seu.</p>
+  <p class="na-action">Nos próximos 15 minutos, no seu trabalho de verdade: encaixe as tarefas da sua próxima semana nas três colunas. Guarde a lista dentro da pasta, ao lado da ficha de orientação.</p>
+  <p class="na-hook">O curso termina aqui; o uso começa na primeira conferência semanal que você marcou na agenda. É nela que a lista se corrige: uma tarefa sobe, outra desce. Em um mês você decide isso sem precisar reler nada.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#trilha">concluir ✓ →</a></nav>
+<footer>Aula 7 · OSWork v5 · INEMA.CLUB PRO</footer>
+
+<script type="application/json" id="cards-7">
+[
+  {"front":"Chegou uma tarefa que a ferramenta executa muito bem e rápido, mas que sai da sua sala com o seu nome. Em que degrau ela entra?","back":"Em faz e mostra, no mínimo. O degrau se decide por quem responde depois de enviado, nunca pela qualidade do texto que voltou."},
+  {"front":"Uma tarefa leva doze minutos à mão e sete para conferir quando vem pronta. Vale mover para a IA?","back":"Vale pouco. Você compra cinco minutos e leva junto o risco de deixar passar um erro. Mova primeiro o que tem conferência barata."},
+  {"front":"São quinze minutos de conferência na sexta e a semana foi cheia. O que você abre primeiro?","back":"A lista de delegação. Marque o que se provou e o que falhou duas vezes, anote uma linha do porquê, e só depois mexa na ficha ou no molde."},
+  {"front":"Uma tarefa nova aparece e você não sabe em qual coluna colocá-la. Que duas perguntas resolvem isso em dez segundos?","back":"Quem assina o resultado e quanto custa se sair errado. Se as duas respostas pesarem, ela começa em só sugere e sobe depois, se merecer."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-7 | tipo=PRATICA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="24min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  exemplo aplicado em 100% dos steps (5/5: gestora, professor, gestora, professor, gestora)
+  [OK] apoio-visual       figura conceitual legendada em 100% dos steps (5/5)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com tempo declarado ("Cerca de 15 min")
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-7"> presente (1, com 4 cartões)
+  [OK] anti-duplicacao    3 testes passam (substring <6 / forma pergunta / operação difere do recap)
+  [N/A] teste-se-FUND     tipo=PRATICA: obrigação não se aplica (dosagem PRÁTICA/INTEGRAÇÃO)
+-->
+</section>
+
+<script src="assets/curso.js"></script>
+  <script>(function(){document.querySelectorAll(".langsel a[data-lang]").forEach(function(a){a.addEventListener("click",function(e){if(location.hash){e.preventDefault();location.href=a.getAttribute("href")+location.hash;}});});})();</script>
+</body>
+</html>
